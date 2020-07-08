@@ -61,8 +61,7 @@
               "[web-root]/sites/README.txt": false,
               "[web-root]/modules/README.txt": false,
               "[web-root]/themes/README.txt": false,
-              "[web-root]/example.gitignore": false,
-
+              "[web-root]/example.gitignore": false
             }
         },
         "installer-paths": {
