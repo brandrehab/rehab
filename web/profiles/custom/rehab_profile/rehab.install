@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the rehab installation profile.
+ */
+
+
+use Drupal\node\Entity\Node;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function rehab_install() {
+
+  $homepage = Node::create([
+      'type' => 'home',
+      'title' => 'Welcome To The Site',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/welcome',
+        'pid' => 1,
+      ],
+  ]);
+  $homepage->save();
+
+  $about = Node::create([
+      'type' => 'page',
+      'title' => 'About Us',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/about-us',
+        'pid' => 2,
+      ],
+  ]);
+  $about->save();
+
+  $services = Node::create([
+      'type' => 'page',
+      'title' => 'Services',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/services',
+        'pid' => 3,
+      ],
+  ]);
+  $services->save();
+
+  MenuLinkContent::create([
+    'title' => 'Home',
+    'link' => ['uri' => 'route:<front>'],
+    'menu_name' => 'main',
+    'weight' => 0,
+  ])->save();
+
+  MenuLinkContent::create([
+    'title' => 'About',
+    'link' => ['uri' => 'entity:node/' . $about->id()],
+    'menu_name' => 'main',
+    'weight' => 1,
+  ])->save();
+
+  MenuLinkContent::create([
+    'title' => 'Services',
+    'link' => ['uri' => 'entity:node/' . $services->id()],
+    'menu_name' => 'main',
+    'weight' => 2,
+  ])->save();
+}

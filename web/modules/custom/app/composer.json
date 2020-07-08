@@ -1,0 +1,9 @@
+{
+  "name": "brandrehab/app",
+  "description": "Drupalised code for rehab project.",
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+  "require": {
+    "drupal/core": "^9"
+  }
+}

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.home.body
+    - node.type.home
+  module:
+    - user
+id: node.home.default
+targetEntityType: node
+bundle: home
+mode: default
+content: {  }
+hidden:
+  body: true
+  links: true

@@ -1,0 +1,5 @@
+name: App
+type: module
+description: Application configuration.
+core_version_requirement: ^9
+package: app

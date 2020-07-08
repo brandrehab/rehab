@@ -1,0 +1,12 @@
+{
+  "name": "brandrehab/rehab_profile",
+  "description": "Provides base profile for rehab sites.",
+  "type": "drupal-profile",
+  "authors": [
+    {
+      "name": "Wayne Ashley"
+    }
+  ],
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev"
+}

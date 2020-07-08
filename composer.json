@@ -1,0 +1,95 @@
+{
+    "name": "brandrehab/rehab",
+    "description": "Rehab distribution for Drupal 9",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://brand.rehab/project/rehab",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.9",
+        "drupal/core-composer-scaffold": "^9",
+        "drupal/core-recommended": "^9",
+        "drush/drush": "^10.3",
+        "vlucas/phpdotenv": "^5.0"
+    },
+    "require-dev": {
+        "drupal/coder": "^8.3",
+        "mglaman/phpstan-drupal": "^0.12.4",
+        "phpstan/phpstan-deprecation-rules": "^0.12.4",
+        "phpstan/phpstan-strict-rules": "^0.12.2",
+        "phpunit/phpunit": "^9.2",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+          "App\\": "app/"
+        }
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            },
+            "file-mapping": {
+              "[web-root]/.csslintrc": false,
+              "[web-root]/.eslintignore": false,
+              "[web-root]/.eslintrc.json": false,
+              "[web-root]/.htaccess": false,
+              "[web-root]/.ht.router.php": false,
+              "[web-root]/robots.txt": false,
+              "[web-root]/web.config": false,
+              "[web-root]/sites/development.services.yml": false,
+              "[web-root]/sites/example.settings.local.php": false,
+              "[web-root]/sites/example.sites.php": false,
+              "[web-root]/sites/default/default.services.yml": false,
+              "[web-root]/sites/default/default.settings.php": false,
+              "[web-root]/INSTALL.txt": false,
+              "[web-root]/README.txt": false,
+              "[web-root]/sites/README.txt": false,
+              "[web-root]/modules/README.txt": false,
+              "[web-root]/themes/README.txt": false,
+              "[web-root]/example.gitignore": false,
+
+            }
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        }
+    }
+}

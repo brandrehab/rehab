@@ -1,0 +1,18 @@
+includes:
+	- vendor/mglaman/phpstan-drupal/extension.neon
+	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
+parameters:
+	excludes_analyse:
+		- *Test.php
+		- *TestBase.php
+	level: 6
+	checkGenericClassInNonGenericObjectType: false
+	checkMissingIterableValueType: false
+	reportUnmatchedIgnoredErrors: false
+	drupal:
+		entityTypeStorageMapping:
+			node: Drupal\node\NodeStorage
+			taxonomy_term: Drupal\taxonomy\TermStorage
+			user: Drupal\user\UserStorage
+	ignoreErrors:
+		- '#Call to an undefined method Drupal\\Core\\Entity\\EntityInterface::#'

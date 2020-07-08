@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rm -f config/install/core.extension.yml
+rm -f config/install/file.settings.yml
+rm -f config/install/update.settings.yml
+find config/install/ -type f -exec sed -i '' '/^uuid: /d' {} \;
+find config/install/ -type f -exec sed -i '' '/_core:/{N;d;}' {} \;
