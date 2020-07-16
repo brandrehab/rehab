@@ -96,11 +96,11 @@ function rehab_install() {
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
-        'alias' => '/403',
+        'alias' => '/404',
         'pid' => 6,
       ],
   ]);
-  $node403->save();
+  $node404->save();
 
   $menuHome = MenuLinkContent::create([
     'title' => 'Home',
