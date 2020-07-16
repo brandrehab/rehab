@@ -11,7 +11,7 @@ use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Home controller.
+ * Page controller.
  */
 class PageController extends ControllerBase implements ContainerInjectionInterface {
 
@@ -39,7 +39,7 @@ class PageController extends ControllerBase implements ContainerInjectionInterfa
   }
 
   /**
-   * Returns a render-able array for a test page.
+   * Handles requests for nodes of type page.
    */
   public function view(PageInterface $node): array {
     return [

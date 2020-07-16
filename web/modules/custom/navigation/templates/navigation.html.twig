@@ -1,0 +1,11 @@
+<section id="navigation">
+  <h2>Navigation</h2>
+  {% for item in menu %}
+    <a class="{% if item.active %}active{% endif %}" href="{{ item.url }}">{{ item.title }}</a>
+    {% for child in item.children %}
+      <small>
+        <a class="{% if child.active %}active{% endif %}" href="{{ child.url }}">{{ child.title }}</a>
+      </small>
+    {% endfor %}
+  {% endfor %}
+</section>

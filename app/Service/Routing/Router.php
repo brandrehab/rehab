@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Routing;
+namespace App\Service\Routing;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\EntityInterface;

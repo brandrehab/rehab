@@ -4,6 +4,7 @@
   <description>PHP CodeSniffer configuration.</description>
   <file>web/modules/custom</file>
   <file>web/themes/custom</file>
+  <file>app</file>
   <arg name="standard" value="Drupal"/>
   <arg name="extensions" value="php,module,theme,inc"/>
   <config name="drupal_core_version" value="9"/>

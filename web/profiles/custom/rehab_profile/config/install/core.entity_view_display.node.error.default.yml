@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.error.body
+    - node.type.error
+  module:
+    - user
+id: node.error.default
+targetEntityType: node
+bundle: error
+mode: default
+content: {  }
+hidden:
+  body: true
+  links: true

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use Drupal\node\Entity\Node;
+use App\EntityView\PageEntityView;
+use App\Service\Entity\Node;
 
 /**
  * Page entity.
@@ -12,10 +13,10 @@ use Drupal\node\Entity\Node;
 class Page extends Node implements PageInterface {
 
   /**
-   * Get the node type name.
+   * Associate an entity view with this entity.
+   *
+   * @var string
    */
-  public static function getStaticBundle() {
-    return 'page';
-  }
+  protected $entityView = PageEntityView::class;
 
 }

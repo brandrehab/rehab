@@ -1,0 +1,5 @@
+name: Navigation
+type: module
+description: Provides a main navigation bar.
+core_version_requirement: ^9
+package: app

@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Navigation module hooks.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_theme().
+ */
+function navigation_theme(): array {
+  return [
+    'navigation' => [
+      'variables' => [
+        'menu' => NULL,
+        'cache' => NULL,
+      ],
+    ],
+  ];
+}

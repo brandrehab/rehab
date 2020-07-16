@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use Drupal\node\Entity\Node;
+use App\EntityView\HomeEntityView;
+use App\Service\Entity\Node;
 
 /**
  * Home entity.
@@ -12,10 +13,10 @@ use Drupal\node\Entity\Node;
 class Home extends Node implements HomeInterface {
 
   /**
-   * Get the node type name.
+   * Associate an entity view with this entity.
+   *
+   * @var string
    */
-  public static function getStaticBundle() {
-    return 'home';
-  }
+  protected $entityView = HomeEntityView::class;
 
 }

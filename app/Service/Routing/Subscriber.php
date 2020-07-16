@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Routing;
+namespace App\Service\Routing;
 
 use Drupal\Core\Routing\RouteSubscriberBase;
 use Symfony\Component\Routing\RouteCollection;
@@ -17,15 +17,15 @@ class Subscriber extends RouteSubscriberBase {
    */
   protected function alterRoutes(RouteCollection $collection): void {
     if ($route = $collection->get('entity.node.canonical')) {
-      $route->setDefault('_controller', '\App\Routing\Router::view');
+      $route->setDefault('_controller', '\App\Service\Routing\Router::view');
     }
 
     if ($route = $collection->get('entity.node.preview')) {
-      $route->setDefault('_controller', '\App\Routing\Router::preview');
+      $route->setDefault('_controller', '\App\Service\Routing\Router::preview');
     }
 
     if ($route = $collection->get('entity.node.revision')) {
-      $route->setDefault('_controller', '\App\Routing\Router::revision');
+      $route->setDefault('_controller', '\App\Service\Routing\Router::revision');
     }
 
     if ($route = $collection->get('entity.taxonomy_term.canonical')) {

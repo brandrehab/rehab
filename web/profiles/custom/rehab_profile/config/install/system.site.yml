@@ -1,9 +1,9 @@
-name: Nine
+name: Rehab
 mail: wayne@brand.rehab
 slogan: ''
 page:
-  403: ''
-  404: ''
+  403: /node/5
+  404: /node/6
   front: /node/1
 admin_compact_mode: false
 weight_select_max: 100

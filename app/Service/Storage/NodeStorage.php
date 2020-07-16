@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Storage;
+namespace App\Service\Storage;
 
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeStorage as Base;

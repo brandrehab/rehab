@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.service.body
+    - node.type.service
+  module:
+    - user
+id: node.service.default
+targetEntityType: node
+bundle: service
+mode: default
+content: {  }
+hidden:
+  body: true
+  links: true

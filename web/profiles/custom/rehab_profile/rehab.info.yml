@@ -22,7 +22,6 @@ distribution:
 
 install:
   - app
-  - automated_cron
   - block
   - block_content
   - breakpoint
@@ -39,13 +38,14 @@ install:
   - file
   - filter
   - help
-  - history
   - image
   - link
   - media
   - media_library
+  - memcache
   - menu_link_content
   - menu_ui
+  - navigation
   - node
   - options
   - path
@@ -56,8 +56,8 @@ install:
   - toolbar
   - update
   - user
-  - views
   - views_ui
+  - views
 themes:
   - bartik
   - claro

@@ -16,3 +16,5 @@ parameters:
 			user: Drupal\user\UserStorage
 	ignoreErrors:
 		- '#Call to an undefined method Drupal\\Core\\Entity\\EntityInterface::#'
+		- '#Cannot instantiate interface Drupal\\Core\\Field\\FieldItemListInterface.#'
+		- '#Method App\\Service\\Entity\\Node::entityView\(\) should return#'

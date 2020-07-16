@@ -22,7 +22,7 @@ class RoutingServiceProvider {
    * Route subscriber.
    */
   private static function subscriber(ContainerBuilder $container): void {
-    $container->register('app.route_subscriber', 'App\Routing\Subscriber')
+    $container->register('app.route_subscriber', 'App\Service\Routing\Subscriber')
       ->addTag('event_subscriber');
   }
 

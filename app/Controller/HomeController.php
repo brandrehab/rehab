@@ -39,9 +39,10 @@ class HomeController extends ControllerBase implements ContainerInjectionInterfa
   }
 
   /**
-   * Returns a render-able array for a test page.
+   * Handles requests for nodes of type home.
    */
   public function view(HomeInterface $node): array {
+    $home_dto = $node->entityView()->get('full');
     return [
       $this->blockManager->createInstance('app.navigation', [])->build(),
     ];

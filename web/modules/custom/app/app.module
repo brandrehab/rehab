@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * @file
  * Hooks definitions for app module.
  */
 
-use App\Storage\NodeStorage;
+use App\Service\Storage\NodeStorage;
 
 /**
  * Implements hook_entity_type_alter().
  */
-function app_entity_type_alter(array &$entity_types) {
+function app_entity_type_alter(array &$entity_types): void {
   if (isset($entity_types['node'])) {
     $entity_types['node']->setHandlerClass('storage', NodeStorage::class);
   }

@@ -18,7 +18,7 @@ use Drupal\menu_link_content\Entity\MenuLinkContent;
  */
 function rehab_install() {
 
-  $homepage = Node::create([
+  $nodeHome = Node::create([
       'type' => 'home',
       'title' => 'Welcome To The Site',
       'langcode' => 'en',
@@ -30,9 +30,9 @@ function rehab_install() {
         'pid' => 1,
       ],
   ]);
-  $homepage->save();
+  $nodeHome->save();
 
-  $about = Node::create([
+  $nodeAbout = Node::create([
       'type' => 'page',
       'title' => 'About Us',
       'langcode' => 'en',
@@ -44,9 +44,9 @@ function rehab_install() {
         'pid' => 2,
       ],
   ]);
-  $about->save();
+  $nodeAbout->save();
 
-  $services = Node::create([
+  $nodeServices = Node::create([
       'type' => 'page',
       'title' => 'Services',
       'langcode' => 'en',
@@ -58,26 +58,76 @@ function rehab_install() {
         'pid' => 3,
       ],
   ]);
-  $services->save();
+  $nodeServices->save();
 
-  MenuLinkContent::create([
+  $nodeExampleService = Node::create([
+      'type' => 'service',
+      'title' => 'Example Service',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/services/example-service',
+        'pid' => 4,
+      ],
+  ]);
+  $nodeExampleService->save();
+
+  $node403 = Node::create([
+      'type' => 'error',
+      'title' => '403 Access Denied',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/403',
+        'pid' => 5,
+      ],
+  ]);
+  $node403->save();
+
+  $node404 = Node::create([
+      'type' => 'error',
+      'title' => '404 Not Found',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/403',
+        'pid' => 6,
+      ],
+  ]);
+  $node403->save();
+
+  $menuHome = MenuLinkContent::create([
     'title' => 'Home',
     'link' => ['uri' => 'route:<front>'],
     'menu_name' => 'main',
     'weight' => 0,
   ])->save();
 
-  MenuLinkContent::create([
+  $menuAbout = MenuLinkContent::create([
     'title' => 'About',
-    'link' => ['uri' => 'entity:node/' . $about->id()],
+    'link' => ['uri' => 'entity:node/' . $nodeAbout->id()],
     'menu_name' => 'main',
     'weight' => 1,
   ])->save();
 
-  MenuLinkContent::create([
+  $menuServices = MenuLinkContent::create([
     'title' => 'Services',
-    'link' => ['uri' => 'entity:node/' . $services->id()],
+    'link' => ['uri' => 'entity:node/' . $nodeServices->id()],
     'menu_name' => 'main',
     'weight' => 2,
+  ])->save();
+
+  $menuExampleService = MenuLinkContent::create([
+    'title' => 'Example Service',
+    'link' => ['uri' => 'entity:node/' . $nodeExampleService->id()],
+    'menu_name' => 'main',
+    'weight' => 0,
+    'parent' => $menuServices->getPluginId(),
   ])->save();
 }
