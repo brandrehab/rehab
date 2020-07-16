@@ -107,21 +107,24 @@ function rehab_install() {
     'link' => ['uri' => 'route:<front>'],
     'menu_name' => 'main',
     'weight' => 0,
-  ])->save();
+  ]);
+  $menuHome->save();
 
   $menuAbout = MenuLinkContent::create([
     'title' => 'About',
     'link' => ['uri' => 'entity:node/' . $nodeAbout->id()],
     'menu_name' => 'main',
     'weight' => 1,
-  ])->save();
+  ]);
+  $menuAbout->save();
 
   $menuServices = MenuLinkContent::create([
     'title' => 'Services',
     'link' => ['uri' => 'entity:node/' . $nodeServices->id()],
     'menu_name' => 'main',
     'weight' => 2,
-  ])->save();
+  ]);
+  $menuServices->save();
 
   $menuExampleService = MenuLinkContent::create([
     'title' => 'Example Service',
@@ -129,5 +132,6 @@ function rehab_install() {
     'menu_name' => 'main',
     'weight' => 0,
     'parent' => $menuServices->getPluginId(),
-  ])->save();
+  ]);
+  $menuExampleService->save();
 }
