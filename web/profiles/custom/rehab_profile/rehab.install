@@ -8,6 +8,7 @@
 
 use Drupal\node\Entity\Node;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Implements hook_install().
@@ -29,6 +30,14 @@ function rehab_install() {
         'alias' => '/welcome',
         'pid' => 1,
       ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Welcome',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_site_importance' => '1.0',
+        ]),
+      ],
   ]);
   $nodeHome->save();
 
@@ -42,6 +51,14 @@ function rehab_install() {
       'path' => [
         'alias' => '/about-us',
         'pid' => 2,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'About Us',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_site_importance' => '0.5',
+        ]),
       ],
   ]);
   $nodeAbout->save();
@@ -57,6 +74,14 @@ function rehab_install() {
         'alias' => '/services',
         'pid' => 3,
       ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Services',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_site_importance' => '0.8',
+        ]),
+      ],
   ]);
   $nodeServices->save();
 
@@ -70,6 +95,14 @@ function rehab_install() {
       'path' => [
         'alias' => '/services/example-service',
         'pid' => 4,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Example Service',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_site_importance' => '1.0',
+        ]),
       ],
   ]);
   $nodeExampleService->save();
@@ -85,6 +118,14 @@ function rehab_install() {
         'alias' => '/403',
         'pid' => 5,
       ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => '403 Access Denied',
+          'field_meta_description' => 'You do not have sufficient privileges to view this content.',
+          'field_site_importance' => '0.0',
+        ]),
+      ],
   ]);
   $node403->save();
 
@@ -98,6 +139,14 @@ function rehab_install() {
       'path' => [
         'alias' => '/404',
         'pid' => 6,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => '404 Not Found',
+          'field_meta_description' => 'The requested page was not found.',
+          'field_site_importance' => '0.0',
+        ]),
       ],
   ]);
   $node404->save();
