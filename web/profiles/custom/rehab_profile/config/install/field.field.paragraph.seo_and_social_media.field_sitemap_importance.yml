@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sitemap_importance
+    - paragraphs.paragraphs_type.seo_and_social_media
+  module:
+    - options
+id: paragraph.seo_and_social_media.field_sitemap_importance
+field_name: field_sitemap_importance
+entity_type: paragraph
+bundle: seo_and_social_media
+label: 'Sitemap Importance'
+description: 'Select how important this page is to your online presence and whether it should be included in sitemap submissions to search engines. If you rate all the content on your site as "priority", you are effectively saying that a product/service page is equally important as an old news item - this is rarely the case.'
+required: true
+translatable: false
+default_value:
+  -
+    value: '0.5'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

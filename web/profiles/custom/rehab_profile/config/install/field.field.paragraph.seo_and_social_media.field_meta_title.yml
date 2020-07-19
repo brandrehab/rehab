@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_meta_title
+    - paragraphs.paragraphs_type.seo_and_social_media
+id: paragraph.seo_and_social_media.field_meta_title
+field_name: field_meta_title
+entity_type: paragraph
+bundle: seo_and_social_media
+label: 'Meta Title'
+description: 'Meta titles are visible to the public via search engine listings. They appear as the clickable link from a listing to your website.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

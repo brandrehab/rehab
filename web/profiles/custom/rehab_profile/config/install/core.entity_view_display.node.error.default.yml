@@ -3,14 +3,25 @@ status: true
 dependencies:
   config:
     - field.field.node.error.body
+    - field.field.node.error.field_seo_and_social_media
     - node.type.error
   module:
+    - entity_reference_revisions
     - user
 id: node.error.default
 targetEntityType: node
 bundle: error
 mode: default
-content: {  }
+content:
+  field_seo_and_social_media:
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
 hidden:
   body: true
   links: true

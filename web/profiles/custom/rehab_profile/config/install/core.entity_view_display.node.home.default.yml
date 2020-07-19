@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.home.body
+    - field.field.node.home.field_seo_and_social_media
     - node.type.home
   module:
     - user
@@ -13,4 +14,5 @@ mode: default
 content: {  }
 hidden:
   body: true
+  field_seo_and_social_media: true
   links: true

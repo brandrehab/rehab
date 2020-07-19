@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_meta_description
+    - paragraphs.paragraphs_type.seo_and_social_media
+id: paragraph.seo_and_social_media.field_meta_description
+field_name: field_meta_description
+entity_type: paragraph
+bundle: seo_and_social_media
+label: 'Meta Description'
+description: 'Meta descriptions are visible to the public via search engine listings. They should take the form of a concise and focused sentence or two, descriptive of the current page.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

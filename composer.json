@@ -14,7 +14,11 @@
         "composer/installers": "^1.9",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-recommended": "^9",
+        "drupal/dropzonejs": "^2.1",
+        "drupal/focal_point": "^1.4",
+        "drupal/media_entity_browser": "^2.0",
         "drupal/memcache": "^2.1",
+        "drupal/paragraphs": "^1.12",
         "drush/drush": "^10.3",
         "vlucas/phpdotenv": "^5.0"
     },

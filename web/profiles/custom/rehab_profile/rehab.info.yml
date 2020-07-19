@@ -28,19 +28,27 @@ install:
   - ckeditor
   - color
   - config
-  - contact
+  - crop
   - datetime
   - dblog
+  - dropzonejs
+  - dropzonejs_eb_widget
   - dynamic_page_cache
   - editor
+  - entity_browser
+  - entity_browser_entity_form
+  - entity_reference_revisions
   - field
   - field_ui
   - file
   - filter
+  - focal_point
   - help
   - image
+  - inline_entity_form
   - link
   - media
+  - media_entity_browser
   - media_library
   - memcache
   - menu_link_content
@@ -58,6 +66,7 @@ install:
   - user
   - views_ui
   - views
+  - paragraphs
 themes:
   - bartik
   - claro

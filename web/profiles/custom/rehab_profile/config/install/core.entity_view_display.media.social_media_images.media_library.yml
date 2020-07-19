@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.social_media_images.field_media_image
+    - image.style.media_library
+    - media.type.social_media_images
+  module:
+    - image
+id: media.social_media_images.media_library
+targetEntityType: media
+bundle: social_media_images
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_style: media_library
+      image_link: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_media_image: true
+  name: true
+  uid: true

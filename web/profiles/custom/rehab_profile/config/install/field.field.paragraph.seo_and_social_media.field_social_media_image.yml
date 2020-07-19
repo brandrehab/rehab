@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_social_media_image
+    - media.type.social_media_images
+    - paragraphs.paragraphs_type.seo_and_social_media
+id: paragraph.seo_and_social_media.field_social_media_image
+field_name: field_social_media_image
+entity_type: paragraph
+bundle: seo_and_social_media
+label: 'Social Media Image'
+description: 'Optionally upload an image which will be associated with Facebook and Twitter links to this page. Image should ideally be at least 1200 x 630 pixels.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      social_media_images: social_media_images
+    sort:
+      field: created
+      direction: DESC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

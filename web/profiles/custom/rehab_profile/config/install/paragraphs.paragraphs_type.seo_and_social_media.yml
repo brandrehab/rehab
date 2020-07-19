@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: seo_and_social_media
+label: 'SEO and Social Media'
+icon_uuid: null
+icon_default: null
+description: 'SEO and Social Media features related to the current page.'
+behavior_plugins: {  }

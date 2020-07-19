@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.social_media_images
+    - views.view.social_media_image_browser
+  module:
+    - dropzonejs_eb_widget
+    - media
+    - views
+name: social_media_image_browser
+label: 'Social Media Image Browser'
+display: modal
+display_configuration:
+  width: ''
+  height: ''
+  link_text: Select
+  auto_open: false
+selection_display: multi_step_display
+selection_display_configuration:
+  entity_type: media
+  display: rendered_entity
+  display_settings:
+    view_mode: default
+  select_text: 'Use selected'
+  selection_hidden: false
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  c770828c-32f4-4bda-b6b4-c34328b98c5e:
+    settings:
+      view: social_media_image_browser
+      view_display: media_browser_all
+      submit_text: Select
+      auto_select: false
+    uuid: c770828c-32f4-4bda-b6b4-c34328b98c5e
+    weight: -9
+    label: Image
+    id: view
+  acc87024-0d13-4d3a-8e02-d84893a4d21e:
+    settings:
+      form_mode: default
+      media_type: social_media_images
+      upload_location: 'public://social-media-images'
+      dropzone_description: 'Drop images here to upload them'
+      max_filesize: 128M
+      extensions: 'jpg jpeg png'
+      clientside_resize: false
+      resize_width: null
+      resize_height: null
+      resize_quality: !!float 1
+      resize_method: contain
+      thumbnail_method: contain
+      submit_text: Select
+    uuid: acc87024-0d13-4d3a-8e02-d84893a4d21e
+    weight: -10
+    label: Upload
+    id: dropzonejs_media_entity_inline_entity_form

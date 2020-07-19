@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_sitemap_importance
+field_name: field_sitemap_importance
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '0.0'
+      label: Exclude
+    -
+      value: '0.2'
+      label: Filler
+    -
+      value: '0.5'
+      label: Regular
+    -
+      value: '0.8'
+      label: Promoted
+    -
+      value: '1.0'
+      label: Priority
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

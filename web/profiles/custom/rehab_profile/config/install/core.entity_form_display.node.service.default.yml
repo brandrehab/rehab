@@ -3,8 +3,10 @@ status: true
 dependencies:
   config:
     - field.field.node.service.body
+    - field.field.node.service.field_seo_and_social_media
     - node.type.service
   module:
+    - paragraphs
     - path
     - text
 id: node.service.default
@@ -24,13 +26,25 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_seo_and_social_media:
+    weight: 2
+    settings:
+      title: 'SEO and Social Media Image'
+      title_plural: 'SEO and Social Media Image'
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: seo_and_social_media
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
   path:
     type: path
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -38,7 +52,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 6
     region: content
     third_party_settings: {  }
   title:
@@ -51,7 +65,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60

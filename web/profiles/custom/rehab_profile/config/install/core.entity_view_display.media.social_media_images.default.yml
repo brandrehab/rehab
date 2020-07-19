@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.social_media_images.field_media_image
+    - image.style.thumbnail
+    - media.type.social_media_images
+  module:
+    - image
+id: media.social_media_images.default
+targetEntityType: media
+bundle: social_media_images
+mode: default
+content:
+  field_media_image:
+    label: hidden
+    weight: 0
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

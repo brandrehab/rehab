@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.seo_and_social_media.field_meta_description
+    - field.field.paragraph.seo_and_social_media.field_meta_title
+    - field.field.paragraph.seo_and_social_media.field_sitemap_importance
+    - field.field.paragraph.seo_and_social_media.field_social_media_image
+    - paragraphs.paragraphs_type.seo_and_social_media
+id: paragraph.seo_and_social_media.default
+targetEntityType: paragraph
+bundle: seo_and_social_media
+mode: default
+content: {  }
+hidden:
+  field_meta_description: true
+  field_meta_title: true
+  field_sitemap_importance: true
+  field_social_media_image: true
