@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.banners.field_media_image
+    - image.style.media_library
+    - media.type.banners
+  module:
+    - focal_point
+id: media.banners.media_library
+targetEntityType: media
+bundle: banners
+mode: media_library
+content:
+  field_media_image:
+    weight: 5
+    settings:
+      preview_image_style: media_library
+      preview_link: true
+      offsets: '50,50'
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: image_focal_point
+    region: content
+  name:
+    type: string_textfield
+    settings:
+      size: 60
+      placeholder: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  path: true
+  status: true
+  uid: true

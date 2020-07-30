@@ -3,15 +3,26 @@ status: true
 dependencies:
   config:
     - field.field.node.service.body
+    - field.field.node.service.field_banners
     - field.field.node.service.field_seo_and_social_media
     - node.type.service
   module:
+    - entity_reference_revisions
     - user
 id: node.service.default
 targetEntityType: node
 bundle: service
 mode: default
-content: {  }
+content:
+  field_banners:
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
 hidden:
   body: true
   field_seo_and_social_media: true

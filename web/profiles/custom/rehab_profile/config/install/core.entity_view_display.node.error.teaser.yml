@@ -4,6 +4,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.error.body
+    - field.field.node.error.field_banners
     - field.field.node.error.field_seo_and_social_media
     - node.type.error
   module:
@@ -28,4 +29,5 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_banners: true
   field_seo_and_social_media: true

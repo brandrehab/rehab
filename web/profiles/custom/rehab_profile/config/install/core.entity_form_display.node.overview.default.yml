@@ -2,17 +2,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.error.body
-    - field.field.node.error.field_banners
-    - field.field.node.error.field_seo_and_social_media
-    - node.type.error
+    - field.field.node.overview.body
+    - field.field.node.overview.field_banners
+    - field.field.node.overview.field_seo_and_social_media
+    - node.type.overview
   module:
     - paragraphs
     - path
     - text
-id: node.error.default
+id: node.overview.default
 targetEntityType: node
-bundle: error
+bundle: overview
 mode: default
 content:
   body:

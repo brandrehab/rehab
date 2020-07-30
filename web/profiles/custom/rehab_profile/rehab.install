@@ -35,7 +35,7 @@ function rehab_install() {
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'Welcome',
           'field_meta_description' => 'Lorem ipsum dolor met.',
-          'field_sitemap_importance' => [['value' => '1.0']],
+          'field_site_importance' => '1.0',
         ]),
       ],
   ]);
@@ -57,14 +57,14 @@ function rehab_install() {
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'About Us',
           'field_meta_description' => 'Lorem ipsum dolor met.',
-          'field_sitemap_importance' => [['value' => '0.5']],
+          'field_site_importance' => '0.5',
         ]),
       ],
   ]);
   $nodeAbout->save();
 
   $nodeServices = Node::create([
-      'type' => 'page',
+      'type' => 'overview',
       'title' => 'Services',
       'langcode' => 'en',
       'uid' => '1',
@@ -79,7 +79,7 @@ function rehab_install() {
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'Services',
           'field_meta_description' => 'Lorem ipsum dolor met.',
-          'field_sitemap_importance' => [['value' => '0.8']],
+          'field_site_importance' => '0.8',
         ]),
       ],
   ]);
@@ -101,7 +101,7 @@ function rehab_install() {
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'Example Service',
           'field_meta_description' => 'Lorem ipsum dolor met.',
-          'field_sitemap_importance' => [['value' => '1.0']],
+          'field_site_importance' => '1.0',
         ]),
       ],
   ]);
@@ -123,7 +123,7 @@ function rehab_install() {
           'type' => 'seo_and_social_media',
           'field_meta_title' => '403 Access Denied',
           'field_meta_description' => 'You do not have sufficient privileges to view this content.',
-          'field_sitemap_importance' => [['value' => '0.0']],
+          'field_site_importance' => '0.0',
         ]),
       ],
   ]);
@@ -145,7 +145,7 @@ function rehab_install() {
           'type' => 'seo_and_social_media',
           'field_meta_title' => '404 Not Found',
           'field_meta_description' => 'The requested page was not found.',
-          'field_sitemap_importance' => [['value' => '0.0']],
+          'field_site_importance' => '0.0',
         ]),
       ],
   ]);

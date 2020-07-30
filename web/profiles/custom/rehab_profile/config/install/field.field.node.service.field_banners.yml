@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banners
+    - node.type.service
+    - paragraphs.paragraphs_type.banners
+  module:
+    - entity_reference_revisions
+id: node.service.field_banners
+field_name: field_banners
+entity_type: node
+bundle: service
+label: Banners
+description: 'Optional Hero Images for the current page.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      banners: banners
+    target_bundles_drag_drop:
+      banners:
+        enabled: true
+        weight: 3
+      seo_and_social_media:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions

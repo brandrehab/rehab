@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.banners
+    - views.view.banner_image_browser
+  module:
+    - dropzonejs_eb_widget
+    - media
+    - views
+name: banner_image_browser
+label: 'Banner Image Browser'
+display: modal
+display_configuration:
+  width: ''
+  height: ''
+  link_text: Select
+  auto_open: false
+selection_display: multi_step_display
+selection_display_configuration:
+  entity_type: media
+  display: rendered_entity
+  display_settings:
+    view_mode: default
+  select_text: 'Use selected'
+  selection_hidden: false
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  17b2888e-ea0a-4ec7-9309-8e45ecb064fb:
+    settings:
+      form_mode: default
+      media_type: banners
+      upload_location: 'public://banners'
+      dropzone_description: 'Drop files here to upload them'
+      max_filesize: 128M
+      extensions: 'jpg jpeg png'
+      clientside_resize: false
+      resize_width: null
+      resize_height: null
+      resize_quality: !!float 1
+      resize_method: contain
+      thumbnail_method: contain
+      submit_text: Select
+    uuid: 17b2888e-ea0a-4ec7-9309-8e45ecb064fb
+    weight: 1
+    label: Upload
+    id: dropzonejs_media_entity_inline_entity_form
+  42c02c2e-9cef-4849-a6fc-1fdee938982b:
+    settings:
+      view: banner_image_browser
+      view_display: media_browser_all
+      submit_text: Select
+      auto_select: false
+    uuid: 42c02c2e-9cef-4849-a6fc-1fdee938982b
+    weight: 2
+    label: Images
+    id: view

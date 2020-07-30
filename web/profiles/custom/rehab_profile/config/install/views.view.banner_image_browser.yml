@@ -3,14 +3,14 @@ status: true
 dependencies:
   config:
     - image.style.media_entity_browser_thumbnail
-    - media.type.social_media_images
+    - media.type.banners
   module:
     - entity_browser
     - image
     - media
     - user
-id: social_media_image_browser
-label: 'Social Media Image Browser'
+id: banner_image_browser
+label: 'Banner Image Browser'
 module: views
 description: ''
 tag: ''
@@ -387,7 +387,7 @@ display:
           admin_label: ''
           operator: in
           value:
-            social_media_images: social_media_images
+            banners: banners
           group: 1
           exposed: false
           expose:
@@ -445,7 +445,7 @@ display:
   media_browser_all:
     display_plugin: entity_browser
     id: media_browser_all
-    display_title: 'Social Media Image Browser'
+    display_title: 'Banner Image Browser'
     position: 1
     display_options:
       display_extenders: {  }

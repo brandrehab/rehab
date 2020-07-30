@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: banners
+label: Banners
+icon_uuid: null
+icon_default: null
+description: 'One or more banner images to be associated with the current page.'
+behavior_plugins: {  }

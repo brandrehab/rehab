@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.banners.field_images
+    - paragraphs.paragraphs_type.banners
+id: paragraph.banners.default
+targetEntityType: paragraph
+bundle: banners
+mode: default
+content: {  }
+hidden:
+  field_images: true

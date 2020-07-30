@@ -1,18 +1,18 @@
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.page.body
-    - field.field.node.page.field_banners
-    - field.field.node.page.field_seo_and_social_media
-    - node.type.page
+    - field.field.node.overview.body
+    - field.field.node.overview.field_banners
+    - field.field.node.overview.field_seo_and_social_media
+    - node.type.overview
   module:
     - text
     - user
-id: node.page.teaser
+id: node.overview.teaser
 targetEntityType: node
-bundle: page
+bundle: overview
 mode: teaser
 content:
   body:
