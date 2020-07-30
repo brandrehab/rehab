@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * Valet driver for Drupal 9 rehab.
  */
@@ -10,7 +8,7 @@ class RehabValetDriver extends ValetDriver {
   /**
    * Determine if the driver serves the request.
    */
-  public function serves(string $sitePath, string $siteName, string $uri): bool {
+  public function serves($sitePath, $siteName, $uri) {
     if (file_exists($sitePath . '/.rehab')) {
       return TRUE;
     }
@@ -19,7 +17,7 @@ class RehabValetDriver extends ValetDriver {
   /**
    * Determine if the incoming request is for a static file.
    */
-  public function isStaticFile(string $sitePath, string $siteName, string $uri): ?string {
+  public function isStaticFile($sitePath, $siteName, $uri) {
     if (file_exists($sitePath . $uri) && !is_dir($sitePath . $uri) && pathinfo($sitePath . $uri)['extension'] != 'php') {
       return $sitePath . $uri;
     }
@@ -29,7 +27,7 @@ class RehabValetDriver extends ValetDriver {
   /**
    * Get the fully resolved path to the application's front controller.
    */
-  public function frontControllerPath(string $sitePath, string $siteName, string $uri): string {
+  public function frontControllerPath($sitePath, $siteName, $uri) {
     if (!isset($_GET['q']) && !empty($uri) && $uri !== '/') {
       $_GET['q'] = $uri;
     }
