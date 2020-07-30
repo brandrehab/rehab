@@ -82,6 +82,7 @@ function rehab_install() {
           'field_site_importance' => '0.8',
         ]),
       ],
+      'field_children' => 'service',
   ]);
   $nodeServices->save();
 

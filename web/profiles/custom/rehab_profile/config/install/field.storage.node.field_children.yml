@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - app
+    - node
+id: node.field_children
+field_name: field_children
+entity_type: node
+type: children_field
+settings: {  }
+module: app
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
