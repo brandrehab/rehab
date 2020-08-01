@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.article_type
+id: taxonomy_term.article_type.default
+targetEntityType: taxonomy_term
+bundle: article_type
+mode: default
+content: {  }
+hidden:
+  description: true

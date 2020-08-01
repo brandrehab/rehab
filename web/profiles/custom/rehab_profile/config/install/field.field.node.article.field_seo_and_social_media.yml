@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_seo_and_social_media
+    - node.type.article
+    - paragraphs.paragraphs_type.seo_and_social_media
+  module:
+    - entity_reference_revisions
+id: node.article.field_seo_and_social_media
+field_name: field_seo_and_social_media
+entity_type: node
+bundle: article
+label: 'SEO and Social Media'
+description: 'Search Engine Optimisations and social media image for the current page.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      seo_and_social_media: seo_and_social_media
+    target_bundles_drag_drop:
+      banners:
+        weight: 3
+        enabled: false
+      seo_and_social_media:
+        enabled: true
+        weight: 4
+field_type: entity_reference_revisions

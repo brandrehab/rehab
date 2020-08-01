@@ -9,6 +9,7 @@
 use Drupal\node\Entity\Node;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Implements hook_install().
@@ -18,6 +19,26 @@ use Drupal\paragraphs\Entity\Paragraph;
  * @see system_install()
  */
 function rehab_install() {
+
+  // Taxonomy Terms
+
+  $newsTerm = Term::create([
+    'name' => 'News',
+    'vid' => 'article_type',
+    'parent' => [],
+    'status' => TRUE,
+  ]);
+  $newsTerm->save();
+
+  $eventTerm = Term::create([
+    'name' => 'Event',
+    'vid' => 'article_type',
+    'parent' => [],
+    'status' => TRUE,
+  ]);
+  $eventTerm->save();
+
+  // Nodes
 
   $nodeHome = Node::create([
       'type' => 'home',
@@ -152,6 +173,77 @@ function rehab_install() {
   ]);
   $node404->save();
 
+  $nodeBlog = Node::create([
+      'type' => 'overview',
+      'title' => 'Blog',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/blog',
+        'pid' => 7,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Blog',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_site_importance' => '0.5',
+        ]),
+      ],
+      'field_children' => 'article',
+  ]);
+  $nodeBlog->save();
+
+  $nodeExampleNews = Node::create([
+      'type' => 'article',
+      'title' => 'Example News Item',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/blog/example-news-item',
+        'pid' => 8,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Example News Item',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_site_importance' => '0.2',
+        ]),
+      ],
+      'field_article_type' => $newsTerm->id(),
+  ]);
+  $nodeExampleNews->save();
+
+  $nodeExampleEvent = Node::create([
+      'type' => 'article',
+      'title' => 'Example Event Item',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/blog/example-event-item',
+        'pid' => 9,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Example Event Item',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_site_importance' => '0.2',
+        ]),
+      ],
+      'field_article_type' => $eventTerm->id(),
+  ]);
+  $nodeExampleEvent->save();
+
+  // Menu Links
+
   $menuHome = MenuLinkContent::create([
     'title' => 'Home',
     'link' => ['uri' => 'route:<front>'],
@@ -184,4 +276,30 @@ function rehab_install() {
     'parent' => $menuServices->getPluginId(),
   ]);
   $menuExampleService->save();
+
+  $menuBlog = MenuLinkContent::create([
+    'title' => 'Blog',
+    'link' => ['uri' => 'entity:node/' . $nodeBlog->id()],
+    'menu_name' => 'main',
+    'weight' => 3,
+  ]);
+  $menuBlog->save();
+
+  $menuNewsItem = MenuLinkContent::create([
+    'title' => 'Example News Item',
+    'link' => ['uri' => 'entity:node/' . $nodeNewsItem->id()],
+    'menu_name' => 'main',
+    'weight' => 0,
+    'parent' => $menuBlog->getPluginId(),
+  ]);
+  $menuNewsItem->save();
+
+  $menuEventItem = MenuLinkContent::create([
+    'title' => 'Example Event Item',
+    'link' => ['uri' => 'entity:node/' . $nodeEventItem->id()],
+    'menu_name' => 'main',
+    'weight' => 1,
+    'parent' => $menuBlog->getPluginId(),
+  ]);
+  $menuEventItem->save();
 }
