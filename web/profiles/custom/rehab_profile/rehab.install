@@ -484,4 +484,20 @@ function rehab_install() {
     'weight' => 4,
   ]);
   $menuContact->save();
+
+  $menu403 = MenuLinkContent::create([
+    'title' => '403 Access Denied',
+    'link' => ['uri' => 'entity:node/' . $node403->id()],
+    'menu_name' => 'hidden',
+    'weight' => 0,
+  ]);
+  $menu403->save();
+
+  $menu404 = MenuLinkContent::create([
+    'title' => '404 Not Found',
+    'link' => ['uri' => 'entity:node/' . $node404->id()],
+    'menu_name' => 'hidden',
+    'weight' => 1,
+  ]);
+  $menu404->save();
 }
