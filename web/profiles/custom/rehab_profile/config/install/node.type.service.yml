@@ -7,7 +7,7 @@ third_party_settings:
   menu_ui:
     available_menus:
       - main
-    parent: 'main:menu_link_content:703caac8-acb7-4d4b-b3fb-d914b3fda8d0'
+    parent: 'main:menu_link_content:ab57d803-9661-40bb-892f-9dbecea05568'
 name: Service
 type: service
 description: 'Add a service page.'

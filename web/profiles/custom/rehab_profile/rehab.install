@@ -242,6 +242,138 @@ function rehab_install() {
   ]);
   $nodeExampleEvent->save();
 
+  $nodeTerms = Node::create([
+      'type' => 'page',
+      'title' => 'Terms Of Use',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/terms-of-us',
+        'pid' => 10,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Terms Of Use',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_sitemap_importance' => '0.0',
+        ]),
+      ],
+  ]);
+  $nodeTerms->save();
+
+  $nodeCookie = Node::create([
+      'type' => 'page',
+      'title' => 'Cookie Policy',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/cookie-policy',
+        'pid' => 11,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Cookie Policy',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_sitemap_importance' => '0.0',
+        ]),
+      ],
+  ]);
+  $nodeCookie->save();
+
+  $nodePrivacy = Node::create([
+      'type' => 'page',
+      'title' => 'Privacy Policy',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/privacy-policy',
+        'pid' => 12,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Privacy Policy',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_sitemap_importance' => '0.0',
+        ]),
+      ],
+  ]);
+  $nodePrivacy->save();
+
+  $nodeTeam = Node::create([
+      'type' => 'page',
+      'title' => 'Meet The Team',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/about-us/meet-the-team',
+        'pid' => 13,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Meet The Team',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_sitemap_importance' => '0.2',
+        ]),
+      ],
+  ]);
+  $nodeTeam->save();
+
+  $nodeHistory = Node::create([
+      'type' => 'page',
+      'title' => 'Our History',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/about-us/our-history',
+        'pid' => 14,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Our History',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_sitemap_importance' => '0.2',
+        ]),
+      ],
+  ]);
+  $nodeHistory->save();
+
+  $nodeContact = Node::create([
+      'type' => 'page',
+      'title' => 'Contact Us',
+      'langcode' => 'en',
+      'uid' => '1',
+      'status' => 1,
+      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
+      'path' => [
+        'alias' => '/contact-us',
+        'pid' => 15,
+      ],
+      'field_seo_and_social_media' => [
+        Paragraph::create([
+          'type' => 'seo_and_social_media',
+          'field_meta_title' => 'Contact Us',
+          'field_meta_description' => 'Lorem ipsum dolor met.',
+          'field_sitemap_importance' => '0.5',
+        ]),
+      ],
+  ]);
+  $nodeContact->save();
+
   // Menu Links
 
   $menuHome = MenuLinkContent::create([
@@ -302,4 +434,54 @@ function rehab_install() {
     'parent' => $menuBlog->getPluginId(),
   ]);
   $menuEventItem->save();
+
+  $menuTerms = MenuLinkContent::create([
+    'title' => 'Terms Of Use',
+    'link' => ['uri' => 'entity:node/' . $nodeTerms->id()],
+    'menu_name' => 'footer',
+    'weight' => 0,
+  ]);
+  $menuTerms->save();
+
+  $menuCookie = MenuLinkContent::create([
+    'title' => 'Cookie Policy',
+    'link' => ['uri' => 'entity:node/' . $nodeCookie->id()],
+    'menu_name' => 'footer',
+    'weight' => 1,
+  ]);
+  $menuCookie->save();
+
+  $menuPrivacy = MenuLinkContent::create([
+    'title' => 'Privacy Policy',
+    'link' => ['uri' => 'entity:node/' . $nodePrivacy->id()],
+    'menu_name' => 'footer',
+    'weight' => 2,
+  ]);
+  $menuPrivacy->save();
+
+  $menuTeam = MenuLinkContent::create([
+    'title' => 'Team',
+    'link' => ['uri' => 'entity:node/' . $nodeTeam->id()],
+    'menu_name' => 'main',
+    'weight' => 0,
+    'parent' => $menuAbout->getPluginId(),
+  ]);
+  $menuTeam->save();
+
+  $menuHistory = MenuLinkContent::create([
+    'title' => 'History',
+    'link' => ['uri' => 'entity:node/' . $nodeHistory->id()],
+    'menu_name' => 'main',
+    'weight' => 1,
+    'parent' => $menuAbout->getPluginId(),
+  ]);
+  $menuHistory->save();
+
+  $menuContact = MenuLinkContent::create([
+    'title' => 'Contact',
+    'link' => ['uri' => 'entity:node/' . $nodeContact->id()],
+    'menu_name' => 'main',
+    'weight' => 4,
+  ]);
+  $menuContact->save();
 }

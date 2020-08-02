@@ -7,7 +7,7 @@ third_party_settings:
   menu_ui:
     available_menus:
       - main
-    parent: 'main:'
+    parent: 'main:menu_link_content:54e5665e-7f44-4aca-8774-e88d4e343ee7'
 name: Article
 type: article
 description: 'Add an article page.'

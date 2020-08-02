@@ -5,8 +5,9 @@ dependencies:
     - menu_ui
 third_party_settings:
   menu_ui:
-    available_menus: {  }
-    parent: ''
+    available_menus:
+      - hidden
+    parent: 'hidden:'
 name: Error
 type: error
 description: 'Add an error page.'
