@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: articles
+label: Articles
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:field_article_date:date:html_year]/[node:menu-link:title]'
+selection_criteria:
+  249f059a-d872-4ed2-a00e-ec3cbc9905a5:
+    id: node_type
+    bundles:
+      article: article
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 249f059a-d872-4ed2-a00e-ec3cbc9905a5
+selection_logic: and
+weight: -5
+relationships: {  }

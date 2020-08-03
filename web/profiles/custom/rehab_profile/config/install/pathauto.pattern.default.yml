@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: default
+label: Default
+type: 'canonical_entities:node'
+pattern: '[node:menu-link:parents:join-path]/[node:menu-link:title]'
+selection_criteria:
+  3daf7355-e1eb-47d1-b524-cea2e87a5519:
+    id: node_type
+    bundles:
+      error: error
+      overview: overview
+      page: page
+      service: service
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 3daf7355-e1eb-47d1-b524-cea2e87a5519
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -29,6 +29,7 @@ install:
   - color
   - config
   - crop
+  - ctools
   - datetime
   - dblog
   - dropzonejs
@@ -58,13 +59,17 @@ install:
   - options
   - path
   - path_alias
+  - redirect
+  - redirect_404
   - system
   - taxonomy
   - text
+  - token
   - toolbar
   - update
   - user
   - views_ui
+  - pathauto
   - views
   - paragraphs
 themes:

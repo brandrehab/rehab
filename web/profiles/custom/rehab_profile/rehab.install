@@ -70,7 +70,7 @@ function rehab_install() {
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
-        'alias' => '/about-us',
+        'alias' => '/about',
         'pid' => 2,
       ],
       'field_seo_and_social_media' => [
@@ -137,7 +137,7 @@ function rehab_install() {
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
-        'alias' => '/403',
+        'alias' => '/403-access-denied',
         'pid' => 5,
       ],
       'field_seo_and_social_media' => [
@@ -159,7 +159,7 @@ function rehab_install() {
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
-        'alias' => '/404',
+        'alias' => '/404-not-found',
         'pid' => 6,
       ],
       'field_seo_and_social_media' => [
@@ -204,7 +204,7 @@ function rehab_install() {
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
-        'alias' => '/blog/example-news-item',
+        'alias' => '/blog/' . date('Y') . '/example-news-item',
         'pid' => 8,
       ],
       'field_seo_and_social_media' => [
@@ -215,6 +215,7 @@ function rehab_install() {
           'field_sitemap_importance' => '0.2',
         ]),
       ],
+      'field_article_date' => date('y-m-d'),
       'field_article_type' => $newsTerm->id(),
   ]);
   $nodeExampleNews->save();
@@ -227,7 +228,7 @@ function rehab_install() {
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
-        'alias' => '/blog/example-event-item',
+        'alias' => '/blog/' . date('Y') . 'example-event-item',
         'pid' => 9,
       ],
       'field_seo_and_social_media' => [
@@ -238,6 +239,7 @@ function rehab_install() {
           'field_sitemap_importance' => '0.2',
         ]),
       ],
+      'field_article_date' => date('y-m-d'),
       'field_article_type' => $eventTerm->id(),
   ]);
   $nodeExampleEvent->save();
@@ -250,7 +252,7 @@ function rehab_install() {
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
-        'alias' => '/terms-of-us',
+        'alias' => '/terms-use',
         'pid' => 10,
       ],
       'field_seo_and_social_media' => [
@@ -316,7 +318,7 @@ function rehab_install() {
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
-        'alias' => '/about-us/meet-the-team',
+        'alias' => '/about/meet-team',
         'pid' => 13,
       ],
       'field_seo_and_social_media' => [
@@ -338,7 +340,7 @@ function rehab_install() {
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
-        'alias' => '/about-us/our-history',
+        'alias' => '/about/our-history',
         'pid' => 14,
       ],
       'field_seo_and_social_media' => [
@@ -360,7 +362,7 @@ function rehab_install() {
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
-        'alias' => '/contact-us',
+        'alias' => '/contact',
         'pid' => 15,
       ],
       'field_seo_and_social_media' => [
