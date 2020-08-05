@@ -79,17 +79,34 @@ abstract class Menu implements MenuInterface {
   /**
    * Build the menu.
    */
-  public function build(int $min_depth = 1, int $max_depth = 1): LinkCollectionInterface {
+  public function build(int $min_depth = 1, int $max_depth = 1, string $root = ''): LinkCollectionInterface {
     $active_trail = $this->menuActiveTrail->getActiveTrailIds($this->name);
 
     $params = new MenuTreeParameters();
     $params->setMinDepth($min_depth);
     $params->setMaxDepth($max_depth);
+    $params->onlyEnabledLinks();
+    $params->setRoot($root);
     $params->setActiveTrail($active_trail);
 
     $tree = $this->menuLinkTree->transform($this->menuLinkTree->load($this->name, $params), $this->transformations);
 
     return $this->processTree($tree);
+  }
+
+  /**
+   * Get nids from a link collection as one-dimensional array.
+   */
+  public function getNids(LinkCollectionInterface $links): array {
+    $nids = [];
+    foreach ($links as $link) {
+      if (!$link->nid) {
+        continue;
+      }
+      $nids[] = $link->nid;
+    }
+
+    return $nids;
   }
 
   /**
@@ -111,11 +128,8 @@ abstract class Menu implements MenuInterface {
   /**
    * Create a menu node and process it's child tree (if present).
    */
-  private function createNode(MenuLinkTreeElement $branch): ?LinkInterface {
+  private function createNode(MenuLinkTreeElement $branch): LinkInterface {
     $link = $branch->link;
-    if (!$link->isEnabled()) {
-      return NULL;
-    }
 
     $node = $this->linkFactory->createLink();
     $node->setTitle($link->getTitle());
@@ -124,6 +138,12 @@ abstract class Menu implements MenuInterface {
     if (!$url->isRouted()) {
       $node->setUrl($url->getUri());
       return $node;
+    }
+
+    $params = $url->getRouteParameters();
+
+    if (array_key_exists('node', $params)) {
+      $node->setNid((int) $params['node']);
     }
 
     $node->setUrl($url->toString());

@@ -42,6 +42,7 @@ class ServiceController extends ControllerBase implements ContainerInjectionInte
    * Handles requests for nodes of type service.
    */
   public function view(ServiceInterface $node): array {
+    $view = $node->entityView()->get('full');
     return [
       $this->blockManager->createInstance('app.navigation', [])->build(),
     ];

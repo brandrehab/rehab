@@ -1,13 +1,14 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * @file
  * Hooks definitions for app module.
  */
 
+declare(strict_types=1);
+
 use App\Service\Storage\NodeStorage;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_entity_type_alter().
@@ -15,5 +16,66 @@ use App\Service\Storage\NodeStorage;
 function app_entity_type_alter(array &$entity_types): void {
   if (isset($entity_types['node'])) {
     $entity_types['node']->setHandlerClass('storage', NodeStorage::class);
+  }
+}
+
+/**
+ * Implements hook_js_settings_alter().
+ */
+function app_js_settings_alter(array &$settings): void {
+  if (!array_key_exists('editor', $settings)) {
+    return;
+  }
+  foreach (array_keys($settings['editor']['formats']) as $text_format_id) {
+    if ($settings['editor']['formats'][$text_format_id]['editor'] === 'ckeditor') {
+      $settings['editor']['formats'][$text_format_id]['editorSettings']['format_tags'] .= ';cite';
+      $settings['editor']['formats'][$text_format_id]['editorSettings']['autoGrow_minHeight'] = '100';
+      $settings['editor']['formats'][$text_format_id]['editorSettings']['autoGrow_maxHeight'] = '300';
+
+      $settings['editor']['formats'][$text_format_id]['editorSettings']['format_cite'] = [
+        'name' => 'Cite',
+        'element' => 'cite',
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_form_node_form_alter().
+ */
+function app_form_node_form_alter(array &$form, FormStateInterface &$form_state): void {
+  $form['title']['#access'] = FALSE;
+
+  $form_object = $form_state->getFormObject();
+  $node = $form_object->getEntity();
+
+  if ($node->isNew()) {
+    $form['actions']['preview']['#access'] = FALSE;
+  }
+
+  if (!array_key_exists('menu', $form)) {
+    return;
+  }
+
+  $form['menu']['enabled']['#default_value'] = TRUE;
+  $form['menu']['enabled']['#disabled'] = TRUE;
+  $form['menu']['link']['description']['#access'] = FALSE;
+  $form['menu']['link']['weight']['#access'] = FALSE;
+  $form['menu']['#weight'] = -20;
+
+  $form['#validate'][] = 'app_form_node_form_validate';
+}
+
+/**
+ * Implements hook_form_node_form_validate().
+ */
+function app_form_node_form_validate(array &$form, FormStateInterface $form_state): void {
+  if ($form_state->getUserInput()['op'] == 'Preview') {
+    if ($form['menu']['link']['title']['#value'] != $form['menu']['link']['title']['#default_value']) {
+      $form_state->setErrorByName('menu][title', 'Preview is not available for menu changes.');
+    }
+  }
+  if (!$form['menu']['link']['title']['#value']) {
+    $form_state->setErrorByName('menu][title', 'Please provide a menu link title.');
   }
 }

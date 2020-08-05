@@ -24,6 +24,13 @@ class Link implements LinkInterface {
   private $url;
 
   /**
+   * NOde id.
+   *
+   * @var int
+   */
+  private $nid;
+
+  /**
    * Active.
    *
    * @var bool
@@ -52,6 +59,13 @@ class Link implements LinkInterface {
   }
 
   /**
+   * Node id getter.
+   */
+  public function getNid(): ?int {
+    return $this->nid;
+  }
+
+  /**
    * Active getter.
    */
   public function getActive(): bool {
@@ -77,6 +91,13 @@ class Link implements LinkInterface {
    */
   public function setUrl(string $url): void {
     $this->url = $url;
+  }
+
+  /**
+   * Node id setter.
+   */
+  public function setNid(int $nid): void {
+    $this->nid = $nid;
   }
 
   /**

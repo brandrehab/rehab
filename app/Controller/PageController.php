@@ -42,6 +42,7 @@ class PageController extends ControllerBase implements ContainerInjectionInterfa
    * Handles requests for nodes of type page.
    */
   public function view(PageInterface $node): array {
+    $view = $node->entityView()->get('full');
     return [
       $this->blockManager->createInstance('app.navigation', [])->build(),
     ];

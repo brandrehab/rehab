@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\EntityView;
 
-use App\Service\EntityView\EntityViewDto;
+use App\Service\EntityView\NodeEntityViewDto;
 
 /**
  * Home data transfer object.
  */
-class HomeEntityViewDto extends EntityViewDto {
+class HomeEntityViewDto extends NodeEntityViewDto {
 
   /**
    * Id.

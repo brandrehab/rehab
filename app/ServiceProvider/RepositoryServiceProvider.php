@@ -17,6 +17,7 @@ class RepositoryServiceProvider {
    */
   public static function load(ContainerBuilder $container): void {
     self::page($container);
+    self::menu($container);
   }
 
   /**
@@ -26,6 +27,16 @@ class RepositoryServiceProvider {
     $container->register('app.repository.page', 'App\Repository\PageRepository')
       ->addArgument(new Reference('entity_type.manager'))
       ->addArgument(new Reference('current_user'));
+  }
+
+  /**
+   * Menu repository.
+   */
+  private static function menu(ContainerBuilder $container): void {
+    $container->register('app.repository.menu', 'App\Repository\MenuRepository')
+      ->AddArgument(new Reference('app.menu.main'))
+      ->AddArgument(new Reference('app.menu.footer'))
+      ->AddArgument(new Reference('app.menu.hidden'));
   }
 
 }

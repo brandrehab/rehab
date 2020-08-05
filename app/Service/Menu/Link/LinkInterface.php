@@ -20,6 +20,11 @@ interface LinkInterface {
   public function getUrl(): string;
 
   /**
+   * Node id getter.
+   */
+  public function getNid(): ?int;
+
+  /**
    * Active getter.
    */
   public function getActive(): bool;
@@ -38,6 +43,11 @@ interface LinkInterface {
    * Url setter.
    */
   public function setUrl(string $url): void;
+
+  /**
+   * Node id setter.
+   */
+  public function setNid(int $nid): void;
 
   /**
    * Active setter.

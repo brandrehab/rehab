@@ -14,6 +14,11 @@ interface MenuInterface {
   /**
    * Build the menu.
    */
-  public function build(int $min_depth = 1, int $max_depth = 1): LinkCollectionInterface;
+  public function build(int $min_depth = 1, int $max_depth = 1, string $root = ''): LinkCollectionInterface;
+
+  /**
+   * Get nids from a link collection as one-dimensional array.
+   */
+  public function getNids(LinkCollectionInterface $links): array;
 
 }

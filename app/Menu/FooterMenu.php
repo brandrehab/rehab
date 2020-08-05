@@ -8,16 +8,16 @@ use App\Service\Menu\Menu;
 use App\Service\Menu\MenuInterface;
 
 /**
- * Main menu.
+ * Footer menu.
  */
-class MainMenu extends Menu implements MenuInterface {
+class FooterMenu extends Menu implements MenuInterface {
 
   /**
    * System name of menu being managed.
    *
    * @var string
    */
-  protected $name = 'main';
+  protected $name = 'footer';
 
   /**
    * Tree transformers.

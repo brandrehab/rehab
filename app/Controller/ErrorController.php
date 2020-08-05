@@ -42,6 +42,7 @@ class ErrorController extends ControllerBase implements ContainerInjectionInterf
    * Handles requests for nodes of type error.
    */
   public function view(ErrorInterface $node): array {
+    $view = $node->entityView()->get('full');
     return [
       $this->blockManager->createInstance('app.navigation', [])->build(),
     ];

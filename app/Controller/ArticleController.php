@@ -42,6 +42,7 @@ class ArticleController extends ControllerBase implements ContainerInjectionInte
    * Handles requests for nodes of type article.
    */
   public function view(ArticleInterface $node): array {
+    $view = $node->entityView()->get('full');
     return [
       $this->blockManager->createInstance('app.navigation', [])->build(),
     ];

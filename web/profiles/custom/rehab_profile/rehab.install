@@ -49,7 +49,6 @@ function rehab_install() {
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
         'alias' => '/welcome',
-        'pid' => 1,
       ],
       'field_seo_and_social_media' => [
         Paragraph::create([
@@ -69,10 +68,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/about',
-        'pid' => 2,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -91,10 +86,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/services',
-        'pid' => 3,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -114,10 +105,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/services/example-service',
-        'pid' => 4,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -136,10 +123,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/403-access-denied',
-        'pid' => 5,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -158,10 +141,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/404-not-found',
-        'pid' => 6,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -180,10 +159,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/blog',
-        'pid' => 7,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -203,10 +178,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/blog/' . date('Y') . '/example-news-item',
-        'pid' => 8,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -215,7 +186,7 @@ function rehab_install() {
           'field_sitemap_importance' => '0.2',
         ]),
       ],
-      'field_article_date' => date('y-m-d'),
+      'field_article_date' => date('Y-m-d'),
       'field_article_type' => $newsTerm->id(),
   ]);
   $nodeExampleNews->save();
@@ -227,10 +198,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/blog/' . date('Y') . 'example-event-item',
-        'pid' => 9,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -239,7 +206,7 @@ function rehab_install() {
           'field_sitemap_importance' => '0.2',
         ]),
       ],
-      'field_article_date' => date('y-m-d'),
+      'field_article_date' => date('Y-m-d'),
       'field_article_type' => $eventTerm->id(),
   ]);
   $nodeExampleEvent->save();
@@ -251,10 +218,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/terms-use',
-        'pid' => 10,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -273,10 +236,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/cookie-policy',
-        'pid' => 11,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -295,10 +254,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/privacy-policy',
-        'pid' => 12,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -317,10 +272,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/about/meet-team',
-        'pid' => 13,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -339,10 +290,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/about/our-history',
-        'pid' => 14,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -361,10 +308,6 @@ function rehab_install() {
       'uid' => '1',
       'status' => 1,
       'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
-      'path' => [
-        'alias' => '/contact',
-        'pid' => 15,
-      ],
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -502,4 +445,22 @@ function rehab_install() {
     'weight' => 1,
   ]);
   $menu404->save();
+
+  // Generate pathauto references after the menu links (as required by patterns).
+  $pathGenerator = \Drupal::service('pathauto.generator');
+
+  $pathGenerator->updateEntityAlias($nodeAbout, 'update');
+  $pathGenerator->updateEntityAlias($nodeServices, 'update');
+  $pathGenerator->updateEntityAlias($nodeExampleService, 'update');
+  $pathGenerator->updateEntityAlias($node403, 'update');
+  $pathGenerator->updateEntityAlias($node404, 'update');
+  $pathGenerator->updateEntityAlias($nodeBlog, 'update');
+  $pathGenerator->updateEntityAlias($nodeExampleNews, 'update');
+  $pathGenerator->updateEntityAlias($nodeExampleEvent, 'update');
+  $pathGenerator->updateEntityAlias($nodeTerms, 'update');
+  $pathGenerator->updateEntityAlias($nodeCookie, 'update');
+  $pathGenerator->updateEntityAlias($nodePrivacy, 'update');
+  $pathGenerator->updateEntityAlias($nodeTeam, 'update');
+  $pathGenerator->updateEntityAlias($nodeHistory, 'update');
+  $pathGenerator->updateEntityAlias($nodeContact, 'update');
 }
