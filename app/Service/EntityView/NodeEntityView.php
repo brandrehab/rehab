@@ -7,7 +7,7 @@ namespace App\Service\EntityView;
 use Drupal\node\NodeInterface;
 
 /**
- * NOde entity view.
+ * Node entity view.
  */
 abstract class NodeEntityView extends EntityView implements NodeEntityViewInterface {
 

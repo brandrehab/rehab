@@ -4,86 +4,23 @@ declare(strict_types=1);
 
 namespace App\Service\EntityView;
 
-use Drupal\node\NodeInterface;
-
 /**
- * Node entity view.
+ * Node data transfer object.
  */
-abstract class NodeEntityView extends EntityView implements NodeEntityViewInterface {
+class NodeEntityViewDto extends EntityViewDto {
 
   /**
-   * View definitions.
+   * Title.
    *
-   * @var array
+   * @var string
    */
-  protected $definitions = [
-    'full' => [
-      'id',
-      'preview',
-      'title',
-      'url',
-      'created',
-      'updated',
-    ],
-  ];
+  protected $title;
 
   /**
-   * Entity.
-   *
-   * @var \Drupal\node\NodeInterface
+   * Get the title.
    */
-  protected $entity;
-
-  /**
-   * Class constructor.
-   */
-  public function __construct(NodeInterface $entity) {
-    $this->entity = $entity;
-  }
-
-  /**
-   * Get the entity id.
-   */
-  protected function id(): int {
-    return (int) $this->entity->id();
-  }
-
-  /**
-   * Get the entity preview.
-   */
-  protected function preview(): bool {
-    return $this->entity->is_preview == TRUE ? TRUE : FALSE;
-  }
-
-  /**
-   * Get the entity title.
-   */
-  protected function title(): string {
-    return $this->entity->title->value;
-  }
-
-  /**
-   * Get the entity url.
-   */
-  protected function url(): string {
-    if ($this->entity->getType() == 'home') {
-      return '/';
-    }
-    return $this->entity->toUrl()->toString();
-  }
-
-  /**
-   * Get entity created timestamp.
-   */
-  protected function created(): int {
-    return (int) $this->entity->created->value;
-  }
-
-  /**
-   * Get entity updated timestamp.
-   */
-  protected function updated(): int {
-    return (int) $this->entity->created->value;
+  public function title(): string {
+    return $this->title;
   }
 
 }
