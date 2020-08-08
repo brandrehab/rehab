@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: social_media_image
+label: 'Social Media Image'
+effects:
+  c8618eb1-24d6-48c2-8f00-6cfd3cb791e0:
+    uuid: c8618eb1-24d6-48c2-8f00-6cfd3cb791e0
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 630
+      crop_type: focal_point
+pipeline: local_binaries

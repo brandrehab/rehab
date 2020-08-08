@@ -46,6 +46,8 @@ install:
   - focal_point
   - help
   - image
+  - imageapi_optimize
+  - imageapi_optimize_binaries
   - inline_entity_form
   - link
   - media

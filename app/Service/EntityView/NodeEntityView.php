@@ -22,8 +22,11 @@ abstract class NodeEntityView extends EntityView implements NodeEntityViewInterf
       'preview',
       'title',
       'url',
+      'shorturl',
       'created',
       'updated',
+      'seo',
+      'social',
     ],
   ];
 
@@ -39,13 +42,6 @@ abstract class NodeEntityView extends EntityView implements NodeEntityViewInterf
    */
   public function __construct(NodeInterface $entity) {
     $this->entity = $entity;
-  }
-
-  /**
-   * Get the entity id.
-   */
-  protected function id(): int {
-    return (int) $this->entity->id();
   }
 
   /**
@@ -73,6 +69,13 @@ abstract class NodeEntityView extends EntityView implements NodeEntityViewInterf
   }
 
   /**
+   * Get the short url.
+   */
+  protected function shorturl(): string {
+    return '/node/' . $this->id();
+  }
+
+  /**
    * Get entity created timestamp.
    */
   protected function created(): int {
@@ -84,6 +87,36 @@ abstract class NodeEntityView extends EntityView implements NodeEntityViewInterf
    */
   protected function updated(): int {
     return (int) $this->entity->created->value;
+  }
+
+  /**
+   * Get entity seo.
+   */
+  protected function seo(): array {
+    $meta = $this->entity->field_seo_and_social_media->entity;
+    return [
+      'meta_title' => $meta->field_meta_title->value,
+      'meta_description' => $meta->field_meta_description->value,
+    ];
+  }
+
+  /**
+   * Get social media image.
+   */
+  protected function social(): ?array {
+    $social = $this->entity->field_seo_and_social_media->entity;
+
+    if ($social->field_social_media_image->isEmpty()) {
+      return NULL;
+    }
+
+    $media = $social->field_social_media_image->entity;
+    $file = $media->field_media_image->entity;
+    $style = $this->entity->imageStyle->load('social_media_image');
+
+    return [
+      'src' => $style->buildUrl($file->getFileUri()),
+    ];
   }
 
 }

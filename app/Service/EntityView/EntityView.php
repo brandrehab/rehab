@@ -24,7 +24,9 @@ abstract class EntityView implements EntityViewInterface {
    * @var array
    */
   protected $definitions = [
-    'full' => [],
+    'full' => [
+      'id',
+    ],
   ];
 
   /**
@@ -39,6 +41,13 @@ abstract class EntityView implements EntityViewInterface {
    */
   public function __construct(ContentEntityInterface $entity) {
     $this->entity = $entity;
+  }
+
+  /**
+   * Get the entity id.
+   */
+  protected function id(): int {
+    return (int) $this->entity->id();
   }
 
   /**

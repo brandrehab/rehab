@@ -11,6 +11,7 @@ use App\Service\Entity\NodeInterface;
 use App\Service\Entity\AssignsTitleFromSeoFieldTrait;
 use App\Service\Entity\UpdatesChildMenuLinksTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -36,6 +37,13 @@ class Overview extends Node implements OverviewInterface {
   protected $menuRepository;
 
   /**
+   * Image style storage.
+   *
+   * @var \Drupal\Core\Entity\EntityStorageInterface
+   */
+  public $imageStyle;
+
+  /**
    * Manage class dependency injection.
    */
   public static function createInstance(
@@ -46,6 +54,7 @@ class Overview extends Node implements OverviewInterface {
     $translations = []
   ): NodeInterface {
     return new self(
+      $container->get('entity_type.manager'),
       $container->get('app.repository.menu'),
       $values,
       $entity_type,
@@ -58,6 +67,7 @@ class Overview extends Node implements OverviewInterface {
    * {@inheritdoc}
    */
   public function __construct(
+    EntityTypeManagerInterface $entity_type_manager,
     MenuRepositoryInterface $menu_repository,
     array $values,
     $entity_type,
@@ -65,6 +75,7 @@ class Overview extends Node implements OverviewInterface {
     $translations
   ) {
     $this->menuRepository = $menu_repository;
+    $this->imageStyle = $entity_type_manager->getStorage('image_style');
     parent::__construct($values, $entity_type, $bundle, $translations);
   }
 

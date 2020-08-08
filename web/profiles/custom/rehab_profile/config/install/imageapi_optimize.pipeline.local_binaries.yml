@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - imageapi_optimize_binaries
+name: local_binaries
+label: 'Local Binaries'
+processors:
+  47cb2501-f5ce-475e-bf5d-19e4e396ddca:
+    uuid: 47cb2501-f5ce-475e-bf5d-19e4e396ddca
+    id: jpegoptim
+    weight: 1
+    data:
+      manual_executable_path: /usr/local/bin/jpegoptim
+      progressive: 1
+      quality: 85
+      size: null
+  c433cefd-c5e3-44bc-84e5-7096d4dc49bc:
+    uuid: c433cefd-c5e3-44bc-84e5-7096d4dc49bc
+    id: optipng
+    weight: 2
+    data:
+      manual_executable_path: /usr/local/bin/optipng
+      level: 2
+      interlace: false
+  24067ba4-c6af-4d69-91fd-2803f0a11b2d:
+    uuid: 24067ba4-c6af-4d69-91fd-2803f0a11b2d
+    id: pngquant
+    weight: 3
+    data:
+      manual_executable_path: /usr/local/bin/pngquant
+      speed: 3
+      quality:
+        min: 90
+        max: 99

@@ -28,7 +28,6 @@ $config['system.performance']['fast_404']['paths'] = '/\.(?:txt|png|gif|jpe?g|cs
 $config['system.performance']['fast_404']['html'] = '<!DOCTYPE html><html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
 
 $settings['config_sync_directory'] = DRUPAL_ROOT . '/../config/sync';
-
 $settings['hash_salt'] = getenv('HASH_SALT');
 $settings['update_free_access'] = FALSE;
 $settings['allow_authorize_operations'] = FALSE;

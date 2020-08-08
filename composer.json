@@ -16,6 +16,8 @@
         "drupal/core-recommended": "^9",
         "drupal/dropzonejs": "^2.1",
         "drupal/focal_point": "^1.4",
+        "drupal/imageapi_optimize": "^4.0@beta",
+        "drupal/imageapi_optimize_binaries": "^1.0@alpha",
         "drupal/media_entity_browser": "^2.0",
         "drupal/memcache": "^2.1",
         "drupal/paragraphs": "^1.12",

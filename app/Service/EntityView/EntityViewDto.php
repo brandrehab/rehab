@@ -21,4 +21,18 @@ abstract class EntityViewDto implements EntityViewDtoInterface {
     }
   }
 
+  /**
+   * Id.
+   *
+   * @var int
+   */
+  protected $id;
+
+  /**
+   * Get the id.
+   */
+  public function id(): int {
+    return $this->id;
+  }
+
 }

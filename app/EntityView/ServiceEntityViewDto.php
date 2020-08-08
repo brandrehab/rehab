@@ -11,18 +11,4 @@ use App\Service\EntityView\NodeEntityViewDto;
  */
 class ServiceEntityViewDto extends NodeEntityViewDto {
 
-  /**
-   * Title.
-   *
-   * @var string
-   */
-  protected $title;
-
-  /**
-   * Get the title.
-   */
-  public function title(): string {
-    return $this->title;
-  }
-
 }
