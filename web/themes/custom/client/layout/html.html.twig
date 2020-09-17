@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" dir="ltr" prefix="og: http://ogp.me/ns#">
+  <head>
+    {{ page.head }}
+  </head>
+  <body class="{% if logged_in %}admin{% endif %}">
+    {% if page.header %}
+      <header class="container-fluid">
+        {{page.header}}
+      </header>
+    {% endif %}
+
+    {% if page.content %}
+      <main class="container-fluid">
+        {{page.content}}
+      </main>
+    {% endif %}
+
+    {% if page.footer %}
+      <footer class="container-fluid">
+        {{page.footer}}
+      </footer>
+    {% endif %}
+  </body>
+</html>

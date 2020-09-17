@@ -1,0 +1,17 @@
+#navigation {
+  ul.navbar-nav {
+    margin-top: 0;
+  }
+
+  .sub-nav {
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      left: 0;
+      width: 400%;
+    }
+  }
+}

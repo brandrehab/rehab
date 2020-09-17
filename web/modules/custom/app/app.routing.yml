@@ -1,0 +1,2 @@
+route_callbacks:
+  - '\App\Service\Routing\Routes\DevelopmentRoutes::collection'

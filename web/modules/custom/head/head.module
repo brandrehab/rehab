@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Head module hooks.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_theme().
+ */
+function head_theme(): array {
+  return [
+    'head' => [
+      'variables' => [
+        'meta' => NULL,
+        'jsonld' => NULL,
+        'social' => NULL,
+        'cache' => NULL,
+      ],
+    ],
+    'icons' => [],
+  ];
+}

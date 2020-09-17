@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - foot
+  theme:
+    - client
+id: footblock
+theme: client
+region: footer
+weight: 0
+provider: null
+plugin: app.foot
+settings:
+  id: app.foot
+  label: 'Foot Block'
+  provider: foot
+  label_display: '0'
+visibility: {  }

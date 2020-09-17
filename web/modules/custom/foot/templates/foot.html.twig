@@ -1,0 +1,22 @@
+<section id="footer" class="bg-light py-5 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p class="mt-0">this is the footer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if reload %}
+  <script>
+    (function () {
+      const source = new EventSource('/dev/hot-reload');
+      source.addEventListener('reload', function(event) {
+          console.log(event.data);
+          source.close();
+          window.location.reload();
+      }, false);
+    })();
+  </script>
+{% endif %}

@@ -1,0 +1,69 @@
+/* fontawesome free */
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url('~@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2') format('woff2'),
+    url('~@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff') format('woff');
+  unicode-range: U+F002,U+F2F5,U+F6E3,U+F304,U+F0E0,U+F095,U-F0C9;
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url('~@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2') format('woff2'),
+    url('~@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff') format('woff');
+  unicode-range: U+F08C,U+F099,U+F09A;
+}
+
+
+// for google fonts, use this service to download
+// https://google-webfonts-helper.herokuapp.com/fonts
+
+/* montserrat*/
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'),
+       url('../fonts/montserrat/montserrat-v14-latin-regular.woff2') format('woff2'),
+       url('../fonts/montserrat/montserrat-v14-latin-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Montserrat Medium'), local('Montserrat-Medium'),
+    url('../fonts/montserrat/montserrat-v14-latin-500.woff2') format('woff2'),
+    url('../fonts/montserrat/montserrat-v14-latin-500.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Montserrat Bold'), local('Montserrat-Bold'),
+    url('../fonts/montserrat/montserrat-v14-latin-700.woff2') format('woff2'),
+    url('../fonts/montserrat/montserrat-v14-latin-700.woff') format('woff');
+}
+
+.fa,
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+.fab {
+  font-family: 'Font Awesome 5 Brands';
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}

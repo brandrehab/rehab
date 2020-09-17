@@ -1,0 +1,19 @@
+<section id="status-messages" class="container pt-7 mt-5 pb-3">
+{% for type, messages in message_list %}
+  <div class="row py-2">
+    <div class="col-12">
+      <div class="alert alert-primary mb-0" role="alert">
+        {% if messages|length > 1 %}
+          <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          {{ messages|first }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</section>

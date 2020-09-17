@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Foot module hooks.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_theme().
+ */
+function foot_theme(): array {
+  return [
+    'foot' => [
+      'variables' => [
+        'reload' => NULL,
+        'cache' => NULL,
+      ],
+    ],
+  ];
+}

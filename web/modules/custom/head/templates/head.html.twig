@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Testing</title>
+<meta name="generator" content="Brand Rehab (https://brand.rehab)">
+
+<link rel="preconnect" href="https://www.gstatic.com/" crossorigin>
+<link rel="preconnect" href="https://www.google.com/" crossorigin>
+
+{% include 'icons.html.twig' %}
+
+<link rel="preload" href="{{manifest('app.css')}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="{{manifest('fonts.css')}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<noscript><link rel="stylesheet" href="{{manifest('app.css')}}"></noscript>
+<noscript><link rel="stylesheet" href="{{manifest('fonts.css')}}"></noscript>
+
+<script src="{{manifest('vendor.js')}}" defer></script>
+<script src="{{manifest('app.js')}}" defer></script>

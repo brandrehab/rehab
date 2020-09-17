@@ -44,7 +44,7 @@ class HomeController extends ControllerBase implements ContainerInjectionInterfa
   public function view(HomeInterface $node): array {
     $view = $node->entityView()->get('full');
     return [
-      $this->blockManager->createInstance('app.navigation', [])->build(),
+      //$this->blockManager->createInstance('app.navigation', [])->build(),
     ];
   }
 

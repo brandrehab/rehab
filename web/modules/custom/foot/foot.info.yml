@@ -1,0 +1,5 @@
+name: Foot
+type: module
+description: Provides the footer html.
+core_version_requirement: ^9
+package: app

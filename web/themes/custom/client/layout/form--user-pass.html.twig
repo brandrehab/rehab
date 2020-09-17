@@ -1,0 +1,25 @@
+<div class="container">
+  <section id="user-password-recovery-form" class="row mt-5">
+    <div class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3 mt-5">
+      <form action="/user/password" method="post" class="bg-light p-3">
+        <div class="row p-3">
+          <div class="col-12 col-sm-4 pb-3 pb-sm-0 text-center">
+            <a target="_blank" href="https://brand.rehab">
+              <img class="w-100" src="{{ manifest('images/logo.svg') }}">
+            </a>
+          </div>
+          <div class="col-12 col-sm-8">
+            <div class="form-group">
+              <label>Username</label>
+              <input type="text" class="form-control" id="edit-name" name="name" autocorrect="none" autocapitalize="none" spellcheck="false" autofocus="autofocus" required="required" value="{{element.name['#value']}}">
+              <small>Password reset instructions will be sent to your registered email address.</small>
+            </div>
+            {{ element.form_build_id }}
+            {{ element.form_id }}
+            <button type="submit" id="edit-submit" name="op" class="btn btn-rehab">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

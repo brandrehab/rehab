@@ -44,7 +44,7 @@ class ServiceController extends ControllerBase implements ContainerInjectionInte
   public function view(ServiceInterface $node): array {
     $view = $node->entityView()->get('full');
     return [
-      $this->blockManager->createInstance('app.navigation', [])->build(),
+      //$this->blockManager->createInstance('app.navigation', [])->build(),
     ];
   }
 

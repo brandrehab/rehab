@@ -28,6 +28,7 @@
     },
     "require-dev": {
         "drupal/coder": "^8.3",
+        "hhxsv5/php-sse": "^2.0",
         "mglaman/phpstan-drupal": "^0.12.4",
         "phpstan/phpstan-deprecation-rules": "^0.12.4",
         "phpstan/phpstan-strict-rules": "^0.12.2",

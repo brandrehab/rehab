@@ -1,11 +1,36 @@
-<section id="navigation">
-  <h2>Navigation</h2>
-  {% for item in menu %}
-    <a class="{% if item.active %}active{% endif %}" href="{{ item.url }}">{{ item.title }}</a>
-    {% for child in item.children %}
-      <small>
-        <a class="{% if child.active %}active{% endif %}" href="{{ child.url }}">{{ child.title }}</a>
-      </small>
-    {% endfor %}
-  {% endfor %}
+<section id="navigation" class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="/">Brand</a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+              {% for item in menu %}
+              <li class="nav-item position-relative{% if item.active %} active{% endif %}{% if item.children %} parent{% endif %}">
+                <a class="nav-link" href="{{ item.url }}">{{ item.title }}{% if item.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
+                {% if item.children %}
+                  <div class="sub-nav d-none">
+                    {% for child in item.children %}
+                      <a class="d-block nav-link w-100{% if child.active %} active{% endif %}" href="{{ child.url }}">
+                        {{ child.title }}{% if child.active %} <span class="sr-only">(active trail)</span>{% endif %}
+                      </a>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+  </div>
 </section>

@@ -1,0 +1,5 @@
+name: Head
+type: module
+description: Provides the head html.
+core_version_requirement: ^9
+package: app

@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - navigation
+    - system
+  theme:
+    - client
+id: navigationblock
+theme: client
+region: header
+weight: 0
+provider: null
+plugin: app.navigation
+settings:
+  id: app.navigation
+  label: 'Navigation Block'
+  provider: navigation
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: "/user\r\n/user/*"
+    negate: true

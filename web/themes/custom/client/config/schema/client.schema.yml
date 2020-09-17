@@ -1,0 +1,5 @@
+# Schema for the configuration files of the client theme.
+
+client.settings:
+  type: theme_settings
+  label: 'Client settings'

@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @file
+ * Installation functions for Head module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function head_install(): void {
+  module_set_weight('head', 1);
+}

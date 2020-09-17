@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g>
+        <circle cx="400" cy="400" r="400" style="fill:rgb(231,11,143);"/>
+        <g transform="matrix(0.96,0,0,0.965,0,0)">
+            <circle cx="400" cy="400" r="400" style="fill:rgb(255,0,154);"/>
+        </g>
+        <g transform="matrix(1,0,0,1,18,17)">
+            <g transform="matrix(6.12325e-17,1,-0.75,4.5924e-17,700,-45)">
+                <path d="M490,59.613C490,26.712 469.966,0 445.29,0L444.71,0C420.034,0 400,26.712 400,59.613L400,740.387C400,773.288 420.034,800 444.71,800L445.29,800C469.966,800 490,773.288 490,740.387L490,59.613Z" style="fill:rgb(237,0,160);"/>
+            </g>
+            <g transform="matrix(-1,1.22465e-16,-9.18483e-17,-0.75,845,700)">
+                <path d="M490,59.613C490,26.712 469.966,0 445.29,0L444.71,0C420.034,0 400,26.712 400,59.613L400,740.387C400,773.288 420.034,800 444.71,800L445.29,800C469.966,800 490,773.288 490,740.387L490,59.613Z" style="fill:rgb(237,0,160);"/>
+            </g>
+        </g>
+        <g>
+            <g transform="matrix(6.12325e-17,1,-0.75,4.5924e-17,700,-45)">
+                <path d="M490,59.613C490,26.712 469.966,0 445.29,0L444.71,0C420.034,0 400,26.712 400,59.613L400,740.387C400,773.288 420.034,800 444.71,800L445.29,800C469.966,800 490,773.288 490,740.387L490,59.613Z" style="fill:white;"/>
+            </g>
+            <g transform="matrix(-1,1.22465e-16,-9.18483e-17,-0.75,845,700)">
+                <path d="M490,59.613C490,26.712 469.966,0 445.29,0L444.71,0C420.034,0 400,26.712 400,59.613L400,740.387C400,773.288 420.034,800 444.71,800L445.29,800C469.966,800 490,773.288 490,740.387L490,59.613Z" style="fill:white;"/>
+            </g>
+        </g>
+    </g>
+</svg>

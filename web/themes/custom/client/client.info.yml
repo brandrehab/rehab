@@ -1,0 +1,15 @@
+name: client
+type: theme
+description: 'Client theme'
+package: 'Core'
+version: '1.0.0'
+base theme: false
+core_version_requirement: ^8.8 || ^9
+regions:
+  head: 'Head'
+  header: 'Header'
+  content: 'Content'
+  footer: 'Footer'
+
+ckeditor_stylesheets:
+  - assets/css/app.css

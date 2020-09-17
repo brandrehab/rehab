@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - head
+  theme:
+    - client
+id: headblock
+theme: client
+region: head
+weight: -8
+provider: null
+plugin: app.head
+settings:
+  id: app.head
+  label: 'Head Block'
+  provider: head
+  label_display: '0'
+visibility: {  }

@@ -7,6 +7,9 @@ namespace Drupal\app;
 use App\ServiceProvider\RoutingServiceProvider;
 use App\ServiceProvider\MenuServiceProvider;
 use App\ServiceProvider\RepositoryServiceProvider;
+use App\ServiceProvider\BlockServiceProvider;
+use App\ServiceProvider\CommandServiceProvider;
+use App\ServiceProvider\TwigExtensionServiceProvider;
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\ServiceProviderBase;
 
@@ -22,6 +25,9 @@ class AppServiceProvider extends ServiceProviderBase {
     RoutingServiceProvider::load($container);
     MenuServiceProvider::load($container);
     RepositoryServiceProvider::load($container);
+    BlockServiceProvider::load($container);
+    CommandServiceProvider::load($container);
+    TwigExtensionServiceProvider::load($container);
   }
 
 }
