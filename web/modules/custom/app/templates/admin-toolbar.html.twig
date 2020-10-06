@@ -1,0 +1,16 @@
+<div id="admin-toolbar" class="wrapper">
+  <section class="content column">
+    <ul>
+      {% for item in menu %}
+        <li>
+          <strong class="dropdown-trigger">{{item.title}}</strong>
+          <ul class="d-none dropdown">
+            {% for child in item.children %}
+              <li><a href="{{child.url}}">{{child.title}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+</div>

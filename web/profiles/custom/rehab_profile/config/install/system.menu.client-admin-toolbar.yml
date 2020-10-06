@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: client-admin-toolbar
+label: 'Client admin toolbar'
+description: 'Administrative menu for the client.'
+locked: false

@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - app
+  theme:
+    - claro
+id: admintoolbarblock
+theme: claro
+region: breadcrumb
+weight: 0
+provider: null
+plugin: app.admin.toolbar
+settings:
+  id: app.admin.toolbar
+  label: 'Admin Toolbar Block'
+  provider: app
+  label_display: '0'
+visibility: {  }

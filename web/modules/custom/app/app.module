@@ -23,6 +23,16 @@ function app_theme(): array {
         'cache' => NULL,
       ],
     ],
+    'admin_toolbar' => [
+      'variables' => [
+        'menu' => NULL,
+        'cache' => NULL,
+      ],
+      'attached' => [
+        'library' => NULL,
+        'drupalSettings' => NULL,
+      ],
+    ],
   ];
 }
 

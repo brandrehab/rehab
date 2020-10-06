@@ -1,0 +1,55 @@
+header {
+  overflow: visible !important;
+}
+
+#admin-toolbar {
+  margin: 0;
+  margin-bottom: 50px;
+  width: 100%;
+  background-color: #fff;
+}
+
+#admin-toolbar .column {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#admin-toolbar .column > ul {
+  padding: 0;
+}
+
+#admin-toolbar .column > ul li {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#admin-toolbar .column > ul li ul {
+  position: absolute;
+  z-index: 1030;
+  top: 40px;
+  display: block;
+  padding: 10px;
+  background-color: #fff;
+  width: 200px;
+  box-shadow: 4px 4px 6px #777;
+}
+
+#admin-toolbar .column > ul li ul.d-none {
+  display: none;
+}
+
+#admin-toolbar .column > ul li ul li {
+  display: block;
+  padding: 0;
+}
+
+#admin-toolbar .column > ul li ul li a {
+  display: block;
+  padding: 10px;
+}
+
+#admin-toolbar .column > ul li ul li a:hover {
+  background-color: #edf1f5;
+}

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: admin-toolbar
+label: 'Admin toolbar'
+description: 'Administrative menu for the admin.'
+locked: false

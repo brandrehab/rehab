@@ -1,0 +1,12 @@
+admin-toolbar:
+  version: 1.0
+  js:
+    assets/js/admin-toolbar.js: {}
+  css:
+    theme:
+      assets/css/admin-toolbar.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+    - core/drupalSettings

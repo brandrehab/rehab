@@ -319,7 +319,185 @@ function rehab_install() {
   ]);
   $nodeContact->save();
 
-  // Menu Links
+  // Admin toolbar menu
+
+  $adminToolbarContent = MenuLinkContent::create([
+    'title' => 'Content',
+    'link' => ['uri' => 'route:<nolink>'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 0,
+  ]);
+  $adminToolbarContent->save();
+
+  $adminToolbarContentHome = MenuLinkContent::create([
+    'title' => 'Home',
+    'link' => ['uri' => 'route:<front>'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 0,
+    'parent' => $adminToolbarContent->getPluginId(),
+  ]);
+  $adminToolbarContentHome->save();
+
+  $adminToolbarContentPages = MenuLinkContent::create([
+    'title' => 'Pages',
+    'link' => ['uri' => 'route:system.admin_content'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 1,
+    'parent' => $adminToolbarContent->getPluginId(),
+  ]);
+  $adminToolbarContentPages->save();
+
+  $adminToolbarAdministration = MenuLinkContent::create([
+    'title' => 'Administration',
+    'link' => ['uri' => 'route:<nolink>'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 1,
+  ]);
+  $adminToolbarAdministration->save();
+
+  $adminToolbarAdministrationStructure = MenuLinkContent::create([
+    'title' => 'Structure',
+    'link' => ['uri' => 'route:system.admin_structure'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 0,
+    'parent' => $adminToolbarAdministration->getPluginId(),
+  ]);
+  $adminToolbarAdministrationStructure->save();
+
+  $adminToolbarAdministrationAppearance = MenuLinkContent::create([
+    'title' => 'Appearance',
+    'link' => ['uri' => 'route:system.themes_page'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 1,
+    'parent' => $adminToolbarAdministration->getPluginId(),
+  ]);
+  $adminToolbarAdministrationAppearance->save();
+
+  $adminToolbarAdministrationExtend = MenuLinkContent::create([
+    'title' => 'Extend',
+    'link' => ['uri' => 'route:system.modules_list'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 2,
+    'parent' => $adminToolbarAdministration->getPluginId(),
+  ]);
+  $adminToolbarAdministrationExtend->save();
+
+  $adminToolbarAdministrationConfig = MenuLinkContent::create([
+    'title' => 'Configuration',
+    'link' => ['uri' => 'route:system.admin_config'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 3,
+    'parent' => $adminToolbarAdministration->getPluginId(),
+  ]);
+  $adminToolbarAdministrationConfig->save();
+
+  $adminToolbarAdministrationPeople = MenuLinkContent::create([
+    'title' => 'People',
+    'link' => ['uri' => 'route:view.user_admin_people.page_1'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 4,
+    'parent' => $adminToolbarAdministration->getPluginId(),
+  ]);
+  $adminToolbarAdministrationPeople->save();
+
+  $adminToolbarAdministrationReports = MenuLinkContent::create([
+    'title' => 'Reports',
+    'link' => ['uri' => 'route:system.admin_reports'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 5,
+    'parent' => $adminToolbarAdministration->getPluginId(),
+  ]);
+  $adminToolbarAdministrationReports->save();
+
+  $adminToolbarAdministrationHelp = MenuLinkContent::create([
+    'title' => 'Help',
+    'link' => ['uri' => 'route:help.main'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 6,
+    'parent' => $adminToolbarAdministration->getPluginId(),
+  ]);
+  $adminToolbarAdministrationHelp->save();
+
+  $adminToolbarAccount = MenuLinkContent::create([
+    'title' => 'Account',
+    'link' => ['uri' => 'route:<nolink>'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 2,
+  ]);
+  $adminToolbarAccount->save();
+
+  $adminToolbarAccountLogout = MenuLinkContent::create([
+    'title' => 'Logout',
+    'link' => ['uri' => 'route:user.logout'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 0,
+  ]);
+  $adminToolbarAccountLogout->save();
+
+
+  // Client Toolbar menu
+
+  $clientToolbarContent = MenuLinkContent::create([
+    'title' => 'Content',
+    'link' => ['uri' => 'route:<nolink>'],
+    'menu_name' => 'client-admin-toolbar',
+    'weight' => 0,
+  ]);
+  $clientToolbarContent->save();
+
+  $clientToolbarContentHome = MenuLinkContent::create([
+    'title' => 'Home',
+    'link' => ['uri' => 'route:<front>'],
+    'menu_name' => 'client-admin-toolbar',
+    'weight' => 0,
+    'parent' => $clientToolbarContent->getPluginId(),
+  ]);
+  $clientToolbarContentHome->save();
+
+  $clientToolbarContentPages = MenuLinkContent::create([
+    'title' => 'Pages',
+    'link' => ['uri' => 'route:system.admin_content'],
+    'menu_name' => 'client-admin-toolbar',
+    'weight' => 1,
+    'parent' => $clientToolbarContent->getPluginId(),
+  ]);
+  $clientToolbarContentPages->save();
+
+  $clientToolbarConfig = MenuLinkContent::create([
+    'title' => 'Configuration',
+    'link' => ['uri' => 'route:<nolink>'],
+    'menu_name' => 'client-admin-toolbar',
+    'weight' => 1,
+  ]);
+  $clientToolbarConfig->save();
+
+  $clientToolbarConfigRedirects = MenuLinkContent::create([
+    'title' => 'URL Redirects',
+    'link' => ['uri' => 'route:redirect.list'],
+    'menu_name' => 'client-admin-toolbar',
+    'weight' => 0,
+    'parent' => $clientToolbarConfig->getPluginId(),
+  ]);
+  $clientToolbarConfigRedirects->save();
+
+  $clientToolbarAccount = MenuLinkContent::create([
+    'title' => 'Account',
+    'link' => ['uri' => 'route:<nolink>'],
+    'menu_name' => 'client-admin-toolbar',
+    'weight' => 2,
+  ]);
+  $clientToolbarAccount->save();
+
+  $clientToolbarAccountLogout = MenuLinkContent::create([
+    'title' => 'Logout',
+    'link' => ['uri' => 'route:user.logout'],
+    'menu_name' => 'client-admin-toolbar',
+    'weight' => 0,
+    'parent' => $clientToolbarAccount->getPluginId(),
+  ]);
+  $clientToolbarAccountLogout->save();
+
+  // Main menu
 
   $menuHome = MenuLinkContent::create([
     'title' => 'Home',

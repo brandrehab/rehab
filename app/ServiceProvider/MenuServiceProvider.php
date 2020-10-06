@@ -20,6 +20,8 @@ class MenuServiceProvider {
     self::main($container);
     self::footer($container);
     self::hidden($container);
+    self::clientAdminToolbar($container);
+    self::adminToolbar($container);
   }
 
   /**
@@ -56,6 +58,28 @@ class MenuServiceProvider {
    */
   private static function hidden(ContainerBuilder $container): void {
     $container->register('app.menu.hidden', 'App\Menu\HiddenMenu')
+      ->AddArgument(new Reference('menu.link_tree'))
+      ->addArgument(new Reference('menu.active_trail'))
+      ->addArgument(new Reference('path.matcher'))
+      ->addArgument(new Reference('app.menu.link.factory'));
+  }
+
+  /**
+   * Client Admin Toolbar menu.
+   */
+  private static function clientAdminToolbar(ContainerBuilder $container): void {
+    $container->register('app.menu.client_admin_toolbar', 'App\Menu\ClientAdminToolbarMenu')
+      ->AddArgument(new Reference('menu.link_tree'))
+      ->addArgument(new Reference('menu.active_trail'))
+      ->addArgument(new Reference('path.matcher'))
+      ->addArgument(new Reference('app.menu.link.factory'));
+  }
+
+  /**
+   * Client Admin Toolbar menu.
+   */
+  private static function adminToolbar(ContainerBuilder $container): void {
+    $container->register('app.menu.admin_toolbar', 'App\Menu\AdminToolbarMenu')
       ->AddArgument(new Reference('menu.link_tree'))
       ->addArgument(new Reference('menu.active_trail'))
       ->addArgument(new Reference('path.matcher'))
