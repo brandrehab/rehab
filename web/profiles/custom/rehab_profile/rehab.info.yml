@@ -68,7 +68,6 @@ install:
   - taxonomy
   - text
   - token
-  - toolbar
   - update
   - user
   - views_ui
