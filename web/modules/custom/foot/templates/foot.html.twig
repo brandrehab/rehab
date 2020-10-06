@@ -2,7 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <p class="mt-0">this is the footer</p>
+        <ul class="nav flex-column">
+          {% for item in menu %}
+            <li class="nav-item{% if item.active %} active{% endif %}">
+              <a class="nav-link" href="{{ item.url }}">{{ item.title }}{% if item.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>

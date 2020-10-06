@@ -11,6 +11,22 @@ use App\Service\Storage\NodeStorage;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
+ * Implements hook_theme().
+ */
+function app_theme(): array {
+  return [
+    'toolbar' => [
+      'variables' => [
+        'id' => NULL,
+        'uuid' => NULL,
+        'bundle' => NULL,
+        'cache' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
  * Implements hook_entity_type_alter().
  */
 function app_entity_type_alter(array &$entity_types): void {

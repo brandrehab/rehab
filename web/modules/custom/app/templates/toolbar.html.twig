@@ -1,0 +1,31 @@
+<section id="toolbar" class="bg-white">
+  <div class="row">
+    <div class="col-12">
+      <ul class="nav mt-0 justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/content">Admin</a>
+        </li>
+        {% if id %}
+          {% if uuid %}
+            <li class="nav-item">
+              <a class="nav-link" href="/node/{{id}}/edit?uuid={{uuid}}">Edit</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/node/{{id}}/edit">Edit</a>
+            </li>
+          {% endif %}
+        {% else %}
+          {% if uuid %}
+            <li class="nav-item">
+              <a class="nav-link" href="/node/add/{{bundle}}?uuid={{uuid}}">Edit</a>
+            </li>
+          {% endif %}
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="/user/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

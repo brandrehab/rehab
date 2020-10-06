@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\foot\Plugin\Block;
 
+use App\Service\Menu\MenuInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -27,8 +28,17 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
     'contexts' => [
       'route',
     ],
-    'tags' => [],
+    'tags' => [
+      'config:system.menu.footer',
+    ],
   ];
+
+  /**
+   * Menu service.
+   *
+   * @var \App\Service\Menu\MenuInterface
+   */
+  private $footerMenu;
 
   /**
    * Dependecy injection.
@@ -42,7 +52,8 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
     return new self(
      $configuration,
      $plugin_id,
-     $plugin_definition
+     $plugin_definition,
+     $container->get('app.menu.footer')
     );
   }
 
@@ -52,9 +63,11 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
   public function __construct(
     array $configuration,
     $plugin_id,
-    $plugin_definition
+    $plugin_definition,
+    MenuInterface $footer_menu
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->footerMenu = $footer_menu;
   }
 
   /**
@@ -64,6 +77,7 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
     return [
       '#theme' => 'foot',
       '#reload' => getenv('DEVELOPMENT_SETTINGS') ? TRUE : FALSE,
+      '#menu' => $this->footerMenu->build(1, 2),
       '#cache' => $this->cache,
     ];
   }

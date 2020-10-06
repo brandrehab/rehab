@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - app
+    - user
+  theme:
+    - client
+id: frontendtoolbarblock
+theme: client
+region: header
+weight: 0
+provider: null
+plugin: app.toolbar
+settings:
+  id: app.toolbar
+  label: 'Frontend Toolbar Block'
+  provider: app
+  label_display: '0'
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

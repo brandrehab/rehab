@@ -15,6 +15,7 @@ function foot_theme(): array {
     'foot' => [
       'variables' => [
         'reload' => NULL,
+        'menu' => NULL,
         'cache' => NULL,
       ],
     ],
