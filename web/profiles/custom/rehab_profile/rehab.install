@@ -43,6 +43,7 @@ function rehab_install() {
   $nodeHome = Node::create([
       'type' => 'home',
       'title' => 'Welcome To The Site',
+      'field_heading' => 'Welcome To The Site',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -64,6 +65,7 @@ function rehab_install() {
   $nodeAbout = Node::create([
       'type' => 'page',
       'title' => 'About Us',
+      'field_heading' => 'About Us',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -82,6 +84,7 @@ function rehab_install() {
   $nodeServices = Node::create([
       'type' => 'overview',
       'title' => 'Services',
+      'field_heading' => 'Services',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -101,6 +104,7 @@ function rehab_install() {
   $nodeExampleService = Node::create([
       'type' => 'service',
       'title' => 'Example Service',
+      'field_heading' => 'Example Service',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -119,6 +123,7 @@ function rehab_install() {
   $node403 = Node::create([
       'type' => 'error',
       'title' => '403 Access Denied',
+      'field_heading' => '403 Access Denied',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -137,6 +142,7 @@ function rehab_install() {
   $node404 = Node::create([
       'type' => 'error',
       'title' => '404 Not Found',
+      'field_heading' => '404 Not Found',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -155,6 +161,7 @@ function rehab_install() {
   $nodeBlog = Node::create([
       'type' => 'overview',
       'title' => 'Blog',
+      'field_heading' => 'Blog',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -174,6 +181,7 @@ function rehab_install() {
   $nodeExampleNews = Node::create([
       'type' => 'article',
       'title' => 'Example News Item',
+      'field_heading' => 'Example News Item',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -194,6 +202,7 @@ function rehab_install() {
   $nodeExampleEvent = Node::create([
       'type' => 'article',
       'title' => 'Example Event Item',
+      'field_heading' => 'Example Event Item',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -214,6 +223,7 @@ function rehab_install() {
   $nodeTerms = Node::create([
       'type' => 'page',
       'title' => 'Terms Of Use',
+      'field_heading' => 'Terms Of Use',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -232,6 +242,7 @@ function rehab_install() {
   $nodeCookie = Node::create([
       'type' => 'page',
       'title' => 'Cookie Policy',
+      'field_heading' => 'Cookie Policy',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -250,6 +261,7 @@ function rehab_install() {
   $nodePrivacy = Node::create([
       'type' => 'page',
       'title' => 'Privacy Policy',
+      'field_heading' => 'Privacy Policy',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -268,6 +280,7 @@ function rehab_install() {
   $nodeTeam = Node::create([
       'type' => 'page',
       'title' => 'Meet The Team',
+      'field_heading' => 'Meet The Team',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -286,6 +299,7 @@ function rehab_install() {
   $nodeHistory = Node::create([
       'type' => 'page',
       'title' => 'Our History',
+      'field_heading' => 'Our History',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
@@ -304,6 +318,7 @@ function rehab_install() {
   $nodeContact = Node::create([
       'type' => 'page',
       'title' => 'Contact Us',
+      'field_heading' => 'Contact Us',
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
