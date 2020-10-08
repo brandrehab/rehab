@@ -21,6 +21,7 @@ abstract class NodeEntityView extends EntityView implements NodeEntityViewInterf
       'id',
       'preview',
       'title',
+      'heading',
       'url',
       'shorturl',
       'created',
@@ -56,6 +57,13 @@ abstract class NodeEntityView extends EntityView implements NodeEntityViewInterf
    */
   protected function title(): string {
     return $this->entity->title->value;
+  }
+
+  /**
+   * Get entity heading.
+   */
+  protected function heading(): string {
+    return $this->entity->field_heading->value;
   }
 
   /**

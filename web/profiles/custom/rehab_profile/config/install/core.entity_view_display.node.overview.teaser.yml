@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.overview.body
     - field.field.node.overview.field_banners
     - field.field.node.overview.field_children
+    - field.field.node.overview.field_heading
     - field.field.node.overview.field_seo_and_social_media
     - node.type.overview
   module:
@@ -32,4 +33,5 @@ content:
 hidden:
   field_banners: true
   field_children: true
+  field_heading: true
   field_seo_and_social_media: true

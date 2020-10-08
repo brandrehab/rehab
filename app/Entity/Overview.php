@@ -10,6 +10,7 @@ use App\Service\Entity\Node;
 use App\Service\Entity\NodeInterface;
 use App\Service\Entity\AssignsTitleFromSeoFieldTrait;
 use App\Service\Entity\UpdatesChildMenuLinksTrait;
+use App\Service\Entity\ControlsMenuLinkStatusTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -21,6 +22,7 @@ class Overview extends Node implements OverviewInterface {
 
   use AssignsTitleFromSeoFieldTrait;
   use UpdatesChildMenuLinksTrait;
+  use ControlsMenuLinkStatusTrait;
 
   /**
    * Associate an entity view with this entity.
@@ -86,6 +88,14 @@ class Overview extends Node implements OverviewInterface {
     parent::preSave($storage);
     $this->assignTitleFromSeoField();
     $this->updateChildMenuLinks($storage);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function postSave(EntityStorageInterface $storage, $update = TRUE) {
+    parent::postSave($storage, $update);
+    $this->controlMenuItemStatus();
   }
 
 }

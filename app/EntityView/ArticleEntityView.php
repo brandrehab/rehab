@@ -28,6 +28,7 @@ class ArticleEntityView extends NodeEntityView {
       'id',
       'preview',
       'title',
+      'heading',
       'url',
       'shorturl',
       'created',

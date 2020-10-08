@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_heading
+    - node.type.error
+id: node.error.field_heading
+field_name: field_heading
+entity_type: node
+bundle: error
+label: Heading
+description: 'Main heading of the current page, should be unique and to the point.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

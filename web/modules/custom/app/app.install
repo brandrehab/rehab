@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @file
+ * Installation functions for App module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function app_install(): void {
+  module_set_weight('app', 1);
+}

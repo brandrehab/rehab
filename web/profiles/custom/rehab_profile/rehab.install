@@ -545,6 +545,7 @@ function rehab_install() {
     'link' => ['uri' => 'entity:node/' . $nodeExampleNews->id()],
     'menu_name' => 'main',
     'weight' => 0,
+    'enabled' => FALSE,
     'parent' => $menuBlog->getPluginId(),
   ]);
   $menuNewsItem->save();
@@ -554,6 +555,7 @@ function rehab_install() {
     'link' => ['uri' => 'entity:node/' . $nodeExampleEvent->id()],
     'menu_name' => 'main',
     'weight' => 1,
+    'enabled' => FALSE,
     'parent' => $menuBlog->getPluginId(),
   ]);
   $menuEventItem->save();

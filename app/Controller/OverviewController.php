@@ -44,7 +44,9 @@ class OverviewController extends ControllerBase implements ContainerInjectionInt
   public function view(OverviewInterface $node): array {
     $view = $node->entityView()->get('full');
     return [
-      //$this->blockManager->createInstance('app.navigation', [])->build(),
+      $this->blockManager->createInstance('app.top', [
+        'node' => $view,
+      ])->build(),
     ];
   }
 

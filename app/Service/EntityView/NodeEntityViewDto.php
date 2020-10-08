@@ -31,6 +31,13 @@ class NodeEntityViewDto extends EntityViewDto {
   protected $title;
 
   /**
+   * Heading.
+   *
+   * @var string
+   */
+  protected $heading;
+
+  /**
    * Url.
    *
    * @var string
@@ -91,6 +98,13 @@ class NodeEntityViewDto extends EntityViewDto {
    */
   public function title(): string {
     return $this->title;
+  }
+
+  /**
+   * Get the heading.
+   */
+  public function heading(): string {
+    return $this->heading;
   }
 
   /**

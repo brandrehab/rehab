@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Top module hooks.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_theme().
+ */
+function top_theme(): array {
+  return [
+    'top' => [
+      'variables' => [
+        'heading' => NULL,
+        'cache' => NULL,
+      ],
+    ],
+  ];
+}

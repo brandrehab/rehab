@@ -31,7 +31,7 @@ html {
       height: $navigation-height;
     }
     main {
-      margin-top: -$navigation-height;
+      // margin-top: -$navigation-height;
     }
     &.admin {
       header {
@@ -42,9 +42,15 @@ html {
 }
 
 .container-fluid {
-  padding-left:0;
-  padding-right:0;
-  overflow:hidden;
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+}
+
+header {
+  &.container-fluid {
+    overflow: visible;
+  }
 }
 
 .grecaptcha-badge{

@@ -5,6 +5,7 @@ dependencies:
     - field.field.node.overview.body
     - field.field.node.overview.field_banners
     - field.field.node.overview.field_children
+    - field.field.node.overview.field_heading
     - field.field.node.overview.field_seo_and_social_media
     - node.type.overview
   module:
@@ -13,7 +14,15 @@ id: node.overview.default
 targetEntityType: node
 bundle: overview
 mode: default
-content: {  }
+content:
+  field_heading:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
 hidden:
   body: true
   field_banners: true

@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.article.field_article_date
     - field.field.node.article.field_article_type
     - field.field.node.article.field_banners
+    - field.field.node.article.field_heading
     - field.field.node.article.field_seo_and_social_media
     - node.type.article
   module:
@@ -20,5 +21,6 @@ hidden:
   field_article_date: true
   field_article_type: true
   field_banners: true
+  field_heading: true
   field_seo_and_social_media: true
   links: true
