@@ -21,7 +21,6 @@ distribution:
   langcode: en
 
 install:
-  - app
   - block
   - block_content
   - breakpoint
@@ -68,9 +67,11 @@ install:
   - taxonomy
   - text
   - token
+  - top
   - update
   - user
   - views_ui
+  - app
   - head
   - pathauto
   - views
