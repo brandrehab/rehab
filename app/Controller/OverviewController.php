@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\OverviewInterface;
+use App\EntityView\OverviewEntityViewDto;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Block\BlockManagerInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
@@ -41,11 +41,10 @@ class OverviewController extends ControllerBase implements ContainerInjectionInt
   /**
    * Handles requests for nodes of type overview.
    */
-  public function view(OverviewInterface $node): array {
-    $view = $node->entityView()->get('full');
+  public function view(OverviewEntityViewDto $node): array {
     return [
       $this->blockManager->createInstance('app.top', [
-        'node' => $view,
+        'node' => $node,
       ])->build(),
     ];
   }

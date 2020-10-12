@@ -83,7 +83,7 @@ class Router implements ContainerInjectionInterface {
     $namespaced_class = 'App\\Controller\\' . $class_name . 'Controller';
     if (class_exists($namespaced_class)) {
       $controller = $namespaced_class::create(self::$container);
-      return $controller->view($node);
+      return $controller->view($node->entityView()->get('full'));
     }
 
     throw new NotFoundHttpException();

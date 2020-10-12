@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\navigation\Plugin\Block;
 
-use App\Service\Menu\MenuInterface;
+use App\Repository\MenuRepositoryInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -53,7 +53,7 @@ class Navigation extends BlockBase implements ContainerFactoryPluginInterface {
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('app.menu.main')
+      $container->get('app.repository.menu')
     );
   }
 
@@ -64,10 +64,10 @@ class Navigation extends BlockBase implements ContainerFactoryPluginInterface {
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    MenuInterface $main_menu
+    MenuRepositoryInterface $menu_repository
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->mainMenu = $main_menu;
+    $this->mainMenu = $menu_repository->get('main');
   }
 
   /**

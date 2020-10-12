@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\ErrorInterface;
+use App\EntityView\ErrorEntityViewDto;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Block\BlockManagerInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
@@ -41,11 +41,10 @@ class ErrorController extends ControllerBase implements ContainerInjectionInterf
   /**
    * Handles requests for nodes of type error.
    */
-  public function view(ErrorInterface $node): array {
-    $view = $node->entityView()->get('full');
+  public function view(ErrorEntityViewDto $node): array {
     return [
       $this->blockManager->createInstance('app.top', [
-        'node' => $view,
+        'node' => $node,
       ])->build(),
     ];
   }

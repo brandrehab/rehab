@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\foot\Plugin\Block;
 
-use App\Service\Menu\MenuInterface;
+use App\Repository\MenuRepositoryInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -53,7 +53,7 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
      $configuration,
      $plugin_id,
      $plugin_definition,
-     $container->get('app.menu.footer')
+     $container->get('app.repository.menu')
     );
   }
 
@@ -64,10 +64,10 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    MenuInterface $footer_menu
+    MenuRepositoryInterface $menu_repository
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->footerMenu = $footer_menu;
+    $this->footerMenu = $menu_repository->get('footer');
   }
 
   /**

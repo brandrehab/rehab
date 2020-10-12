@@ -7,7 +7,7 @@ namespace App\EntityView;
 use App\Service\EntityView\NodeEntityViewDto;
 
 /**
- * Service data transfer object.
+ * Article data transfer object.
  */
 class ArticleEntityViewDto extends NodeEntityViewDto {
 

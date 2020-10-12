@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\ArticleInterface;
+use App\EntityView\ArticleEntityViewDto;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Block\BlockManagerInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
@@ -41,11 +41,10 @@ class ArticleController extends ControllerBase implements ContainerInjectionInte
   /**
    * Handles requests for nodes of type article.
    */
-  public function view(ArticleInterface $node): array {
-    $view = $node->entityView()->get('full');
+  public function view(ArticleEntityViewDto $node): array {
     return [
       $this->blockManager->createInstance('app.top', [
-        'node' => $view,
+        'node' => $node,
       ])->build(),
     ];
   }

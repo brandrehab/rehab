@@ -47,6 +47,11 @@ $settings['entity_update_batch_size'] = 50;
 $settings['entity_update_backup'] = TRUE;
 $settings['migrate_node_migrate_type_classic'] = FALSE;
 
+$settings['memcache']['servers'] = ['127.0.0.1:11211' => 'default'];
+$settings['memcache']['key_prefix'] = getenv('MEMCACHE_PREFIX');
+$settings['memcache']['bins'] = ['default' => 'default'];
+$settings['cache']['default'] = 'cache.backend.memcache';
+
 if (getenv('DEVELOPMENT_SETTINGS')) {
   include DRUPAL_ROOT . '/' . $site_path . '/settings.development.php';
 }

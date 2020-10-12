@@ -127,7 +127,7 @@ abstract class EntityRepository implements EntityRepositoryInterface {
     if (!$id = $query->execute()) {
       return NULL;
     }
-    return $this->loadSingle(reset($id));
+    return $this->loadSingle((int) reset($id));
   }
 
 }

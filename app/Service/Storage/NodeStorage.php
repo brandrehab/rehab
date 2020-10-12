@@ -68,10 +68,11 @@ class NodeStorage extends Base {
     EntityTypeManagerInterface $entity_type_manager = NULL
   ) {
     $this->container = $container;
-    if ($entity_type_manager) {
-      if (!self::$nodeEntityTypes) {
-        $this->addEntityTypeClasses($entity_type_manager);
-      }
+    if (!$entity_type_manager) {
+      $entity_type_manager = $this->container->get('entity_type.manager');
+    }
+    if (!self::$nodeEntityTypes) {
+      $this->addEntityTypeClasses($entity_type_manager);
     }
     parent::__construct($entity_type, $database, $entity_field_manager, $cache, $language_manager, $memory_cache, $entity_type_bundle_info, $entity_type_manager);
   }
@@ -98,28 +99,20 @@ class NodeStorage extends Base {
   protected function doCreate(array $values) {
     $this->entityClass = $this->getEntityTypeClass($values['type']);
 
-    // We have to determine the bundle first.
     $bundle = FALSE;
     if ($this->bundleKey) {
       if (!isset($values[$this->bundleKey])) {
         throw new EntityStorageException('Missing bundle for entity type ' . $this->entityTypeId);
       }
 
-      // Normalize the bundle value. This is an optimized version of
-      // \Drupal\Core\Field\FieldInputValueNormalizerTrait::normalizeValue()
-      // because we just need the scalar value.
       $bundle_value = $values[$this->bundleKey];
       if (!is_array($bundle_value)) {
-        // The bundle value is a scalar, use it as-is.
         $bundle = $bundle_value;
       }
       elseif (is_numeric(array_keys($bundle_value)[0])) {
-        // The bundle value is a field item list array, keyed by delta.
         $bundle = reset($bundle_value[0]);
       }
       else {
-        // The bundle value is a field item array, keyed by the field's main
-        // property name.
         $bundle = reset($bundle_value);
       }
     }
@@ -153,8 +146,6 @@ class NodeStorage extends Base {
 
     $values = [];
     foreach ($records as $id => $record) {
-      // Set the entity class to use dynamically, based upon the record type.
-      $this->entityClass = $this->getEntityTypeClass($record->type);
       $values[$id] = [];
       foreach ($field_names as $field_name) {
         $field_columns = $this->tableMapping->getColumnNames($field_name);
@@ -190,8 +181,8 @@ class NodeStorage extends Base {
 
     $entities = [];
     foreach ($values as $id => $entity_values) {
+      $this->entityClass = $this->getEntityTypeClass($entity_values['type']['x-default']);
       $bundle = $this->bundleKey ? $entity_values[$this->bundleKey][LanguageInterface::LANGCODE_DEFAULT] : FALSE;
-      // Should be able to push the container through onto the class...
       $entities[$id] = $this->entityClass::createInstance($this->container, $entity_values, $this->entityTypeId, $bundle, array_keys($translations[$id]));
     }
 
