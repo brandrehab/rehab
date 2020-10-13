@@ -446,6 +446,7 @@ function rehab_install() {
     'link' => ['uri' => 'route:user.logout'],
     'menu_name' => 'admin-toolbar',
     'weight' => 0,
+    'parent' => $adminToolbarAccount->getPluginId(),
   ]);
   $adminToolbarAccountLogout->save();
 
