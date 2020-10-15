@@ -31,6 +31,7 @@ class ErrorEntityView extends NodeEntityView {
       'heading',
       'url',
       'shorturl',
+      'layouts',
       'created',
       'updated',
       'seo',

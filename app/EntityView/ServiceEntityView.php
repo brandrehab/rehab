@@ -31,6 +31,7 @@ class ServiceEntityView extends NodeEntityView {
       'heading',
       'url',
       'shorturl',
+      'layouts',
       'created',
       'updated',
       'seo',

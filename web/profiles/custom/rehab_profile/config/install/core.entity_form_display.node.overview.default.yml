@@ -2,35 +2,24 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.overview.body
     - field.field.node.overview.field_banners
     - field.field.node.overview.field_children
     - field.field.node.overview.field_heading
+    - field.field.node.overview.field_layouts
     - field.field.node.overview.field_seo_and_social_media
     - node.type.overview
   module:
     - app
     - paragraphs
     - path
-    - text
 id: node.overview.default
 targetEntityType: node
 bundle: overview
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 2
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -60,8 +49,20 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_seo_and_social_media:
+  field_layouts:
     weight: 5
+    settings:
+      title: Layout
+      title_plural: Layouts
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_seo_and_social_media:
+    weight: 6
     settings:
       title: 'SEO and Social Media Image'
       title_plural: 'SEO and Social Media Image'
@@ -74,7 +75,7 @@ content:
     region: content
   path:
     type: path
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -82,7 +83,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 10
     region: content
     third_party_settings: {  }
   title:
@@ -95,7 +96,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -104,7 +105,7 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }

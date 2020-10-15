@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_content.field_text
+    - paragraphs.paragraphs_type.text_content
+id: paragraph.text_content.default
+targetEntityType: paragraph
+bundle: text_content
+mode: default
+content: {  }
+hidden:
+  field_text: true

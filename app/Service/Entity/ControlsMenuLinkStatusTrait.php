@@ -13,7 +13,9 @@ trait ControlsMenuLinkStatusTrait {
    * Update child menu links.
    */
   public function controlMenuItemStatus(): void {
-    $menu_link = $this->get('menu_link')->entity;
+    if (!$menu_link = $this->get('menu_link')->entity) {
+      return;
+    }
     $menu_link->set('enabled', $this->menu['link_disabled'] ? FALSE : TRUE);
     $menu_link->save();
   }

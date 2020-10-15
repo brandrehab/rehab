@@ -83,26 +83,34 @@ function app_form_node_form_alter(array &$form, FormStateInterface &$form_state)
     return;
   }
 
-  $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
-
-  if ($menu_links = $menu_link_manager->loadLinksByRoute('entity.node.canonical', ['node' => $node->id()])) {
-    $menu_link = array_pop($menu_links);
-    $menu_link_disabled = $menu_link->isEnabled() ? FALSE : TRUE;
+  if ($node->getType() == 'home') {
+    $form['path']['#access'] = FALSE;
+    $form['menu']['#access'] = FALSE;
+    $form['menu']['enabled']['#default_value'] = FALSE;
   }
   else {
-    $menu_link_disabled = FALSE;
+    $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
+
+    if ($menu_links = $menu_link_manager->loadLinksByRoute('entity.node.canonical', ['node' => $node->id()])) {
+      $menu_link = array_pop($menu_links);
+      $menu_link_disabled = $menu_link->isEnabled() ? FALSE : TRUE;
+    }
+    else {
+      $menu_link_disabled = FALSE;
+    }
+
+    $form['menu']['enabled']['#default_value'] = TRUE;
+    $form['menu']['link']['link_disabled'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Hide from navigation'),
+      '#description' => t('Select this option to hide this menu item from the navigation.'),
+      '#default_value' => $menu_link_disabled,
+    ];
   }
 
-  $form['menu']['enabled']['#default_value'] = TRUE;
   $form['menu']['enabled']['#disabled'] = TRUE;
   $form['menu']['link']['description']['#access'] = FALSE;
   $form['menu']['link']['weight']['#access'] = FALSE;
-  $form['menu']['link']['link_disabled'] = [
-    '#type' => 'checkbox',
-    '#title' => t('Hide from navigation'),
-    '#description' => t('Select this option to hide this menu item from the navigation.'),
-    '#default_value' => $menu_link_disabled,
-  ];
   $form['menu']['#weight'] = -20;
 
   $form['#validate'][] = 'app_form_node_form_validate';
@@ -117,7 +125,12 @@ function app_form_node_form_validate(array &$form, FormStateInterface $form_stat
       $form_state->setErrorByName('menu][title', 'Preview is not available for menu changes.');
     }
   }
-  if (!$form['menu']['link']['title']['#value']) {
-    $form_state->setErrorByName('menu][title', 'Please provide a menu link title.');
+  $form_object = $form_state->getFormObject();
+  $node = $form_object->getEntity();
+
+  if ($node->getType() != 'home') {
+    if (!$form['menu']['link']['title']['#value']) {
+      $form_state->setErrorByName('menu][title', 'Please provide a menu link title.');
+    }
   }
 }

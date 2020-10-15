@@ -46,6 +46,9 @@ class ServiceController extends ControllerBase implements ContainerInjectionInte
       $this->blockManager->createInstance('app.top', [
         'node' => $node,
       ])->build(),
+      $this->blockManager->createInstance('app.layouts', [
+        'node' => $node,
+      ])->build(),
     ];
   }
 

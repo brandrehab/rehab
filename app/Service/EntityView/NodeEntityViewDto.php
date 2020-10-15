@@ -52,6 +52,13 @@ class NodeEntityViewDto extends EntityViewDto {
   protected $shorturl;
 
   /**
+   * Layouts.
+   *
+   * @var array
+   */
+  protected $layouts;
+
+  /**
    * Created.
    *
    * @var int
@@ -119,6 +126,13 @@ class NodeEntityViewDto extends EntityViewDto {
    */
   public function shorturl(): string {
     return $this->url;
+  }
+
+  /**
+   * Get the layouts.
+   */
+  public function layouts(): ?array {
+    return $this->layouts;
   }
 
   /**

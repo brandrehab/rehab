@@ -49,6 +49,7 @@ install:
   - imageapi_optimize
   - imageapi_optimize_binaries
   - inline_entity_form
+  - layouts
   - link
   - media
   - media_entity_browser

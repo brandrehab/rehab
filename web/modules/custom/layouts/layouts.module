@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Layouts module hooks.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Implements hook_theme().
+ */
+function layouts_theme(): array {
+  return [
+    'layouts' => [
+      'variables' => [
+        'render' => NULL,
+        'cache' => NULL,
+      ],
+    ],
+    'layouts_text' => [
+      'variables' => [
+        'text' => NULL,
+        'cache' => NULL,
+      ],
+    ],
+  ];
+}

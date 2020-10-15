@@ -1,0 +1,5 @@
+name: Layouts
+type: module
+description: Provides a layouts block to dynamically load other blocks.
+core_version_requirement: ^9
+package: app

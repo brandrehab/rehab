@@ -2,9 +2,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.error.body
     - field.field.node.error.field_banners
     - field.field.node.error.field_heading
+    - field.field.node.error.field_layouts
     - field.field.node.error.field_seo_and_social_media
     - node.type.error
   module:
@@ -13,17 +13,10 @@ id: node.error.default
 targetEntityType: node
 bundle: error
 mode: default
-content:
-  field_heading:
-    weight: 0
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
+content: {  }
 hidden:
-  body: true
   field_banners: true
+  field_heading: true
+  field_layouts: true
   field_seo_and_social_media: true
   links: true

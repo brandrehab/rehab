@@ -8,7 +8,6 @@ use App\EntityView\HomeEntityView;
 use App\Service\Entity\Node;
 use App\Service\Entity\NodeInterface;
 use App\Service\Entity\AssignsTitleFromSeoFieldTrait;
-use App\Service\Entity\ControlsMenuLinkStatusTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -19,7 +18,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class Home extends Node implements HomeInterface {
 
   use AssignsTitleFromSeoFieldTrait;
-  use ControlsMenuLinkStatusTrait;
 
   /**
    * Associate an entity view with this entity.
@@ -74,14 +72,6 @@ class Home extends Node implements HomeInterface {
   public function preSave(EntityStorageInterface $storage) {
     parent::preSave($storage);
     $this->assignTitleFromSeoField();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function postSave(EntityStorageInterface $storage, $update = TRUE) {
-    parent::postSave($storage, $update);
-    $this->controlMenuItemStatus();
   }
 
 }

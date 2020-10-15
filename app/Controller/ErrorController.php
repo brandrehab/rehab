@@ -46,6 +46,9 @@ class ErrorController extends ControllerBase implements ContainerInjectionInterf
       $this->blockManager->createInstance('app.top', [
         'node' => $node,
       ])->build(),
+      $this->blockManager->createInstance('app.layouts', [
+        'node' => $node,
+      ])->build(),
     ];
   }
 

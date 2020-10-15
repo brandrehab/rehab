@@ -31,6 +31,7 @@ class PageEntityView extends NodeEntityView {
       'heading',
       'url',
       'shorturl',
+      'layouts',
       'created',
       'updated',
       'seo',

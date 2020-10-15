@@ -46,6 +46,9 @@ class HomeController extends ControllerBase implements ContainerInjectionInterfa
       $this->blockManager->createInstance('app.top', [
         'node' => $node,
       ])->build(),
+      $this->blockManager->createInstance('app.layouts', [
+        'node' => $node,
+      ])->build(),
     ];
   }
 

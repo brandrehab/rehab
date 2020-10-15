@@ -47,7 +47,6 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'path' => [
         'alias' => '/welcome',
       ],
@@ -57,6 +56,12 @@ function rehab_install() {
           'field_meta_title' => 'Welcome',
           'field_meta_description' => 'Lorem ipsum dolor met.',
           'field_sitemap_importance' => '1.0',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -69,13 +74,18 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'About Us',
           'field_meta_description' => 'Lorem ipsum dolor met.',
           'field_sitemap_importance' => '0.5',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -88,7 +98,6 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -98,6 +107,12 @@ function rehab_install() {
         ]),
       ],
       'field_children' => 'service',
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
+        ]),
+      ],
   ]);
   $nodeServices->save();
 
@@ -108,13 +123,18 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'Example Service',
           'field_meta_description' => 'Lorem ipsum dolor met.',
           'field_sitemap_importance' => '1.0',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -127,13 +147,18 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
           'field_meta_title' => '403 Access Denied',
           'field_meta_description' => 'You do not have sufficient privileges to view this content.',
           'field_sitemap_importance' => '0.0',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -146,13 +171,18 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
           'field_meta_title' => '404 Not Found',
           'field_meta_description' => 'The requested page was not found.',
           'field_sitemap_importance' => '0.0',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -165,7 +195,6 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -175,6 +204,12 @@ function rehab_install() {
         ]),
       ],
       'field_children' => 'article',
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
+        ]),
+      ],
   ]);
   $nodeBlog->save();
 
@@ -185,7 +220,6 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -196,6 +230,12 @@ function rehab_install() {
       ],
       'field_article_date' => date('Y-m-d'),
       'field_article_type' => $newsTerm->id(),
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
+        ]),
+      ],
   ]);
   $nodeExampleNews->save();
 
@@ -206,7 +246,6 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
@@ -217,6 +256,12 @@ function rehab_install() {
       ],
       'field_article_date' => date('Y-m-d'),
       'field_article_type' => $eventTerm->id(),
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
+        ]),
+      ],
   ]);
   $nodeExampleEvent->save();
 
@@ -227,13 +272,18 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'Terms Of Use',
           'field_meta_description' => 'Lorem ipsum dolor met.',
           'field_sitemap_importance' => '0.0',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -246,13 +296,18 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'Cookie Policy',
           'field_meta_description' => 'Lorem ipsum dolor met.',
           'field_sitemap_importance' => '0.0',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -265,13 +320,18 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'Privacy Policy',
           'field_meta_description' => 'Lorem ipsum dolor met.',
           'field_sitemap_importance' => '0.0',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -284,13 +344,18 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'Meet The Team',
           'field_meta_description' => 'Lorem ipsum dolor met.',
           'field_sitemap_importance' => '0.2',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -303,13 +368,18 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'Our History',
           'field_meta_description' => 'Lorem ipsum dolor met.',
           'field_sitemap_importance' => '0.2',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -322,13 +392,18 @@ function rehab_install() {
       'langcode' => 'en',
       'uid' => '1',
       'status' => 1,
-      'body' => "<p>Lorem ipsum dolor met.</p>\r\n",
       'field_seo_and_social_media' => [
         Paragraph::create([
           'type' => 'seo_and_social_media',
           'field_meta_title' => 'Contact Us',
           'field_meta_description' => 'Lorem ipsum dolor met.',
           'field_sitemap_importance' => '0.5',
+        ]),
+      ],
+      'field_layouts' => [
+        Paragraph::create([
+          'type' => 'text_content',
+          'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
       ],
   ]);
@@ -515,13 +590,13 @@ function rehab_install() {
 
   // Main menu
 
-  $menuHome = MenuLinkContent::create([
+  $menuFront = MenuLinkContent::create([
     'title' => 'Home',
     'link' => ['uri' => 'route:<front>'],
     'menu_name' => 'main',
     'weight' => 0,
   ]);
-  $menuHome->save();
+  $menuFront->save();
 
   $menuAbout = MenuLinkContent::create([
     'title' => 'About',

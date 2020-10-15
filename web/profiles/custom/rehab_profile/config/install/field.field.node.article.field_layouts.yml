@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_layouts
+    - node.type.article
+    - paragraphs.paragraphs_type.text_content
+  module:
+    - entity_reference_revisions
+id: node.article.field_layouts
+field_name: field_layouts
+entity_type: node
+bundle: article
+label: Layouts
+description: 'Optionally add content layouts to this page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      text_content: text_content
+    target_bundles_drag_drop:
+      banners:
+        weight: 5
+        enabled: false
+      seo_and_social_media:
+        weight: 6
+        enabled: false
+      text_content:
+        enabled: true
+        weight: 4
+field_type: entity_reference_revisions

@@ -46,6 +46,9 @@ class OverviewController extends ControllerBase implements ContainerInjectionInt
       $this->blockManager->createInstance('app.top', [
         'node' => $node,
       ])->build(),
+      $this->blockManager->createInstance('app.layouts', [
+        'node' => $node,
+      ])->build(),
     ];
   }
 

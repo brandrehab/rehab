@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: text_content
+label: 'Text Content'
+icon_uuid: null
+icon_default: null
+description: 'Additional text to be associated with the current page.'
+behavior_plugins: {  }

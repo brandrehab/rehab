@@ -31,6 +31,7 @@ class OverviewEntityView extends NodeEntityView {
       'heading',
       'url',
       'shorturl',
+      'layouts',
       'created',
       'updated',
       'seo',
