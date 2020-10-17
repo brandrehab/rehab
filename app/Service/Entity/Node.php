@@ -9,7 +9,7 @@ use Drupal\node\Entity\Node as NodeBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Node entity.
+ * Base entity for nodes of all types.
  */
 class Node extends NodeBase implements NodeInterface {
 
@@ -19,9 +19,9 @@ class Node extends NodeBase implements NodeInterface {
   public static function createInstance(
     ContainerInterface $container,
     array $values,
-    $entity_type,
-    $bundle = FALSE,
-    $translations = []
+    string $entity_type,
+    ?string $bundle = NULL,
+    array $translations = []
   ): NodeInterface {
     return new self(
       $values,

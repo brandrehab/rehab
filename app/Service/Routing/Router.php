@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Router.
+ * Handles node routing to controller for preview, revision and canonical views.
  */
 class Router implements ContainerInjectionInterface {
   /**

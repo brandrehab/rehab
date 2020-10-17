@@ -13,7 +13,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Home entity.
+ * Entity for content of type home.
  */
 class Home extends Node implements HomeInterface {
 
@@ -39,9 +39,9 @@ class Home extends Node implements HomeInterface {
   public static function createInstance(
     ContainerInterface $container,
     array $values,
-    $entity_type,
-    $bundle = FALSE,
-    $translations = []
+    string $entity_type,
+    ?string $bundle = NULL,
+    array $translations = []
   ): NodeInterface {
     return new self(
       $container->get('entity_type.manager'),
@@ -58,9 +58,9 @@ class Home extends Node implements HomeInterface {
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     array $values,
-    $entity_type,
-    $bundle,
-    $translations
+    string $entity_type,
+    ?string $bundle,
+    array $translations
   ) {
     $this->imageStyle = $entity_type_manager->getStorage('image_style');
     parent::__construct($values, $entity_type, $bundle, $translations);
@@ -69,7 +69,7 @@ class Home extends Node implements HomeInterface {
   /**
    * {@inheritdoc}
    */
-  public function preSave(EntityStorageInterface $storage) {
+  public function preSave(EntityStorageInterface $storage): void {
     parent::preSave($storage);
     $this->assignTitleFromSeoField();
   }

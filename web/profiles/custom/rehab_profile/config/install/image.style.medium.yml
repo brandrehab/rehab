@@ -12,3 +12,4 @@ effects:
       width: 220
       height: 220
       upscale: false
+pipeline: local_binaries

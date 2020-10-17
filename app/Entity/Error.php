@@ -14,7 +14,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Error entity.
+ * Entity for content of type error.
  */
 class Error extends Node implements ErrorInterface {
 
@@ -41,9 +41,9 @@ class Error extends Node implements ErrorInterface {
   public static function createInstance(
     ContainerInterface $container,
     array $values,
-    $entity_type,
-    $bundle = FALSE,
-    $translations = []
+    string $entity_type,
+    ?string $bundle = NULL,
+    array $translations = []
   ): NodeInterface {
     return new self(
       $container->get('entity_type.manager'),
@@ -60,9 +60,9 @@ class Error extends Node implements ErrorInterface {
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     array $values,
-    $entity_type,
-    $bundle,
-    $translations
+    string $entity_type,
+    ?string $bundle,
+    array $translations
   ) {
     $this->imageStyle = $entity_type_manager->getStorage('image_style');
     parent::__construct($values, $entity_type, $bundle, $translations);
@@ -71,7 +71,7 @@ class Error extends Node implements ErrorInterface {
   /**
    * {@inheritdoc}
    */
-  public function preSave(EntityStorageInterface $storage) {
+  public function preSave(EntityStorageInterface $storage): void {
     parent::preSave($storage);
     $this->assignTitleFromSeoField();
   }
@@ -79,7 +79,7 @@ class Error extends Node implements ErrorInterface {
   /**
    * {@inheritdoc}
    */
-  public function postSave(EntityStorageInterface $storage, $update = TRUE) {
+  public function postSave(EntityStorageInterface $storage, $update = TRUE): void {
     parent::postSave($storage, $update);
     $this->controlMenuItemStatus();
   }

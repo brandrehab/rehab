@@ -14,6 +14,6 @@ interface MenuRepositoryInterface {
   /**
    * Attempt to get a menu by name.
    */
-  public function get($menu_name): ?MenuInterface;
+  public function get(string $menu_name): ?MenuInterface;
 
 }

@@ -118,7 +118,8 @@ abstract class Menu implements MenuInterface {
       if (!$branch->access->isAllowed()) {
         continue;
       }
-      if ($link = $this->createNode($branch)) {
+      $link = $this->createNode($branch);
+      if ($link != NULL) {
         $collection->add($link);
       }
     }

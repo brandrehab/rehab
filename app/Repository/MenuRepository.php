@@ -15,21 +15,21 @@ class MenuRepository implements MenuRepositoryInterface {
   /**
    * Main menu.
    *
-   * @var \App\Service\MenuInterface
+   * @var \App\Service\Menu\MenuInterface
    */
   protected $main;
 
   /**
    * Footer menu.
    *
-   * @var \App\Service\MenuInterface
+   * @var \App\Service\Menu\MenuInterface
    */
   protected $footer;
 
   /**
    * Hidden menu.
    *
-   * @var \App\Service\MenuInterface
+   * @var \App\Service\Menu\MenuInterface
    */
   protected $hidden;
 
@@ -49,7 +49,7 @@ class MenuRepository implements MenuRepositoryInterface {
   /**
    * Attempt to get a menu by name.
    */
-  public function get($menu_name): ?MenuInterface {
+  public function get(string $menu_name): ?MenuInterface {
     return $this->{$menu_name} ?? NULL;
   }
 

@@ -57,7 +57,7 @@ class DevelopmentController extends ControllerBase implements ContainerInjection
   /**
    * Functionality test bed.
    */
-  public function test() {
+  public function test(): string {
     echo 'hello';
     die();
   }

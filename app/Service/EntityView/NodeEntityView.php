@@ -115,7 +115,9 @@ abstract class NodeEntityView extends EntityView implements NodeEntityViewInterf
    * @todo available layouts need to be defined on the entity and handled in separate classes, to allow dynamic inclusion.
    */
   protected function layouts(): ?array {
-    if (!$groups = $this->entity->field_layouts) {
+    $groups = $this->entity->field_layouts;
+
+    if ($groups == NULL) {
       return NULL;
     }
 

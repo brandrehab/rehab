@@ -16,7 +16,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Overview entity.
+ * Entity for content of type overview.
  */
 class Overview extends Node implements OverviewInterface {
 
@@ -51,9 +51,9 @@ class Overview extends Node implements OverviewInterface {
   public static function createInstance(
     ContainerInterface $container,
     array $values,
-    $entity_type,
-    $bundle = FALSE,
-    $translations = []
+    string $entity_type,
+    ?string $bundle = NULL,
+    array $translations = []
   ): NodeInterface {
     return new self(
       $container->get('entity_type.manager'),
@@ -72,9 +72,9 @@ class Overview extends Node implements OverviewInterface {
     EntityTypeManagerInterface $entity_type_manager,
     MenuRepositoryInterface $menu_repository,
     array $values,
-    $entity_type,
-    $bundle,
-    $translations
+    string $entity_type,
+    ?string $bundle,
+    array $translations
   ) {
     $this->menuRepository = $menu_repository;
     $this->imageStyle = $entity_type_manager->getStorage('image_style');
@@ -84,7 +84,7 @@ class Overview extends Node implements OverviewInterface {
   /**
    * {@inheritdoc}
    */
-  public function preSave(EntityStorageInterface $storage) {
+  public function preSave(EntityStorageInterface $storage): void {
     parent::preSave($storage);
     $this->assignTitleFromSeoField();
     $this->updateChildMenuLinks($storage);
@@ -93,7 +93,7 @@ class Overview extends Node implements OverviewInterface {
   /**
    * {@inheritdoc}
    */
-  public function postSave(EntityStorageInterface $storage, $update = TRUE) {
+  public function postSave(EntityStorageInterface $storage, $update = TRUE): void {
     parent::postSave($storage, $update);
     $this->controlMenuItemStatus();
   }

@@ -14,11 +14,12 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Cache\MemoryCache\MemoryCacheInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\Language\LanguageInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class NodeStorage.
+ * Extends base node storage to assign entities base on node type.
  */
 class NodeStorage extends Base {
 
@@ -39,8 +40,8 @@ class NodeStorage extends Base {
   /**
    * {@inheritdoc}
    */
-  public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
-    return new static(
+  public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type): self {
+    return new self(
       $container,
       $entity_type,
       $container->get('database'),
