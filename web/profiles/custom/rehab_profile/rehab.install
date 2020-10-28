@@ -457,7 +457,7 @@ function rehab_install() {
 
   $adminToolbarContentTeamMembers = MenuLinkContent::create([
     'title' => 'Team Members',
-    'link' => ['uri' => 'entity.team_member.collection'],
+    'link' => ['uri' => 'route:entity.team_member.collection'],
     'menu_name' => 'admin-toolbar',
     'weight' => 2,
     'parent' => $adminToolbarContent->getPluginId(),
@@ -583,7 +583,7 @@ function rehab_install() {
 
   $clientToolbarContentTeamMembers = MenuLinkContent::create([
     'title' => 'Team Members',
-    'link' => ['uri' => 'entity.team_member.collection'],
+    'link' => ['uri' => 'route:entity.team_member.collection'],
     'menu_name' => 'client-admin-toolbar',
     'weight' => 2,
     'parent' => $clientToolbarContent->getPluginId(),
