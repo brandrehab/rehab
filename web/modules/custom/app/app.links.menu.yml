@@ -1,0 +1,7 @@
+# menu links to appear on /admin/structure
+
+entity.team_member.settings:
+  title: Team Members
+  description: Configure the team member entity type
+  route_name:  entity.team_member.settings
+  parent: system.admin_structure

@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.team_member.field_department
+    - taxonomy.vocabulary.team_departments
+  module:
+    - app
+id: team_member.team_member.field_department
+field_name: field_department
+entity_type: team_member
+bundle: team_member
+label: Department
+description: 'Department to which this team member belongs.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      team_departments: team_departments
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

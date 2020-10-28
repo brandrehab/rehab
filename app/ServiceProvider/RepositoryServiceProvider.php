@@ -13,9 +13,9 @@ use Symfony\Component\DependencyInjection\Reference;
 class RepositoryServiceProvider {
 
   /**
-   * Loads the repository services.
+   * Registers the repository services.
    */
-  public static function load(ContainerBuilder $container): void {
+  public static function register(ContainerBuilder $container): void {
     self::article($container);
     self::error($container);
     self::home($container);

@@ -12,9 +12,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class RoutingServiceProvider {
 
   /**
-   * Loads the routing services.
+   * Registers the routing services.
    */
-  public static function load(ContainerBuilder $container): void {
+  public static function register(ContainerBuilder $container): void {
     self::subscriber($container);
   }
 

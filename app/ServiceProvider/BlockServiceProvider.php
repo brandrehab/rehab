@@ -12,9 +12,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class BlockServiceProvider {
 
   /**
-   * Loads the block services.
+   * Registers the block services.
    */
-  public static function load(ContainerBuilder $container): void {
+  public static function register(ContainerBuilder $container): void {
     self::head($container);
   }
 

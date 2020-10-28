@@ -1,0 +1,7 @@
+# buttons to appear at top of entity listing
+
+team_member.add_form:
+  route_name: entity.team_member.add_form
+  title: 'Add a team member'
+  appears_on:
+    - entity.team_member.collection

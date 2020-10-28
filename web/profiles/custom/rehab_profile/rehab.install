@@ -20,23 +20,41 @@ use Drupal\taxonomy\Entity\Term;
  */
 function rehab_install() {
 
-  // Taxonomy Terms
+  // Taxonomy Article Type Term
 
-  $newsTerm = Term::create([
+  $newsArticleTypeTerm = Term::create([
     'name' => 'News',
     'vid' => 'article_type',
     'parent' => [],
     'status' => TRUE,
   ]);
-  $newsTerm->save();
+  $newsArticleTypeTerm->save();
 
-  $eventTerm = Term::create([
+  $eventArticleTypeTerm = Term::create([
     'name' => 'Event',
     'vid' => 'article_type',
     'parent' => [],
     'status' => TRUE,
   ]);
-  $eventTerm->save();
+  $eventArticleTypeTerm->save();
+
+  // Taxonomy Team Departments Term
+
+  $directorsTeamDepartmentsTerm = Term::create([
+    'name' => 'Directors',
+    'vid' => 'team_departments',
+    'parent' => [],
+    'status' => TRUE,
+  ]);
+  $directorsTeamDepartmentsTerm->save();
+
+  $salesTeamDepartmentsTerm = Term::create([
+    'name' => 'Sales Team',
+    'vid' => 'team_departments',
+    'parent' => [],
+    'status' => TRUE,
+  ]);
+  $salesTeamDepartmentsTerm->save();
 
   // Nodes
 
@@ -229,7 +247,7 @@ function rehab_install() {
         ]),
       ],
       'field_article_date' => date('Y-m-d'),
-      'field_article_type' => $newsTerm->id(),
+      'field_article_type' => $newsArticleTypeTerm->id(),
       'field_layouts' => [
         Paragraph::create([
           'type' => 'text_content',
@@ -255,7 +273,7 @@ function rehab_install() {
         ]),
       ],
       'field_article_date' => date('Y-m-d'),
-      'field_article_type' => $eventTerm->id(),
+      'field_article_type' => $eventArticleTypeTerm->id(),
       'field_layouts' => [
         Paragraph::create([
           'type' => 'text_content',
@@ -437,6 +455,15 @@ function rehab_install() {
   ]);
   $adminToolbarContentPages->save();
 
+  $adminToolbarContentTeamMembers = MenuLinkContent::create([
+    'title' => 'Team Members',
+    'link' => ['uri' => 'entity.team_member.collection'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 2,
+    'parent' => $adminToolbarContent->getPluginId(),
+  ]);
+  $adminToolbarContentTeamMembers->save();
+
   $adminToolbarAdministration = MenuLinkContent::create([
     'title' => 'Administration',
     'link' => ['uri' => 'route:<nolink>'],
@@ -553,6 +580,15 @@ function rehab_install() {
     'parent' => $clientToolbarContent->getPluginId(),
   ]);
   $clientToolbarContentPages->save();
+
+  $clientToolbarContentTeamMembers = MenuLinkContent::create([
+    'title' => 'Team Members',
+    'link' => ['uri' => 'entity.team_member.collection'],
+    'menu_name' => 'client-admin-toolbar',
+    'weight' => 2,
+    'parent' => $clientToolbarContent->getPluginId(),
+  ]);
+  $clientToolbarContentTeamMembers->save();
 
   $clientToolbarConfig = MenuLinkContent::create([
     'title' => 'Configuration',

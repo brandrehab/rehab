@@ -13,9 +13,9 @@ use Symfony\Component\DependencyInjection\Reference;
 class MenuServiceProvider {
 
   /**
-   * Loads the menus and menu services.
+   * Registers the menus and menu services.
    */
-  public static function load(ContainerBuilder $container): void {
+  public static function register(ContainerBuilder $container): void {
     self::linkFactory($container);
     self::main($container);
     self::footer($container);

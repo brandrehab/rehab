@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.team_member.team_member.field_department
+  module:
+    - app
+id: team_member.team_member.default
+targetEntityType: team_member
+bundle: team_member
+mode: default
+content: {  }
+hidden:
+  email: true
+  field_department: true
+  firstname: true
+  lastname: true
+  position: true
+  telephone: true

@@ -1,0 +1,6 @@
+# tabs to appear under entity settings
+
+entity.team_member.settings:
+  title: Settings
+  route_name: entity.team_member.settings
+  base_route: entity.team_member.settings

@@ -13,12 +13,13 @@ use Symfony\Component\DependencyInjection\Reference;
 class CommandServiceProvider {
 
   /**
-   * Loads the block services.
+   * Registers the block services.
    */
-  public static function load(ContainerBuilder $container): void {
+  public static function register(ContainerBuilder $container): void {
     self::composerOutdated($container);
     self::twigClear($container);
     self::drupalStandardsCompliant($container);
+    self::appEntities($container);
   }
 
   /**
@@ -43,6 +44,17 @@ class CommandServiceProvider {
    */
   private static function drupalStandardsCompliant(ContainerBuilder $container): void {
     $container->register('app.command.drupal_standards_compliant', 'App\Command\DrupalStandardsCompliant')
+      ->addTag('drush.command');
+  }
+
+  /**
+   * Define app:entities (ae) command.
+   */
+  private static function appEntities(ContainerBuilder $container): void {
+    $container->register('app.command.entities', 'App\Command\AppEntities')
+      ->addArgument(new Reference('entity_type.manager'))
+      ->addArgument(new Reference('database'))
+      ->addArgument(new Reference('entity.definition_update_manager'))
       ->addTag('drush.command');
   }
 

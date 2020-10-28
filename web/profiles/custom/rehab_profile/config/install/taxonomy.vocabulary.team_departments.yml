@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Team Departments'
+vid: team_departments
+description: 'Departments to which team members belong.'
+weight: 0

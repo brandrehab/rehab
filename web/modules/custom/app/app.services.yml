@@ -1,0 +1,7 @@
+services:
+  app.container.namespaces:
+    class: App\ServiceDecorator\ContainerNamespaces
+    decorates: container.namespaces
+    decoration_priority: 1
+    public: false
+    arguments: [ '@app.container.namespaces.inner', '%container.namespaces%' ]

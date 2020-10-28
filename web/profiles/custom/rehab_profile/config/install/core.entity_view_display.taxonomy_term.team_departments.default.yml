@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.team_departments
+id: taxonomy_term.team_departments.default
+targetEntityType: taxonomy_term
+bundle: team_departments
+mode: default
+content: {  }
+hidden:
+  description: true
