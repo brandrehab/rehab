@@ -24,7 +24,7 @@ class Head extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @var array
    */
-  private $cache = [
+  private array $cache = [
     'contexts' => [
       'route',
     ],
@@ -36,7 +36,7 @@ class Head extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @var \App\Service\Block\HeadServiceInterface
    */
-  private $headService;
+  private HeadServiceInterface $headService;
 
   /**
    * Dependecy injection.

@@ -30,7 +30,7 @@ class ChildrenWidget extends WidgetBase implements ContainerFactoryPluginInterfa
    *
    * @var \Drupal\Core\Entity\EntityTypeManager
    */
-  private $entityTypeManager;
+  private EntityTypeManager $entityTypeManager;
 
   /**
    * {@inheritdoc}

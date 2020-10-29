@@ -23,42 +23,42 @@ class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @var string|null
    */
-  private $id;
+  private ?string $id = NULL;
 
   /**
    * Preview node uuid.
    *
    * @var string|null
    */
-  private $uuid;
+  private ?string $uuid = NULL;
 
   /**
    * Revision Id.
    *
    * @var string|null
    */
-  private $vid;
+  private ?string $vid = NULL;
 
   /**
    * Node type.
    *
    * @var string|null
    */
-  private $bundle;
+  private ?string $bundle = NULL;
 
   /**
    * Route.
    *
    * @var \Drupal\Core\Routing\RouteMatchInterface
    */
-  private $route;
+  private RouteMatchInterface $route;
 
   /**
    * Cache settings.
    *
    * @var array
    */
-  private $cache = [
+  private array $cache = [
     'contexts' => [
       'route',
     ],

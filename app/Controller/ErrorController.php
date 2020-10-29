@@ -20,7 +20,7 @@ class ErrorController extends ControllerBase implements ContainerInjectionInterf
    *
    * @var \Drupal\Core\Block\BlockManagerInterface
    */
-  private $blockManager;
+  private BlockManagerInterface $blockManager;
 
   /**
    * Dependency injection.

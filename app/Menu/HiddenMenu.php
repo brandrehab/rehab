@@ -17,14 +17,14 @@ class HiddenMenu extends Menu implements MenuInterface {
    *
    * @var string
    */
-  protected $name = 'hidden';
+  protected string $name = 'hidden';
 
   /**
    * Tree transformers.
    *
    * @var array
    */
-  protected $transformations = [
+  protected array $transformations = [
     ['callable' => 'menu.default_tree_manipulators:checkNodeAccess'],
     ['callable' => 'menu.default_tree_manipulators:checkAccess'],
     ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],

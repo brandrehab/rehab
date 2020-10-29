@@ -29,21 +29,21 @@ class Service extends Node implements ServiceInterface {
    *
    * @var string
    */
-  protected $entityView = ServiceEntityView::class;
+  protected string $entityView = ServiceEntityView::class;
 
   /**
    * Menu factory.
    *
    * @var \App\Repository\MenuRepositoryInterface
    */
-  protected $menuRepository;
+  protected MenuRepositoryInterface $menuRepository;
 
   /**
    * Image style storage.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
-  public $imageStyle;
+  public EntityStorageInterface $imageStyle;
 
   /**
    * Manage class dependency injection.

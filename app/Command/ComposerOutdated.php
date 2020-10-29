@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Command;
 
 use Drush\Commands\DrushCommands;
+use Symfony\Component\Process\Process;
 
 /**
  * Composer outdated command.
@@ -16,28 +17,28 @@ class ComposerOutdated extends DrushCommands {
    *
    * @var \Symfony\Component\Process\Process
    */
-  private $composer;
+  private Process $composer;
 
   /**
    * The core process.
    *
    * @var \Symfony\Component\Process\Process
    */
-  private $core;
+  private Process $core;
 
   /**
    * The db process.
    *
    * @var \Symfony\Component\Process\Process
    */
-  private $db;
+  private Process $db;
 
   /**
    * The cache process.
    *
    * @var \Symfony\Component\Process\Process
    */
-  private $cache;
+  private Process $cache;
 
   /**
    * Check whether drupal core or any contrib modules are out of date.

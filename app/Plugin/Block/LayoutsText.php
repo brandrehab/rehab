@@ -20,7 +20,7 @@ class LayoutsText extends BlockBase {
    *
    * @var array
    */
-  private $cache = [
+  private array $cache = [
     'contexts' => [
       'route',
     ],

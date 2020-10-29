@@ -16,14 +16,14 @@ class PageEntityView extends NodeEntityView {
    *
    * @var string
    */
-  public $entityViewDto = PageEntityViewDto::class;
+  public string $entityViewDto = PageEntityViewDto::class;
 
   /**
    * View definitions.
    *
    * @var array
    */
-  protected $definitions = [
+  protected array $definitions = [
     'full' => [
       'id',
       'preview',

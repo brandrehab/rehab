@@ -20,21 +20,21 @@ class Router implements ContainerInjectionInterface {
    *
    * @var \Drupal\Core\Routing\StackedRouteMatchInterface
    */
-  private $route;
+  private StackedRouteMatchInterface $route;
 
   /**
    * Node storage.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  private $entityTypeManager;
+  private EntityTypeManagerInterface $entityTypeManager;
 
   /**
    * Instance of the container.
    *
    * @var \Symfony\Component\DependencyInjection\ContainerInterface
    */
-  static private $container;
+  static private ContainerInterface $container;
 
   /**
    * Class constructor.

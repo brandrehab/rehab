@@ -28,14 +28,14 @@ class NodeStorage extends Base {
    *
    * @var array
    */
-  static protected $nodeEntityTypes = [];
+  static protected array $nodeEntityTypes = [];
 
   /**
    * Dependency injection container.
    *
    * @var \Symfony\Component\DependencyInjection\ContainerInterface
    */
-  protected $container;
+  protected ContainerInterface $container;
 
   /**
    * {@inheritdoc}

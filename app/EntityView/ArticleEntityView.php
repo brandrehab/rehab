@@ -16,14 +16,14 @@ class ArticleEntityView extends NodeEntityView {
    *
    * @var string
    */
-  public $entityViewDto = ArticleEntityViewDto::class;
+  public string $entityViewDto = ArticleEntityViewDto::class;
 
   /**
    * View definitions.
    *
    * @var array
    */
-  protected $definitions = [
+  protected array $definitions = [
     'full' => [
       'id',
       'preview',

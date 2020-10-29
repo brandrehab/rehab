@@ -19,7 +19,7 @@ class AppEntities extends DrushCommands {
    *
    * @var array
    */
-  private $actions = [
+  private array $actions = [
     'enable',
     'uninstall',
   ];
@@ -29,21 +29,21 @@ class AppEntities extends DrushCommands {
    *
    * @var \Drupal\Core\Database\Connection
    */
-  private $database;
+  private Connection $database;
 
   /**
    * Entity type manager.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  private $entityTypeManager;
+  private EntityTypeManagerInterface $entityTypeManager;
 
   /**
    * Entity definition update manager.
    *
    * @var \Drupal\Core\Entity\EntityDefinitionUpdateManagerInterface
    */
-  private $entityDefinitionUpdateManager;
+  private EntityDefinitionUpdateManagerInterface $entityDefinitionUpdateManager;
 
   /**
    * Class constructor.

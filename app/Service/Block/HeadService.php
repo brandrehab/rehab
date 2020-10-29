@@ -14,35 +14,35 @@ class HeadService implements HeadServiceInterface {
    *
    * @var array
    */
-  static protected $meta;
+  static protected array $meta;
 
   /**
    * JsonLd relating to the current page.
    *
    * @var string|null
    */
-  static protected $jsonld;
+  static protected ?string $jsonld;
 
   /**
    * Social media link support relating to the current page.
    *
    * @var array|null
    */
-  static protected $social;
+  static protected ?array $social;
 
   /**
    * Canonical link to the current page.
    *
    * @var string
    */
-  static protected $canonical;
+  static protected string $canonical;
 
   /**
    * Short url for the current page.
    *
    * @var string
    */
-  static protected $shortUrl;
+  static protected string $shortUrl;
 
   /**
    * Get meta data.

@@ -16,14 +16,14 @@ class ServiceEntityView extends NodeEntityView {
    *
    * @var string
    */
-  public $entityViewDto = ServiceEntityViewDto::class;
+  public string $entityViewDto = ServiceEntityViewDto::class;
 
   /**
    * View definitions.
    *
    * @var array
    */
-  protected $definitions = [
+  protected array $definitions = [
     'full' => [
       'id',
       'preview',

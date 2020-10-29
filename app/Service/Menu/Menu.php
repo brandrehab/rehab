@@ -24,42 +24,42 @@ abstract class Menu implements MenuInterface {
    *
    * @var string
    */
-  protected $name;
+  protected string $name;
 
   /**
    * Tree transformers.
    *
    * @var array
    */
-  protected $transformations;
+  protected array $transformations;
 
   /**
    * Menu service.
    *
    * @var \Drupal\Core\Menu\MenuLinkTreeInterface
    */
-  private $menuLinkTree;
+  private MenuLinkTreeInterface $menuLinkTree;
 
   /**
    * Menu active trail.
    *
    * @var \Drupal\Core\Menu\MenuActiveTrailInterface
    */
-  private $menuActiveTrail;
+  private MenuActiveTrailInterface $menuActiveTrail;
 
   /**
    * Path matcher.
    *
    * @var \Drupal\Core\Path\PathMatcherInterface
    */
-  protected $pathMatcher;
+  protected PathMatcherInterface $pathMatcher;
 
   /**
    * Link factory.
    *
    * @var \App\Service\Menu\Link\LinkFactoryInterface
    */
-  protected $linkFactory;
+  protected LinkFactoryInterface $linkFactory;
 
   /**
    * Class constructor.

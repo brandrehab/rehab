@@ -17,14 +17,14 @@ class ClientAdminToolbarMenu extends Menu implements MenuInterface {
    *
    * @var string
    */
-  protected $name = 'client-admin-toolbar';
+  protected string $name = 'client-admin-toolbar';
 
   /**
    * Tree transformers.
    *
    * @var array
    */
-  protected $transformations = [
+  protected array $transformations = [
     ['callable' => 'menu.default_tree_manipulators:checkNodeAccess'],
     ['callable' => 'menu.default_tree_manipulators:checkAccess'],
     ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],

@@ -15,9 +15,9 @@ class ManifestTwigExtension extends AbstractExtension {
   /**
    * Manifest relating to the current page.
    *
-   * @var array
+   * @var array|null
    */
-  static protected $manifest;
+  static protected ?array $manifest = NULL;
 
   /**
    * {@inheritdoc}

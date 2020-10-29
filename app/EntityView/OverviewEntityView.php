@@ -16,14 +16,14 @@ class OverviewEntityView extends NodeEntityView {
    *
    * @var string
    */
-  public $entityViewDto = OverviewEntityViewDto::class;
+  public string $entityViewDto = OverviewEntityViewDto::class;
 
   /**
    * View definitions.
    *
    * @var array
    */
-  protected $definitions = [
+  protected array $definitions = [
     'full' => [
       'id',
       'preview',

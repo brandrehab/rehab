@@ -20,35 +20,35 @@ abstract class EntityRepository implements EntityRepositoryInterface {
    *
    * @var string
    */
-  protected $bundle;
+  protected string $bundle;
 
   /**
    * The entity type.
    *
    * @var string
    */
-  protected $entityType;
+  protected string $entityType;
 
   /**
    * The entity reference.
    *
    * @var string
    */
-  protected $entityReference;
+  protected string $entityReference;
 
   /**
    * The Entity type manager.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  protected $entityTypeManager;
+  protected EntityTypeManagerInterface $entityTypeManager;
 
   /**
    * The current user.
    *
    * @var \Drupal\Core\Session\AccountProxyInterface
    */
-  protected $currentUser;
+  protected AccountProxyInterface $currentUser;
 
   /**
    * Class constructor.

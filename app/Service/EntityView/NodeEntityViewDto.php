@@ -14,77 +14,77 @@ class NodeEntityViewDto extends EntityViewDto {
    *
    * @var int
    */
-  protected $id;
+  protected int $id;
 
   /**
    * Preview.
    *
    * @var bool
    */
-  protected $preview;
+  protected bool $preview;
 
   /**
    * Title.
    *
    * @var string
    */
-  protected $title;
+  protected string $title;
 
   /**
    * Heading.
    *
    * @var string
    */
-  protected $heading;
+  protected string $heading;
 
   /**
    * Url.
    *
    * @var string
    */
-  protected $url;
+  protected string $url;
 
   /**
    * Short url.
    *
    * @var string
    */
-  protected $shorturl;
+  protected string $shorturl;
 
   /**
    * Layouts.
    *
-   * @var array
+   * @var array|null
    */
-  protected $layouts;
+  protected ?array $layouts = NULL;
 
   /**
    * Created.
    *
    * @var int
    */
-  protected $created;
+  protected int $created;
 
   /**
    * Updated.
    *
    * @var int
    */
-  protected $updated;
+  protected int $updated;
 
   /**
    * Seo.
    *
    * @var array
    */
-  protected $seo;
+  protected array $seo;
 
   /**
    * Social.
    *
    * @var array|null
    */
-  protected $social;
+  protected ?array $social;
 
   /**
    * Get the id.

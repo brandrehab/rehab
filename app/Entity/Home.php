@@ -24,14 +24,14 @@ class Home extends Node implements HomeInterface {
    *
    * @var string
    */
-  protected $entityView = HomeEntityView::class;
+  protected string $entityView = HomeEntityView::class;
 
   /**
    * Image style storage.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
-  public $imageStyle;
+  public EntityStorageInterface $imageStyle;
 
   /**
    * Manage class dependency injection.

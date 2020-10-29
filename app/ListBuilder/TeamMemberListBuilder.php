@@ -22,14 +22,14 @@ class TeamMemberListBuilder extends EntityListBuilder {
    *
    * @var \Drupal\Core\Session\AccountProxyInterface
    */
-  private $currentUser;
+  private AccountProxyInterface $currentUser;
 
   /**
    * Url generator.
    *
    * @var \Drupal\Core\Routing\UrlGeneratorInterface
    */
-  private $urlGenerator;
+  private UrlGeneratorInterface $urlGenerator;
 
   /**
    * Constructs a new TeamMemberListBuilder object.

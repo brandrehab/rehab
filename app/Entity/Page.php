@@ -29,21 +29,21 @@ class Page extends Node implements PageInterface {
    *
    * @var string
    */
-  protected $entityView = PageEntityView::class;
+  protected string $entityView = PageEntityView::class;
 
   /**
    * Menu factory.
    *
    * @var \App\Repository\MenuRepositoryInterface
    */
-  protected $menuRepository;
+  protected MenuRepositoryInterface $menuRepository;
 
   /**
    * Image style storage.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
-  public $imageStyle;
+  public EntityStorageInterface $imageStyle;
 
   /**
    * Manage class dependency injection.

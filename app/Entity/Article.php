@@ -29,21 +29,21 @@ class Article extends Node implements ArticleInterface {
    *
    * @var string
    */
-  protected $entityView = ArticleEntityView::class;
+  protected string $entityView = ArticleEntityView::class;
 
   /**
    * Menu factory.
    *
    * @var \App\Repository\MenuRepositoryInterface
    */
-  protected $menuRepository;
+  protected MenuRepositoryInterface $menuRepository;
 
   /**
    * Image style storage.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
-  public $imageStyle;
+  public EntityStorageInterface $imageStyle;
 
   /**
    * Manage class dependency injection.

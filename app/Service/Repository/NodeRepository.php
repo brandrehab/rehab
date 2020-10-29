@@ -16,12 +16,12 @@ class NodeRepository extends EntityRepository implements NodeRepositoryInterface
   /**
    * {@inheritdoc}
    */
-  protected $entityType = 'node';
+  protected string $entityType = 'node';
 
   /**
    * {@inheritdoc}
    */
-  protected $entityReference = 'nid';
+  protected string $entityReference = 'nid';
 
   /**
    * {@inheritdoc}

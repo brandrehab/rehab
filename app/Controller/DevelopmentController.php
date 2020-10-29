@@ -27,14 +27,14 @@ class DevelopmentController extends ControllerBase implements ContainerInjection
    *
    * @var \Drupal\Core\Render\RendererInterface
    */
-  private $renderer;
+  private RendererInterface $renderer;
 
   /**
    * Twig environment.
    *
    * @var \Drupal\Core\Template\TwigEnvironment
    */
-  private $twig;
+  private TwigEnvironment $twig;
 
   /**
    * Dependency injection.

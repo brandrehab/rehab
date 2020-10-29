@@ -26,7 +26,7 @@ abstract class EntityViewDto implements EntityViewDtoInterface {
    *
    * @var int
    */
-  protected $id;
+  protected int $id;
 
   /**
    * Get the id.

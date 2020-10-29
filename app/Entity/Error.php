@@ -26,14 +26,14 @@ class Error extends Node implements ErrorInterface {
    *
    * @var string
    */
-  protected $entityView = ErrorEntityView::class;
+  protected string $entityView = ErrorEntityView::class;
 
   /**
    * Image style storage.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
-  public $imageStyle;
+  public EntityStorageInterface $imageStyle;
 
   /**
    * Manage class dependency injection.

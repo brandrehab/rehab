@@ -17,21 +17,21 @@ class MenuRepository implements MenuRepositoryInterface {
    *
    * @var \App\Service\Menu\MenuInterface
    */
-  protected $main;
+  protected MenuInterface $main;
 
   /**
    * Footer menu.
    *
    * @var \App\Service\Menu\MenuInterface
    */
-  protected $footer;
+  protected MenuInterface $footer;
 
   /**
    * Hidden menu.
    *
    * @var \App\Service\Menu\MenuInterface
    */
-  protected $hidden;
+  protected MenuInterface $hidden;
 
   /**
    * Class constructor.

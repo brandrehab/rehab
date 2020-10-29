@@ -14,6 +14,6 @@ class ArticleRepository extends NodeRepository implements ArticleRepositoryInter
   /**
    * {@inheritdoc}
    */
-  protected $bundle = 'article';
+  protected string $bundle = 'article';
 
 }

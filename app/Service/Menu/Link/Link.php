@@ -14,35 +14,35 @@ class Link implements LinkInterface {
    *
    * @var string
    */
-  private $title;
+  private string $title;
 
   /**
    * Url.
    *
    * @var string
    */
-  private $url;
+  private string $url;
 
   /**
    * NOde id.
    *
    * @var int
    */
-  private $nid;
+  private int $nid;
 
   /**
    * Active.
    *
    * @var bool
    */
-  private $active;
+  private bool $active;
 
   /**
    * Child links.
    *
-   * @var \App\Service\Menu\Link\LinkCollectionInterface
+   * @var \App\Service\Menu\Link\LinkCollectionInterface|null
    */
-  private $children;
+  private ?LinkCollectionInterface $children = NULL;
 
   /**
    * Title getter.

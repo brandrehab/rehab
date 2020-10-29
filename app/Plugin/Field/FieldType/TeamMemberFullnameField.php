@@ -8,6 +8,7 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\TypedData\DataDefinition;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Component\Utility\Random;
 
 /**
@@ -26,14 +27,15 @@ class TeamMemberFullnameField extends FieldItemBase {
    *
    * @var bool
    */
-  protected $isCalculated = FALSE;
+  protected bool $isCalculated = FALSE;
 
   /**
    * {@inheritdoc}
    */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition): array {
+    $label = new TranslatableMarkup('Team Member Fullname');
     $properties['value'] = DataDefinition::create('string')
-      ->setLabel(t('Team Member Fullname')->__toString())
+      ->setLabel($label->__toString())
       ->setComputed(TRUE)
       ->setRequired(TRUE);
 

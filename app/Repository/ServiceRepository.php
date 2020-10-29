@@ -14,6 +14,6 @@ class ServiceRepository extends NodeRepository implements ServiceRepositoryInter
   /**
    * {@inheritdoc}
    */
-  protected $bundle = 'service';
+  protected string $bundle = 'service';
 
 }

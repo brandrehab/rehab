@@ -14,6 +14,6 @@ class HomeRepository extends NodeRepository implements HomeRepositoryInterface {
   /**
    * {@inheritdoc}
    */
-  protected $bundle = 'home';
+  protected string $bundle = 'home';
 
 }

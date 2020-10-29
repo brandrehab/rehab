@@ -24,7 +24,7 @@ class Layouts extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @var array
    */
-  private $cache = [
+  private array $cache = [
     'contexts' => [
       'route',
     ],
@@ -36,21 +36,21 @@ class Layouts extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @var \Drupal\Core\Render\RendererInterface
    */
-  private $renderer;
+  private RendererInterface $renderer;
 
   /**
    * Rendering of any template html.
    *
-   * @var string
+   * @var string|null
    */
-  private $rendering;
+  private ?string $rendering = NULL;
 
   /**
    * Block manager.
    *
    * @var \Drupal\Core\Block\BlockManagerInterface
    */
-  private $blockManager;
+  private BlockManagerInterface $blockManager;
 
   /**
    * Dependecy injection.

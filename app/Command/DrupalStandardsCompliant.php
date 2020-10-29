@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Command;
 
 use Drush\Commands\DrushCommands;
+use Symfony\Component\Process\Process;
 
 /**
  * Check the code against Drupal Standards.
@@ -23,7 +24,7 @@ class DrupalStandardsCompliant extends DrushCommands {
    *
    * @var \Symfony\Component\Process\Process
    */
-  private $phpstan;
+  private Process $phpstan;
 
   /**
    * Check whether the code is Drupal Standards Compliant.

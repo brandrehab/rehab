@@ -20,7 +20,7 @@ class PageController extends ControllerBase implements ContainerInjectionInterfa
    *
    * @var \Drupal\Core\Block\BlockManagerInterface
    */
-  private $blockManager;
+  private BlockManagerInterface $blockManager;
 
   /**
    * Dependency injection.

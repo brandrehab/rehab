@@ -19,7 +19,7 @@ class TwigClear extends DrushCommands {
    *
    * @var \Drupal\Core\Template\TwigEnvironment
    */
-  private $twig;
+  private TwigEnvironment $twig;
 
   /**
    * Class constructor.

@@ -14,14 +14,14 @@ class LinkCollection implements LinkCollectionInterface {
    *
    * @var int
    */
-  private $key;
+  private int $key;
 
   /**
    * A collection of menu links \App\Menu\LinkInterface.
    *
    * @var array
    */
-  private $collection = [];
+  private array $collection = [];
 
   /**
    * Add a link to the collection.

@@ -16,14 +16,14 @@ class HomeEntityView extends NodeEntityView {
    *
    * @var string
    */
-  public $entityViewDto = HomeEntityViewDto::class;
+  public string $entityViewDto = HomeEntityViewDto::class;
 
   /**
    * View definitions.
    *
    * @var array
    */
-  protected $definitions = [
+  protected array $definitions = [
     'full' => [
       'id',
       'preview',

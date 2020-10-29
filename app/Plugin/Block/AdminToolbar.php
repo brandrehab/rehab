@@ -24,14 +24,14 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
    *
    * @var \Drupal\Core\Session\AccountProxyInterface
    */
-  private $currentUser;
+  private AccountProxyInterface $currentUser;
 
   /**
    * Cache settings.
    *
    * @var array
    */
-  private $cache = [
+  private array $cache = [
     'contexts' => [
       'user.roles',
     ],
@@ -43,14 +43,14 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
    *
    * @var \App\Service\Menu\MenuInterface
    */
-  private $clientAdminToolbar;
+  private MenuInterface $clientAdminToolbar;
 
   /**
    * Admin toolbar menu service.
    *
    * @var \App\Service\Menu\MenuInterface
    */
-  private $adminToolbar;
+  private MenuInterface $adminToolbar;
 
   /**
    * Dependency Injection.

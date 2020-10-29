@@ -16,14 +16,14 @@ abstract class EntityView implements EntityViewInterface {
    *
    * @var string
    */
-  public $entityViewDto;
+  public string $entityViewDto;
 
   /**
    * View definitions.
    *
    * @var array
    */
-  protected $definitions = [
+  protected array $definitions = [
     'full' => [
       'id',
     ],
@@ -33,6 +33,8 @@ abstract class EntityView implements EntityViewInterface {
    * Entity.
    *
    * @var \Drupal\Core\Entity\ContentEntityInterface
+   *
+   * @todo ContentEntityInterface is incorrect when property is typed.
    */
   protected $entity;
 

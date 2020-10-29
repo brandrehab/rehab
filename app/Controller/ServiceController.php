@@ -20,7 +20,7 @@ class ServiceController extends ControllerBase implements ContainerInjectionInte
    *
    * @var \Drupal\Core\Block\BlockManagerInterface
    */
-  private $blockManager;
+  private BlockManagerInterface $blockManager;
 
   /**
    * Dependency injection.

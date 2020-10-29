@@ -18,6 +18,8 @@ class ComputedFieldItemList extends FieldItemList {
    * Numerically indexed array of field items.
    *
    * @var \Drupal\Core\TypedData\TypedDataInterface[]
+   *
+   * @todo Typing this property as an array fails.
    */
   protected $list = [];
 

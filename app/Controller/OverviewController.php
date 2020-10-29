@@ -20,7 +20,7 @@ class OverviewController extends ControllerBase implements ContainerInjectionInt
    *
    * @var \Drupal\Core\Block\BlockManagerInterface
    */
-  private $blockManager;
+  private BlockManagerInterface $blockManager;
 
   /**
    * Dependency injection.

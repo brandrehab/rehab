@@ -16,7 +16,7 @@ abstract class NodeEntityView extends EntityView implements NodeEntityViewInterf
    *
    * @var array
    */
-  protected $definitions = [
+  protected array $definitions = [
     'full' => [
       'id',
       'preview',
@@ -36,6 +36,8 @@ abstract class NodeEntityView extends EntityView implements NodeEntityViewInterf
    * Entity.
    *
    * @var \Drupal\node\NodeInterface
+   *
+   * @todo NodeInterface is incorrect when property is typed.
    */
   protected $entity;
 

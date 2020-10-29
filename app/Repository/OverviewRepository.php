@@ -14,6 +14,6 @@ class OverviewRepository extends NodeRepository implements OverviewRepositoryInt
   /**
    * {@inheritdoc}
    */
-  protected $bundle = 'overview';
+  protected string $bundle = 'overview';
 
 }

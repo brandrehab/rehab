@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Plugin\Block;
 
 use App\Repository\MenuRepositoryInterface;
+use App\Service\Menu\MenuInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -24,7 +25,7 @@ class Navigation extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @var array
    */
-  private $cache = [
+  private array $cache = [
     'contexts' => [
       'route',
     ],
@@ -38,7 +39,7 @@ class Navigation extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @var \App\Service\Menu\MenuInterface
    */
-  private $mainMenu;
+  private MenuInterface $mainMenu;
 
   /**
    * Manage class dependency injection.

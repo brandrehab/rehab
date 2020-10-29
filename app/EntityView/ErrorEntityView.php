@@ -16,14 +16,14 @@ class ErrorEntityView extends NodeEntityView {
    *
    * @var string
    */
-  public $entityViewDto = ErrorEntityViewDto::class;
+  public string $entityViewDto = ErrorEntityViewDto::class;
 
   /**
    * View definitions.
    *
    * @var array
    */
-  protected $definitions = [
+  protected array $definitions = [
     'full' => [
       'id',
       'preview',

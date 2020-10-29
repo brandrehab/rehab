@@ -14,6 +14,6 @@ class PageRepository extends NodeRepository implements PageRepositoryInterface {
   /**
    * {@inheritdoc}
    */
-  protected $bundle = 'page';
+  protected string $bundle = 'page';
 
 }

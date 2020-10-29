@@ -14,6 +14,6 @@ class ErrorRepository extends NodeRepository implements ErrorRepositoryInterface
   /**
    * {@inheritdoc}
    */
-  protected $bundle = 'error';
+  protected string $bundle = 'error';
 
 }
