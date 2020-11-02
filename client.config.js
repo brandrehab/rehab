@@ -6,7 +6,7 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const WebpackShellPlugin = require('webpack-shell-plugin-next')
 const ExtraWatchWebpackPlugin = require('extra-watch-webpack-plugin')
-const ImageminPlugin = require("imagemin-webpack")
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin")
 const Glob = require('glob-all')
 
 const theme = 'client'
@@ -99,10 +99,9 @@ module.exports = {
         Path.resolve(__dirname, 'web/themes/custom/' + theme + '/layout/*.html.twig')
       ],
     }),
-    new ImageminPlugin({
-      bail: false,
+    new ImageMinimizerPlugin({
       cache: true,
-      imageminOptions: {
+      minimizerOptions: {
         plugins: [
           ["gifsicle", {
             interlaced: true

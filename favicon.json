@@ -1,0 +1,18 @@
+{
+  "appName": "Brand Rehab",
+  "appShortName": "Brand Rehab",
+  "appDescription": "Brand Rehab application",
+  "developerName": "Wayne Ashley wayne@brand.rehab",
+  "developerURL": "https://brand.rehab",
+  "dir": "auto",
+  "lang": "en-GB",
+  "background": "#ffffff",
+  "themeColor": "#ffffff",
+  "appleStatusBarStyle": "black-translucent",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "startURL": "/",
+  "version": "1.0",
+  "api": 1
+}

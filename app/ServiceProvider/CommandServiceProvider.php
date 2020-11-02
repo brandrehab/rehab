@@ -20,6 +20,7 @@ class CommandServiceProvider {
     self::twigClear($container);
     self::drupalStandardsCompliant($container);
     self::appEntities($container);
+    self::faviconGenerator($container);
   }
 
   /**
@@ -55,6 +56,16 @@ class CommandServiceProvider {
       ->addArgument(new Reference('entity_type.manager'))
       ->addArgument(new Reference('database'))
       ->addArgument(new Reference('entity.definition_update_manager'))
+      ->addTag('drush.command');
+  }
+
+  /**
+   * Define app:favicon (af) command.
+   */
+  private static function faviconGenerator(ContainerBuilder $container): void {
+    $container->register('app.command.favicon_generator', 'App\Command\FaviconGenerator')
+      ->addArgument(new Reference('file_system'))
+      ->addArgument(new Reference('twig'))
       ->addTag('drush.command');
   }
 
