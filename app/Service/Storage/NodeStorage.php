@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Service\Storage;
 
+use App\Repository\MenuRepositoryInterface;
 use App\Service\Entity\Node;
 use Drupal\node\NodeStorage as Base;
+use Drupal\Core\Entity\Query\QueryInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Cache\CacheBackendInterface;
@@ -14,7 +17,6 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Cache\MemoryCache\MemoryCacheInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\Language\LanguageInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -24,25 +26,34 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class NodeStorage extends Base {
 
   /**
-   * Node entity types and associated classes.
+   * Node entity types (bundles) and associated classes.
    *
    * @var array
    */
   static protected array $nodeEntityTypes = [];
 
   /**
-   * Dependency injection container.
+   * The current user.
    *
-   * @var \Symfony\Component\DependencyInjection\ContainerInterface
+   * @var \Drupal\Core\Session\AccountProxyInterface
    */
-  protected ContainerInterface $container;
+  protected AccountProxyInterface $currentUser;
+
+  /**
+   * The menu repository.
+   *
+   * @var \App\Repository\MenuRepositoryInterface
+   */
+  protected MenuRepositoryInterface $menuRepository;
 
   /**
    * {@inheritdoc}
    */
-  public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type): self {
+  public static function createInstance(
+    ContainerInterface $container,
+    EntityTypeInterface $entity_type
+  ): self {
     return new self(
-      $container,
       $entity_type,
       $container->get('database'),
       $container->get('entity_field.manager'),
@@ -50,39 +61,41 @@ class NodeStorage extends Base {
       $container->get('language_manager'),
       $container->get('entity.memory_cache'),
       $container->get('entity_type.bundle.info'),
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('current_user'),
+      $container->get('app.repository.menu')
     );
   }
 
   /**
-   * {@inheritdoc}
+   * Constructs a SqlContentEntityStorage object.
    */
   public function __construct(
-    ContainerInterface $container,
     EntityTypeInterface $entity_type,
     Connection $database,
     EntityFieldManagerInterface $entity_field_manager,
     CacheBackendInterface $cache,
     LanguageManagerInterface $language_manager,
-    MemoryCacheInterface $memory_cache = NULL,
-    EntityTypeBundleInfoInterface $entity_type_bundle_info = NULL,
-    EntityTypeManagerInterface $entity_type_manager = NULL
+    MemoryCacheInterface $memory_cache,
+    EntityTypeBundleInfoInterface $entity_type_bundle_info,
+    EntityTypeManagerInterface $entity_type_manager,
+    AccountProxyInterface $current_user,
+    MenuRepositoryInterface $menu_repository
   ) {
-    $this->container = $container;
-    if (!$entity_type_manager) {
-      $entity_type_manager = $this->container->get('entity_type.manager');
-    }
-    if (!self::$nodeEntityTypes) {
-      $this->addEntityTypeClasses($entity_type_manager);
-    }
+    $this->currentUser = $current_user;
+    $this->menuRepository = $menu_repository;
     parent::__construct($entity_type, $database, $entity_field_manager, $cache, $language_manager, $memory_cache, $entity_type_bundle_info, $entity_type_manager);
+
+    if (!self::$nodeEntityTypes) {
+      $this->setNodeEntityTypes();
+    }
   }
 
   /**
-   * Add node type classes.
+   * Matches Entity types to node type specific classes.
    */
-  public function addEntityTypeClasses(EntityTypeManagerInterface $entity_type_manager): void {
-    $node_types = $entity_type_manager->getStorage('node_type')->loadMultiple();
+  protected function setNodeEntityTypes(): void {
+    $node_types = $this->entityTypeManager->getStorage('node_type')->loadMultiple();
     foreach ($node_types as $node_type) {
       $class_name = str_replace('_', '', ucwords($node_type->id(), '_'));
       $namespaced_class = 'App\\Entity\\' . $class_name;
@@ -95,41 +108,41 @@ class NodeStorage extends Base {
   }
 
   /**
-   * {@inheritdoc}
+   * Get node entity class of given type.
    */
-  protected function doCreate(array $values) {
-    $this->entityClass = $this->getEntityTypeClass($values['type']);
-
-    $bundle = FALSE;
-    if ($this->bundleKey) {
-      if (!isset($values[$this->bundleKey])) {
-        throw new EntityStorageException('Missing bundle for entity type ' . $this->entityTypeId);
-      }
-
-      $bundle_value = $values[$this->bundleKey];
-      if (!is_array($bundle_value)) {
-        $bundle = $bundle_value;
-      }
-      elseif (is_numeric(array_keys($bundle_value)[0])) {
-        $bundle = reset($bundle_value[0]);
-      }
-      else {
-        $bundle = reset($bundle_value);
-      }
-    }
-    $entity = $this->entityClass::createInstance($this->container, [], $this->entityTypeId, $bundle);
-    $this->initFieldValues($entity, $values);
-    return $entity;
-  }
-
-  /**
-   * Returns the entity class of a node type.
-   */
-  public function getEntityTypeClass(string $node_type): string {
+  protected function getNodeEntityType(string $node_type): string {
     if (array_key_exists($node_type, self::$nodeEntityTypes)) {
       return self::$nodeEntityTypes[$node_type];
     }
     return Node::class;
+  }
+
+  /**
+   * Get the menu repository.
+   */
+  public function getMenuRepository(): MenuRepositoryInterface {
+    return $this->menuRepository;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getBundleQuery(string $bundle, string $conjugation = 'AND'): QueryInterface {
+    $query = $this->getQuery($conjugation)
+      ->condition('type', $bundle);
+
+    if ($this->currentUser->isAnonymous()) {
+      $query->condition('status', Node::PUBLISHED);
+    }
+    return $query;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function doCreate(array $values) {
+    $this->entityClass = $this->getNodeEntityType($values['type']);
+    return parent::doCreate($values);
   }
 
   /**
@@ -182,9 +195,9 @@ class NodeStorage extends Base {
 
     $entities = [];
     foreach ($values as $id => $entity_values) {
-      $this->entityClass = $this->getEntityTypeClass($entity_values['type']['x-default']);
+      $this->entityClass = $this->getNodeEntityType($entity_values['type']['x-default']);
       $bundle = $this->bundleKey ? $entity_values[$this->bundleKey][LanguageInterface::LANGCODE_DEFAULT] : FALSE;
-      $entities[$id] = $this->entityClass::createInstance($this->container, $entity_values, $this->entityTypeId, $bundle, array_keys($translations[$id]));
+      $entities[$id] = new $this->entityClass($entity_values, $this->entityTypeId, $bundle, array_keys($translations[$id]));
     }
 
     return $entities;

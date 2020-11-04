@@ -12,6 +12,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\PhpStorage\PhpStorageFactory;
 use Drupal\Core\Template\TwigEnvironment;
 use Drupal\Core\Cache\Cache;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
@@ -37,19 +38,32 @@ class DevelopmentController extends ControllerBase implements ContainerInjection
   private TwigEnvironment $twig;
 
   /**
+   * The entity type.
+   *
+   * @var string
+   */
+  protected string $entityType;
+
+  /**
    * Dependency injection.
    */
   public static function create(ContainerInterface $container): self {
     return new self(
       $container->get('renderer'),
-      $container->get('twig')
+      $container->get('twig'),
+      $container->get('entity_type.manager')
     );
   }
 
   /**
    * Class constructor.
    */
-  public function __construct(RendererInterface $renderer, TwigEnvironment $twig) {
+  public function __construct(
+    RendererInterface $renderer,
+    TwigEnvironment $twig,
+    EntityTypeManagerInterface $entity_type_manager
+  ) {
+    $this->entityTypeManager = $entity_type_manager;
     $this->renderer = $renderer;
     $this->twig = $twig;
   }

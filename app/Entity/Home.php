@@ -4,13 +4,9 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\EntityView\HomeEntityView;
 use App\Service\Entity\Node;
-use App\Service\Entity\NodeInterface;
 use App\Service\Entity\AssignsTitleFromSeoFieldTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Entity for content of type home.
@@ -20,50 +16,27 @@ class Home extends Node implements HomeInterface {
   use AssignsTitleFromSeoFieldTrait;
 
   /**
-   * Associate an entity view with this entity.
-   *
-   * @var string
+   * Get the optional entity layouts.
    */
-  protected string $entityView = HomeEntityView::class;
+  public function getLayouts(): ?array {
+    $groups = $this->field_layouts;
 
-  /**
-   * Image style storage.
-   *
-   * @var \Drupal\Core\Entity\EntityStorageInterface
-   */
-  public EntityStorageInterface $imageStyle;
+    if ($groups == NULL) {
+      return NULL;
+    }
 
-  /**
-   * Manage class dependency injection.
-   */
-  public static function createInstance(
-    ContainerInterface $container,
-    array $values,
-    string $entity_type,
-    ?string $bundle = NULL,
-    array $translations = []
-  ): NodeInterface {
-    return new self(
-      $container->get('entity_type.manager'),
-      $values,
-      $entity_type,
-      $bundle,
-      $translations
-    );
-  }
+    $layouts = [];
 
-  /**
-   * {@inheritdoc}
-   */
-  public function __construct(
-    EntityTypeManagerInterface $entity_type_manager,
-    array $values,
-    string $entity_type,
-    ?string $bundle,
-    array $translations
-  ) {
-    $this->imageStyle = $entity_type_manager->getStorage('image_style');
-    parent::__construct($values, $entity_type, $bundle, $translations);
+    foreach ($groups as $group) {
+      switch ($group->entity->getType()) {
+        case 'text_content':
+          if ($text = $group->entity->field_text->first()) {
+            $layouts[] = ['text' => $text->value];
+          }
+      }
+    }
+
+    return $layouts;
   }
 
   /**

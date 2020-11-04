@@ -18,7 +18,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *   label = @Translation("Team Member"),
  *   label_collection = @Translation("Team Members"),
  *   handlers = {
- *     "storage" = "App\Service\Storage\TeamMemberStorage",
+ *     "storage" = "App\Storage\TeamMemberStorage",
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "App\ListBuilder\TeamMemberListBuilder",
  *     "views_data" = "Drupal\views\EntityViewsData",
@@ -60,10 +60,38 @@ class TeamMember extends ContentEntityBase implements TeamMemberInterface {
   }
 
   /**
+   * Gets the firstname of the team member.
+   */
+  public function getFirstname(): string {
+    return $this->get('firstname')->value;
+  }
+
+  /**
+   * Gets the lastname of the team member.
+   */
+  public function getLastname(): string {
+    return $this->get('lastname')->value;
+  }
+
+  /**
    * Gets the calculated team member name.
    */
   public function getFullname(): string {
     return $this->get('fullname')->value;
+  }
+
+  /**
+   * Gets the optional email address of the team member.
+   */
+  public function getEmail(): ?string {
+    return $this->get('email')->value;
+  }
+
+  /**
+   * Gets the optional telephone number of the team member.
+   */
+  public function getTelephone(): ?string {
+    return $this->get('telephone')->value;
   }
 
   /**
@@ -211,7 +239,7 @@ class TeamMember extends ContentEntityBase implements TeamMemberInterface {
       ->setDisplayConfigurable('view', TRUE);
 
     $fields['created'] = BaseFieldDefinition::create('created')
-      ->setLabel(t('Authored on'))
+      ->setLabel(t('Authored on')->__toString())
       ->setDescription(t('The time that the team member was created.')->__toString());
 
     $fields['changed'] = BaseFieldDefinition::create('changed')

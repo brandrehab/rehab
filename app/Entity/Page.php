@@ -4,16 +4,11 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Repository\MenuRepositoryInterface;
-use App\EntityView\PageEntityView;
 use App\Service\Entity\Node;
-use App\Service\Entity\NodeInterface;
 use App\Service\Entity\AssignsTitleFromSeoFieldTrait;
 use App\Service\Entity\UpdatesChildMenuLinksTrait;
 use App\Service\Entity\ControlsMenuLinkStatusTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Entity for content of type page.
@@ -25,60 +20,27 @@ class Page extends Node implements PageInterface {
   use ControlsMenuLinkStatusTrait;
 
   /**
-   * Associate an entity view with this entity.
-   *
-   * @var string
+   * Get the optional entity layouts.
    */
-  protected string $entityView = PageEntityView::class;
+  public function getLayouts(): ?array {
+    $groups = $this->field_layouts;
 
-  /**
-   * Menu factory.
-   *
-   * @var \App\Repository\MenuRepositoryInterface
-   */
-  protected MenuRepositoryInterface $menuRepository;
+    if ($groups == NULL) {
+      return NULL;
+    }
 
-  /**
-   * Image style storage.
-   *
-   * @var \Drupal\Core\Entity\EntityStorageInterface
-   */
-  public EntityStorageInterface $imageStyle;
+    $layouts = [];
 
-  /**
-   * Manage class dependency injection.
-   */
-  public static function createInstance(
-    ContainerInterface $container,
-    array $values,
-    string $entity_type,
-    ?string $bundle = NULL,
-    array $translations = []
-  ): NodeInterface {
-    return new self(
-      $container->get('entity_type.manager'),
-      $container->get('app.repository.menu'),
-      $values,
-      $entity_type,
-      $bundle,
-      $translations
-    );
-  }
+    foreach ($groups as $group) {
+      switch ($group->entity->getType()) {
+        case 'text_content':
+          if ($text = $group->entity->field_text->first()) {
+            $layouts[] = ['text' => $text->value];
+          }
+      }
+    }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function __construct(
-    EntityTypeManagerInterface $entity_type_manager,
-    MenuRepositoryInterface $menu_repository,
-    array $values,
-    string $entity_type,
-    ?string $bundle,
-    array $translations
-  ) {
-    $this->menuRepository = $menu_repository;
-    $this->imageStyle = $entity_type_manager->getStorage('image_style');
-    parent::__construct($values, $entity_type, $bundle, $translations);
+    return $layouts;
   }
 
   /**

@@ -43,7 +43,7 @@ class Top extends BlockBase {
 
     return [
       '#theme' => 'top',
-      '#heading' => $node->heading(),
+      '#heading' => $node->getHeading(),
       '#cache' => $this->cache,
     ];
   }

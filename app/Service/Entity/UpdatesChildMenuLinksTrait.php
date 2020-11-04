@@ -26,7 +26,7 @@ trait UpdatesChildMenuLinksTrait {
     $menu_name = $menu_link->menu_name->first()->value;
     $menu_link_id = $menu_link->getPluginId();
 
-    $menu = $this->menuRepository->get($menu_name);
+    $menu = $storage->getMenuRepository()->get($menu_name);
 
     $links = $menu->build(1, 1, $menu_link_id);
     $nids = $menu->getNids($links);

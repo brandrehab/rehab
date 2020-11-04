@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\EntityView\ServiceEntityViewDto;
+use App\Entity\Service;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Block\BlockManagerInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
@@ -41,7 +41,7 @@ class ServiceController extends ControllerBase implements ContainerInjectionInte
   /**
    * Handles requests for nodes of type service.
    */
-  public function view(ServiceEntityViewDto $node): array {
+  public function view(Service $node): array {
     return [
       $this->blockManager->createInstance('app.top', [
         'node' => $node,

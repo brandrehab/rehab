@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Routing\Routes;
+namespace App\Routes;
 
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;

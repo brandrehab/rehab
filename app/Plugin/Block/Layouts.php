@@ -98,8 +98,8 @@ class Layouts extends BlockBase implements ContainerFactoryPluginInterface {
       'revision:' . $node->id(),
     ];
 
-    if ($node->layouts()) {
-      $this->renderLayouts($node->id(), $node->layouts());
+    if ($layouts = $node->getLayouts()) {
+      $this->renderLayouts((int) $node->id(), $layouts);
     }
 
     return [

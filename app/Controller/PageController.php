@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\EntityView\PageEntityViewDto;
+use App\Entity\Page;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Block\BlockManagerInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
@@ -41,7 +41,7 @@ class PageController extends ControllerBase implements ContainerInjectionInterfa
   /**
    * Handles requests for nodes of type page.
    */
-  public function view(PageEntityViewDto $node): array {
+  public function view(Page $node): array {
     return [
       $this->blockManager->createInstance('app.top', [
         'node' => $node,

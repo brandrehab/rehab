@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\EntityView\HomeEntityViewDto;
+use App\Entity\Home;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Block\BlockManagerInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
@@ -41,7 +41,7 @@ class HomeController extends ControllerBase implements ContainerInjectionInterfa
   /**
    * Handles requests for nodes of type home.
    */
-  public function view(HomeEntityViewDto $node): array {
+  public function view(Home $node): array {
     return [
       $this->blockManager->createInstance('app.top', [
         'node' => $node,
