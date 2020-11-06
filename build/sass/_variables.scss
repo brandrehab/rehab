@@ -25,7 +25,7 @@ $grays: (
   "900": $gray-900
 );
 
-$body-color: $gray-800;
+$body-color: darken($primary, 30%);
 
 $theme-colors: (
   "gray100": $gray-100,
@@ -56,16 +56,14 @@ $spacers: (
 );
 
 $font-family-sans-serif: sans-serif;
-$font-size-base: 1.1111rem;
-$line-height-base: 1.6666;
+$font-size-base: 1rem;
 
 $font-weight-normal: 400;
 $font-weight-bold: 500;
 $font-weight-bolder: 700;
 
-$headings-color: $gray-800;
+$headings-color: darken($primary, 30%);
 $headings-font-weight: $font-weight-normal;
-$headings-line-height: 1.3571;
 
 $headings-margin-bottom: map-get($spacers, 5);
 $headings-margin-top: map-get($spacers, 5);
@@ -115,7 +113,4 @@ $embed-responsive-aspect-ratios: (
 $enable-rounded: false;
 $enable-shadows: false;
 $enable-gradients: false;
-
-$navigation-height: 3.5rem;
-$toolbar-height: 2.8125rem;
-$combined-header-height: $navigation-height + $toolbar-height;
+$enable-responsive-font-sizes: true;

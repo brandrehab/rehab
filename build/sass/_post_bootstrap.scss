@@ -27,17 +27,7 @@ html {
   max-width: $body-max-width;
   margin: auto;
   body {
-    header {
-      height: $navigation-height;
-    }
-    main {
-      // margin-top: -$navigation-height;
-    }
-    &.admin {
-      header {
-        height: $combined-header-height;
-      }
-    }
+    background-color: darken($primary, 15%);
   }
 }
 

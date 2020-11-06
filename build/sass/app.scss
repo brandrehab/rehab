@@ -1,9 +1,6 @@
 /* variables */
 @import "variables";
 
-/* mixins */
-@import "mixins/fluid_text";
-
 /* bootstrap */
 @import "~bootstrap/scss/bootstrap";
 @import "user_forms";
@@ -14,3 +11,4 @@
 
 /* modules */
 @import "modules/navigation";
+@import "modules/footer";

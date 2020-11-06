@@ -1,17 +1,50 @@
 #navigation {
+  background-color: $white;
+  .navbar-toggler {
+    font-size: 2rem;
+    .fa-bars {
+      color: lighten($primary, 10%);
+    }
+  }
   ul.navbar-nav {
     margin-top: 0;
-  }
 
-  .sub-nav {
-    @include media-breakpoint-down(md) {
-      width: 100%;
+    >.nav-item {
+      &.active {
+        .nav-link {
+          color: darken($primary, 10%);
+        }
+      }
+      &:last-child {
+        >.nav-link {
+          padding-right: 0;
+        }
+      }
     }
+  }
+  .secondary-dropdown-navigation {
+    .nav-link {
+      &.active {
+        color: darken($primary, 10%);
+      }
+    }
+  }
+}
 
-    @include media-breakpoint-up(lg) {
-      position: absolute;
-      left: 0;
-      width: 400%;
+#secondary-navigation {
+  background-color: $primary;
+  border-top: 2px darken($primary, 15%) solid;
+  .nav-link {
+    color: $white;
+    padding: .5rem 1rem;
+    &:last-child {
+      padding-right: 0;
+    }
+    &.active {
+      background-color: darken($primary, 10%);
+      &:last-child {
+        padding-right: 1rem;
+      }
     }
   }
 }

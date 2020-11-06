@@ -5,19 +5,19 @@
   </head>
   <body class="{% if logged_in %}admin{% endif %}">
     {% if page.header %}
-      <header class="container-fluid">
+      <header class="container-fluid bg-white">
         {{page.header}}
       </header>
     {% endif %}
 
     {% if page.content %}
-      <main class="container-fluid">
+      <main class="container-fluid bg-white">
         {{page.content}}
       </main>
     {% endif %}
 
     {% if page.footer %}
-      <footer class="container-fluid">
+      <footer class="container-fluid bg-white">
         {{page.footer}}
       </footer>
     {% endif %}
