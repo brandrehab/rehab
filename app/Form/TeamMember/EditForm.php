@@ -8,7 +8,7 @@ use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Form controller for the team-member entity edit forms.
+ * Form controller for the team member entity edit forms.
  */
 class EditForm extends ContentEntityForm {
 

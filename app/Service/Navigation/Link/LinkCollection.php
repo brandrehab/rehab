@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Menu\Link;
+namespace App\Service\Navigation\Link;
 
 /**
  * Link collection class.
@@ -17,7 +17,7 @@ class LinkCollection implements LinkCollectionInterface {
   private int $key;
 
   /**
-   * A collection of menu links \App\Menu\LinkInterface.
+   * A collection of navigation links \App\Navigation\LinkInterface.
    *
    * @var array
    */

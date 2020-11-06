@@ -6,7 +6,7 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityChangedInterface;
 
 /**
- * Provides an interface defining a team-member entity type.
+ * Provides an interface defining a team member entity type.
  */
 interface TeamMemberInterface extends ContentEntityInterface, EntityChangedInterface {
 

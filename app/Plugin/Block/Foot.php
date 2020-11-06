@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Plugin\Block;
 
-use App\Repository\MenuRepositoryInterface;
-use App\Service\Menu\MenuInterface;
+use App\Storage\NavigationStorageInterface;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -35,11 +35,11 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
   ];
 
   /**
-   * Menu service.
+   * Navigation storage.
    *
-   * @var \App\Service\Menu\MenuInterface
+   * @var \App\Storage\NavigationStorageInterface
    */
-  private MenuInterface $footerMenu;
+  private NavigationStorageInterface $navigationStorage;
 
   /**
    * Dependecy injection.
@@ -54,7 +54,7 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
      $configuration,
      $plugin_id,
      $plugin_definition,
-     $container->get('app.repository.menu')
+     $container->get('entity_type.manager')
     );
   }
 
@@ -65,10 +65,10 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    MenuRepositoryInterface $menu_repository
+    EntityTypeManagerInterface $entity_type_manager
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->footerMenu = $menu_repository->get('footer');
+    $this->navigationStorage = $entity_type_manager->getStorage('navigation');
   }
 
   /**
@@ -78,7 +78,7 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
     return [
       '#theme' => 'foot',
       '#reload' => getenv('DEVELOPMENT_SETTINGS') ? TRUE : FALSE,
-      '#menu' => $this->footerMenu->build(1, 2),
+      '#menu' => $this->navigationStorage->getByName('footer')->build(1, 2),
       '#cache' => $this->cache,
     ];
   }

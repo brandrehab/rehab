@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Service\ServiceProvider;
 
 use App\ServiceProvider\RoutingServiceProvider;
-use App\ServiceProvider\MenuServiceProvider;
-use App\ServiceProvider\RepositoryServiceProvider;
+use App\ServiceProvider\NavigationServiceProvider;
 use App\ServiceProvider\BlockServiceProvider;
 use App\ServiceProvider\CommandServiceProvider;
 use App\ServiceProvider\TwigExtensionServiceProvider;
@@ -22,8 +21,7 @@ class ServiceProviderCollection {
    */
   public static function register(ContainerBuilder $container): void {
     RoutingServiceProvider::register($container);
-    MenuServiceProvider::register($container);
-    RepositoryServiceProvider::register($container);
+    NavigationServiceProvider::register($container);
     BlockServiceProvider::register($container);
     CommandServiceProvider::register($container);
     TwigExtensionServiceProvider::register($container);

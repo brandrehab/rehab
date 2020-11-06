@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Menu\Link;
+namespace App\Service\Navigation\Link;
 
 /**
- * Menu link class.
+ * Navigation link class.
  */
 class Link implements LinkInterface {
 
@@ -24,11 +24,11 @@ class Link implements LinkInterface {
   private string $url;
 
   /**
-   * NOde id.
+   * Node id.
    *
-   * @var int
+   * @var int|null
    */
-  private int $nid;
+  private ?int $nid = NULL;
 
   /**
    * Active.
@@ -40,7 +40,7 @@ class Link implements LinkInterface {
   /**
    * Child links.
    *
-   * @var \App\Service\Menu\Link\LinkCollectionInterface|null
+   * @var \App\Service\Navigation\Link\LinkCollectionInterface|null
    */
   private ?LinkCollectionInterface $children = NULL;
 

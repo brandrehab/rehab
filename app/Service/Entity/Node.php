@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Service\Entity;
 
-use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\node\Entity\Node as NodeBase;
 
 /**
@@ -12,12 +11,7 @@ use Drupal\node\Entity\Node as NodeBase;
  */
 class Node extends NodeBase implements NodeInterface {
 
-  /**
-   * The image style storage class.
-   *
-   * @var \Drupal\Core\Entity\EntityStorageInterface|null
-   */
-  private static ?EntityStorageInterface $styleStorage = NULL;
+  use AccessesImageStyleStorageTrait;
 
   /**
    * Is the entity is being previewed.
@@ -94,22 +88,11 @@ class Node extends NodeBase implements NodeInterface {
 
     $media = $social->get('field_social_media_image')->entity;
     $file = $media->get('field_media_image')->entity;
-    $style = $this->getStyleStorage()->load('social_media_image');
+    $style = $this->getImageStyleStorage()->load('social_media_image');
 
     return [
       'src' => $style->buildUrl($file->getFileUri()),
     ];
-  }
-
-  /**
-   * Get the entity storage class.
-   */
-  protected function getStyleStorage(): EntityStorageInterface {
-    if (self::$styleStorage) {
-      return self::$styleStorage;
-    }
-    self::$styleStorage = $this->entityTypeManager()->getStorage('image_style');
-    return self::$styleStorage;
   }
 
 }

@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Plugin\Block;
 
-use App\Service\Menu\MenuInterface;
+use App\Storage\NavigationStorageInterface;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -39,18 +40,11 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
   ];
 
   /**
-   * Client admin toolbar menu service.
+   * Navigation storage.
    *
-   * @var \App\Service\Menu\MenuInterface
+   * @var \App\Storage\NavigationStorageInterface
    */
-  private MenuInterface $clientAdminToolbar;
-
-  /**
-   * Admin toolbar menu service.
-   *
-   * @var \App\Service\Menu\MenuInterface
-   */
-  private MenuInterface $adminToolbar;
+  private NavigationStorageInterface $navigationStorage;
 
   /**
    * Dependency Injection.
@@ -66,8 +60,7 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
      $plugin_id,
      $plugin_definition,
      $container->get('current_user'),
-     $container->get('app.menu.client_admin_toolbar'),
-     $container->get('app.menu.admin_toolbar')
+     $container->get('entity_type.manager')
     );
   }
 
@@ -79,20 +72,26 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
     $plugin_id,
     $plugin_definition,
     AccountProxyInterface $current_user,
-    MenuInterface $client_admin_toolbar,
-    MenuInterface $admin_toolbar
+    EntityTypeManagerInterface $entity_type_manager
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->navigationStorage = $entity_type_manager->getStorage('navigation');
     $this->currentUser = $current_user;
-    $this->clientAdminToolbar = $client_admin_toolbar;
-    $this->adminToolbar = $admin_toolbar;
   }
 
   /**
    * Build the render array.
    */
   public function build(): array {
-    $toolbar = $this->currentUser->id() == 1 ? $this->adminToolbar->build(1, 2) : $this->clientAdminToolbar->build(1, 2);
+    if ($this->currentUser->id() == 1) {
+      $toolbar = $this->navigationStorage->getByName('admin')->build(1, 2);
+      $this->cache['tags'][] = 'config:system.menu.admin-toolbar';
+    }
+    else {
+      $toolbar = $this->navigationStorage->getByName('client')->build(1, 2);
+      $this->cache['tags'][] = 'config:system.menu.client-admin-toolbar',;
+    }
+
     return [
       [
         '#theme' => 'admin_toolbar',

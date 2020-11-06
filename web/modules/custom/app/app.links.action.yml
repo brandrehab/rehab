@@ -5,3 +5,9 @@ team_member.add_form:
   title: 'Add a team member'
   appears_on:
     - entity.team_member.collection
+
+navigation.add_form:
+  route_name: entity.navigation.add_form
+  title: 'Add a navigation'
+  appears_on:
+    - entity.navigation.collection

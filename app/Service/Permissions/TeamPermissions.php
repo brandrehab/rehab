@@ -58,7 +58,7 @@ class TeamPermissions {
   private function administer(): array {
     return [
       'title' => $this->t('Administer Team'),
-      'restict access' => TRUE,
+      'restrict access' => TRUE,
     ];
   }
 

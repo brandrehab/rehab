@@ -1,2 +1,3 @@
 permissions_callbacks:
   - '\App\Service\Permissions\TeamPermissions::collection'
+  - '\App\Service\Permissions\NavigationPermissions::collection'

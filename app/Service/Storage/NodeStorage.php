@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Service\Storage;
 
-use App\Repository\MenuRepositoryInterface;
 use App\Service\Entity\Node;
 use Drupal\node\NodeStorage as Base;
 use Drupal\Core\Entity\Query\QueryInterface;
@@ -40,13 +39,6 @@ class NodeStorage extends Base {
   protected AccountProxyInterface $currentUser;
 
   /**
-   * The menu repository.
-   *
-   * @var \App\Repository\MenuRepositoryInterface
-   */
-  protected MenuRepositoryInterface $menuRepository;
-
-  /**
    * {@inheritdoc}
    */
   public static function createInstance(
@@ -62,8 +54,7 @@ class NodeStorage extends Base {
       $container->get('entity.memory_cache'),
       $container->get('entity_type.bundle.info'),
       $container->get('entity_type.manager'),
-      $container->get('current_user'),
-      $container->get('app.repository.menu')
+      $container->get('current_user')
     );
   }
 
@@ -79,11 +70,9 @@ class NodeStorage extends Base {
     MemoryCacheInterface $memory_cache,
     EntityTypeBundleInfoInterface $entity_type_bundle_info,
     EntityTypeManagerInterface $entity_type_manager,
-    AccountProxyInterface $current_user,
-    MenuRepositoryInterface $menu_repository
+    AccountProxyInterface $current_user
   ) {
     $this->currentUser = $current_user;
-    $this->menuRepository = $menu_repository;
     parent::__construct($entity_type, $database, $entity_field_manager, $cache, $language_manager, $memory_cache, $entity_type_bundle_info, $entity_type_manager);
 
     if (!self::$nodeEntityTypes) {
@@ -115,13 +104,6 @@ class NodeStorage extends Base {
       return self::$nodeEntityTypes[$node_type];
     }
     return Node::class;
-  }
-
-  /**
-   * Get the menu repository.
-   */
-  public function getMenuRepository(): MenuRepositoryInterface {
-    return $this->menuRepository;
   }
 
   /**

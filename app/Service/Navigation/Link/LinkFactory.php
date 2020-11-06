@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Menu\Link;
+namespace App\Service\Navigation\Link;
 
 /**
  * Link factory class.

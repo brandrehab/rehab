@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - app
+id: navigation.navigation.default
+targetEntityType: navigation
+bundle: navigation
+mode: default
+content: {  }
+hidden:
+  menu: true
+  name: true

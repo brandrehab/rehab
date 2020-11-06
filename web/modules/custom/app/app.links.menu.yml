@@ -5,3 +5,9 @@ entity.team_member.settings:
   description: Configure the team member entity type
   route_name:  entity.team_member.settings
   parent: system.admin_structure
+
+entity.navigation.settings:
+  title: Navigations
+  description: Configure the navigation entity type
+  route_name:  entity.navigation.settings
+  parent: system.admin_structure

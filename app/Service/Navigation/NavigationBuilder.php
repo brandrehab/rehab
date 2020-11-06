@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Menu;
+namespace App\Service\Navigation;
 
-use App\Service\Menu\Link\LinkCollectionInterface;
-use App\Service\Menu\Link\LinkFactoryInterface;
-use App\Service\Menu\Link\LinkInterface;
+use App\Service\Navigation\Link\LinkCollectionInterface;
+use App\Service\Navigation\Link\LinkFactoryInterface;
+use App\Service\Navigation\Link\LinkInterface;
 use Drupal\Core\Menu\MenuLinkInterface;
 use Drupal\Core\Menu\MenuLinkTreeInterface;
 use Drupal\Core\Menu\MenuActiveTrailInterface;
@@ -15,26 +15,23 @@ use Drupal\Core\Menu\MenuLinkTreeElement;
 use Drupal\Core\Path\PathMatcherInterface;
 
 /**
- * Base class to simplify dealing with menus.
+ * Builds navigations from menus.
  */
-abstract class Menu implements MenuInterface {
-
-  /**
-   * System name of menu being managed.
-   *
-   * @var string
-   */
-  protected string $name;
+class NavigationBuilder implements NavigationBuilderInterface {
 
   /**
    * Tree transformers.
    *
    * @var array
    */
-  protected array $transformations;
+  protected array $transformations = [
+    ['callable' => 'menu.default_tree_manipulators:checkNodeAccess'],
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ];
 
   /**
-   * Menu service.
+   * Menu link tree.
    *
    * @var \Drupal\Core\Menu\MenuLinkTreeInterface
    */
@@ -57,7 +54,7 @@ abstract class Menu implements MenuInterface {
   /**
    * Link factory.
    *
-   * @var \App\Service\Menu\Link\LinkFactoryInterface
+   * @var \App\Service\Navigation\Link\LinkFactoryInterface
    */
   protected LinkFactoryInterface $linkFactory;
 
@@ -77,10 +74,15 @@ abstract class Menu implements MenuInterface {
   }
 
   /**
-   * Build the menu.
+   * Build a navigation.
    */
-  public function build(int $min_depth = 1, int $max_depth = 1, string $root = ''): LinkCollectionInterface {
-    $active_trail = $this->menuActiveTrail->getActiveTrailIds($this->name);
+  public function build(
+    string $menu_name,
+    ?int $min_depth = 1,
+    ?int $max_depth = 1,
+    ?string $root = ''
+  ): LinkCollectionInterface {
+    $active_trail = $this->menuActiveTrail->getActiveTrailIds($menu_name);
 
     $params = new MenuTreeParameters();
     $params->setMinDepth($min_depth);
@@ -89,7 +91,7 @@ abstract class Menu implements MenuInterface {
     $params->setRoot($root);
     $params->setActiveTrail($active_trail);
 
-    $tree = $this->menuLinkTree->transform($this->menuLinkTree->load($this->name, $params), $this->transformations);
+    $tree = $this->menuLinkTree->transform($this->menuLinkTree->load($menu_name, $params), $this->transformations);
 
     return $this->processTree($tree);
   }
@@ -100,6 +102,7 @@ abstract class Menu implements MenuInterface {
   public function getNids(LinkCollectionInterface $links): array {
     $nids = [];
     foreach ($links as $link) {
+      dump($link);
       if (!$link->nid) {
         continue;
       }

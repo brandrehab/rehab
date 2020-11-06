@@ -7,6 +7,7 @@
 
 
 use Drupal\node\Entity\Node;
+use App\Entity\Navigation;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\taxonomy\Entity\Term;
@@ -464,6 +465,15 @@ function rehab_install() {
   ]);
   $adminToolbarContentTeamMembers->save();
 
+  $adminToolbarContentNavigations = MenuLinkContent::create([
+    'title' => 'Navigations',
+    'link' => ['uri' => 'route:entity.navigation.collection'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 3,
+    'parent' => $adminToolbarContent->getPluginId(),
+  ]);
+  $adminToolbarContentNavigations->save();
+
   $adminToolbarAdministration = MenuLinkContent::create([
     'title' => 'Administration',
     'link' => ['uri' => 'route:<nolink>'],
@@ -752,6 +762,39 @@ function rehab_install() {
     'weight' => 1,
   ]);
   $menu404->save();
+
+  // Navigations
+
+  $navigationMain = Navigation::create([
+      'name' => 'Main',
+      'menu' => 'main',
+  ]);
+  $navigationMain->save();
+
+  $navigationFooter = Navigation::create([
+      'name' => 'Footer',
+      'menu' => 'footer',
+  ]);
+  $navigationFooter->save();
+
+  $navigationHidden = Navigation::create([
+      'name' => 'Hidden',
+      'menu' => 'hidden',
+  ]);
+  $navigationHidden->save();
+
+  $navigationAdmin = Navigation::create([
+      'name' => 'Admin',
+      'menu' => 'admin-toolbar',
+  ]);
+  $navigationAdmin->save();
+
+  $navigationClient = Navigation::create([
+      'name' => 'Client',
+      'menu' => 'client-admin-toolbar',
+  ]);
+  $navigationClient->save();
+
 
   // Generate pathauto references after the menu links (as required by patterns).
   $pathGenerator = \Drupal::service('pathauto.generator');

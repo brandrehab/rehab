@@ -11,6 +11,8 @@ use Drupal\Core\Entity\EntityStorageInterface;
  */
 trait UpdatesChildMenuLinksTrait {
 
+  use AccessesNavigationStorageTrait;
+
   /**
    * Update child menu links.
    */
@@ -23,13 +25,11 @@ trait UpdatesChildMenuLinksTrait {
       return;
     }
 
-    $menu_name = $menu_link->menu_name->first()->value;
+    $menu_id = $menu_link->menu_name->first()->value;
     $menu_link_id = $menu_link->getPluginId();
 
-    $menu = $storage->getMenuRepository()->get($menu_name);
-
-    $links = $menu->build(1, 1, $menu_link_id);
-    $nids = $menu->getNids($links);
+    $navigation = $this->getNavigationStorage()->getByMenuId($menu_id);
+    $nids = $navigation->nids(1, 1, $menu_link_id);
 
     if (empty($nids)) {
       return;

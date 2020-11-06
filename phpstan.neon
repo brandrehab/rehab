@@ -11,17 +11,18 @@ parameters:
 	reportUnmatchedIgnoredErrors: false
 	drupal:
 		entityTypeStorageMapping:
-			node: Drupal\node\NodeStorage
+			node: App\Storage\NodeStorage
 			taxonomy_term: Drupal\taxonomy\TermStorage
 			user: Drupal\user\UserStorage
+			navigation: App\Storage\NavigationStorage
+			team_member: App\Storage\TeamMemberStorage
 	ignoreErrors:
-		- '#Call to an undefined method Drupal\\Core\\Entity\\EntityInterface::#'
-		- '#Cannot instantiate interface Drupal\\Core\\Field\\FieldItemListInterface.#'
-		- '#Method App\\Service\\Entity\\Node::entityView\(\) should return#'
-		- '#Call to an undefined method Drupal\\Core\\Field\\FieldItemListInterface::#'
-		- '#Access to an undefined property Drupal\\Core\\Field\\FieldItemListInterface::#'
-		- '#Call to an undefined method Drupal\\Core\\Form\\FormInterface::#'
-		- '#Access to an undefined property Drupal\\Core\\Field\\FieldItemInterface::#'
-		- '#Access to an undefined property Drupal\\Core\\TypedData\\TypedDataInterface::#'
-		- '#Call to an undefined method Drupal\\Core\\Entity\\EntityStorageInterface::getMenuRepository#'
+		- '#Call to an undefined method Drupal\\Core\\Entity\\EntityInterface#'
+		- '#Call to an undefined method Drupal\\Core\\Entity\\EntityStorageInterface#'
+		- '#Cannot instantiate interface Drupal\\Core\\Field\\FieldItemListInterface#'
+		- '#Call to an undefined method Drupal\\Core\\Field\\FieldItemListInterface#'
+		- '#Call to an undefined method Drupal\\Core\\Form\\FormInterface#'
+		- '#Access to an undefined property Drupal\\Core\\Field\\FieldItemListInterface#'
+		- '#Access to an undefined property Drupal\\Core\\Field\\FieldItemInterface#'
+		- '#Access to an undefined property Drupal\\Core\\TypedData\\TypedDataInterface#'
 		- '#Drupal\\Core\\Entity\\Query\\QueryInterface::range\(\) expects null#'

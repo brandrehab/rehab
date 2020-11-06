@@ -68,7 +68,7 @@ class AppEntities extends DrushCommands {
    *
    * @command app:entities
    * @aliases ae
-   * @usage drush app:entities [action]
+   * @usage drush app:entities [action] [entity]
    *   Actions for entities which are not defined with a module.
    */
   public function entities(string $action, string $entity): int {

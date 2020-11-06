@@ -1,3 +1,4 @@
 route_callbacks:
   - '\App\Routes\DevelopmentRoutes::collection'
   - '\App\Routes\TeamMemberRoutes::collection'
+  - '\App\Routes\NavigationRoutes::collection'
