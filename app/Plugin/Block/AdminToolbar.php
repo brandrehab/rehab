@@ -89,7 +89,7 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
     }
     else {
       $toolbar = $this->navigationStorage->getByName('client')->build(1, 2);
-      $this->cache['tags'][] = 'config:system.menu.client-admin-toolbar',;
+      $this->cache['tags'][] = 'config:system.menu.client-admin-toolbar';
     }
 
     return [
