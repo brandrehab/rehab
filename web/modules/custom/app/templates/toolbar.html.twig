@@ -1,31 +1,41 @@
-<section id="toolbar" class="bg-rehab">
-  <div class="row">
-    <div class="col-12">
-      <ul class="nav mt-0 justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link text-white" href="/admin/content">Admin</a>
-        </li>
-        {% if id %}
-          {% if uuid %}
+<div class="fixed-top">
+  <section id="toolbar" class="bg-rehab">
+    <div class="row">
+      <div class="col-12">
+        <ul class="nav mt-0 justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/admin/content">Admin</a>
+          </li>
+          {% if route %}
+            {% if route.type == 'node' %}
+              {% if route.bundle %}
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/node/add/{{route.bundle}}">New</a>
+              </li>
+              {% endif %}
+            {% endif %}
             <li class="nav-item">
-              <a class="nav-link text-white" href="/node/{{id}}/edit?uuid={{uuid}}">Edit</a>
+              <a class="nav-link text-white" href="/node/{{route.id}}/edit">Edit</a>
             </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/node/{{id}}/edit">Edit</a>
-            </li>
+            {% if route.type == 'preview' %}
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/node/{{route.id}}/edit?uuid={{route.uuid}}">Edit Preview</a>
+              </li>
+            {% endif %}
+            {% if route.type == 'revision' %}
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/node/{{route.id}}/revisions">View Revisions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/node/{{route.id}}/revisions/{{route.revision}}/revert">Revert</a>
+              </li>
+            {% endif %}
           {% endif %}
-        {% else %}
-          {% if uuid %}
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/node/add/{{bundle}}?uuid={{uuid}}">Edit</a>
-            </li>
-          {% endif %}
-        {% endif %}
-        <li class="nav-item">
-          <a class="nav-link text-white" href="/user/logout">Logout</a>
-        </li>
-      </ul>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/user/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>

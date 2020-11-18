@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Storage;
 
+use App\Entity\NavigationInterface;
 use App\Service\Navigation\NavigationBuilderInterface;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
@@ -80,7 +80,7 @@ class NavigationStorage extends SqlContentEntityStorage implements NavigationSto
   /**
    * Get a navigation by name.
    */
-  public function getByName(string $navigation_name): ?EntityInterface {
+  public function getByName(string $navigation_name): ?NavigationInterface {
     $query = $this->getQuery()
       ->condition('name', $navigation_name)
       ->range(0, 1);
@@ -95,7 +95,7 @@ class NavigationStorage extends SqlContentEntityStorage implements NavigationSto
   /**
    * Get a navigation by the associated menu name.
    */
-  public function getByMenuId(string $menu_id): ?EntityInterface {
+  public function getByMenuId(string $menu_id): ?NavigationInterface {
     $query = $this->getQuery()
       ->condition('menu', $menu_id)
       ->range(0, 1);

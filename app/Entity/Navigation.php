@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Service\Entity\AccessesEntityStorageTrait;
+use App\Traits\Entity\AccessesEntityStorageTrait;
 use App\Service\Navigation\NavigationBuilderInterface;
 use App\Service\Navigation\Link\LinkCollectionInterface;
 use Drupal\system\Entity\Menu;
@@ -83,7 +83,7 @@ class Navigation extends ContentEntityBase implements NavigationInterface {
   /**
    * Gets the menu associated with this navigation.
    */
-  protected function getMenu(): Menu {
+  public function getMenu(): Menu {
     return $this->get('menu')->first()->entity;
   }
 

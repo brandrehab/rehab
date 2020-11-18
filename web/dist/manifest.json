@@ -1,8 +1,9 @@
 {
-  "app.css": "/dist/app.b23ae5221ae459b511af.css",
-  "app.js": "/dist/app.b23ae5221ae459b511af.js",
-  "fonts.css": "/dist/fonts.0e4839a7b092c5e5d8fe.css",
+  "app.css": "/dist/app.45ade9992bb449910c8b.css",
+  "app.js": "/dist/app.45ade9992bb449910c8b.js",
+  "fonts.css": "/dist/fonts.bd7633fd9361abef5825.css",
   "vendor.js": "/dist/vendor.5cd879db9793059f4798.js",
   "images/logo-mono.svg": "/dist/images/logo-mono.a2f320273a3781fbb7db00fd48307a26.svg",
-  "images/logo.svg": "/dist/images/logo.88a1d9fe2a5743e2afcefff1e464e5b9.svg"
+  "images/logo.svg": "/dist/images/logo.d678f6fc3943e7466d76e9562e4f5506.svg",
+  "images/pencils.jpg": "/dist/images/pencils.199135ab0c6dbc2f8c0137fdb2baeb8a.jpg"
 }

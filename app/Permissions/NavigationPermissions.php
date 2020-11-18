@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Permissions;
+namespace App\Permissions;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 

@@ -9,3 +9,8 @@ entity.navigation.settings:
   title: Settings
   route_name: entity.navigation.settings
   base_route: entity.navigation.settings
+
+entity.company.settings:
+  title: Settings
+  route_name: entity.company.settings
+  base_route: entity.company.settings

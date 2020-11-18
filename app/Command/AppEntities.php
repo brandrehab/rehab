@@ -59,7 +59,7 @@ class AppEntities extends DrushCommands {
   }
 
   /**
-   * Check whether drupal core or any contrib modules are out of date.
+   * Actions for entities which are not defined with a module.
    *
    * @param string $action
    *   Action to be performed enable/uninstall.

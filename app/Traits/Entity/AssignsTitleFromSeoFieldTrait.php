@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Entity;
+namespace App\Traits\Entity;
 
 /**
  * Assigns title from seo field trait.

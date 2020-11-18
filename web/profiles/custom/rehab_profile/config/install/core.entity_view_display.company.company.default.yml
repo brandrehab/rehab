@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.company.company.field_country_of_registration
+    - field.field.company.company.field_registered_name
+    - field.field.company.company.field_registration_number
+  module:
+    - app
+id: company.company.default
+targetEntityType: company
+bundle: company
+mode: default
+content: {  }
+hidden:
+  field_country_of_registration: true
+  field_registered_name: true
+  field_registration_number: true
+  name: true

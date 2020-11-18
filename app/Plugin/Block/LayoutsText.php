@@ -20,7 +20,7 @@ class LayoutsText extends BlockBase {
    *
    * @var array
    */
-  private array $cache = [
+  protected array $cache = [
     'contexts' => [
       'route',
     ],
@@ -31,16 +31,19 @@ class LayoutsText extends BlockBase {
    * Build the render array.
    */
   public function build(): array {
-    $config = $this->getConfiguration();
-    $text = $config['text'];
-
     return [
-      [
-        '#theme' => 'layouts_text',
-        '#text' => $text,
-        '#cache' => $this->cache,
-      ],
+      '#theme' => 'layouts_text',
+      '#text' => $this->getText(),
+      '#cache' => $this->cache,
     ];
+  }
+
+  /**
+   * Get the text.
+   */
+  private function getText(): ?string {
+    $config = $this->getConfiguration();
+    return $config['text'];
   }
 
 }

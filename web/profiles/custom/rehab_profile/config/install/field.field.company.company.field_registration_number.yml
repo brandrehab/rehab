@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.company.field_registration_number
+  module:
+    - app
+id: company.company.field_registration_number
+field_name: field_registration_number
+entity_type: company
+bundle: company
+label: 'Registration Number'
+description: 'Optionally provide the registration number of the company.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -17,9 +17,7 @@ function app_theme(): array {
   return [
     'toolbar' => [
       'variables' => [
-        'id' => NULL,
-        'uuid' => NULL,
-        'bundle' => NULL,
+        'route' => NULL,
         'cache' => NULL,
       ],
     ],

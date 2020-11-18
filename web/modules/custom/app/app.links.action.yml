@@ -11,3 +11,9 @@ navigation.add_form:
   title: 'Add a navigation'
   appears_on:
     - entity.navigation.collection
+
+company.add_form:
+  route_name: entity.company.add_form
+  title: 'Add a company'
+  appears_on:
+    - entity.company.collection

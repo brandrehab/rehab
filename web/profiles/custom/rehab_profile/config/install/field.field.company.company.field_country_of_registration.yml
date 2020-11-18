@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.company.field_country_of_registration
+  module:
+    - app
+id: company.company.field_country_of_registration
+field_name: field_country_of_registration
+entity_type: company
+bundle: company
+label: 'Country Of Registration'
+description: 'Optionally provide the country with which the company is registered.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

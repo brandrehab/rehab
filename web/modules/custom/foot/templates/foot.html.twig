@@ -18,7 +18,15 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-white text-center text-md-left">
-        <small>&copy; 2020 Company Name</small>
+        <small>
+          &copy; <span id="copyright-year"></span> {{company.getName()}}.<br>
+          {% if company.isRegistered() %}
+            {{company.getRegisteredName}} registered in {{company.getRegisteredCountry()}}. Company N<sup>o.</sup> {{company.getRegistrationNumber()}}<br>
+          {% endif %}
+          <small>
+            <a href="https://brand.rehab" class="rehab-link">Website <i class="fas fa-code" aria-hidden="true"></i> with <i class="fas fa-heart" aria-hidden="true"></i> by <span class="secondary">Rehab</span></a>
+          </small>
+        </small>
       </div>
     </div>
   </div>

@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Plugin\Block;
 
-use Drupal\Core\Block\BlockBase;
+use App\Base\BlockBase;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -14,37 +15,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @block(
  *  id = "app.toolbar",
- *  admin_label = @Translation("Frontend Toolbar Block"),
+ *  admin_label = @Translation("Frontend Toolbar Block")
  * )
  */
 class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
-  /**
-   * Active node Id.
-   *
-   * @var string|null
-   */
-  private ?string $id = NULL;
-
-  /**
-   * Preview node uuid.
-   *
-   * @var string|null
-   */
-  private ?string $uuid = NULL;
-
-  /**
-   * Revision Id.
-   *
-   * @var string|null
-   */
-  private ?string $vid = NULL;
-
-  /**
-   * Node type.
-   *
-   * @var string|null
-   */
-  private ?string $bundle = NULL;
 
   /**
    * Route.
@@ -54,13 +28,21 @@ class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
   private RouteMatchInterface $route;
 
   /**
+   * Current user.
+   *
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
+  private AccountProxyInterface $currentUser;
+
+  /**
    * Cache settings.
    *
    * @var array
    */
-  private array $cache = [
+  protected array $cache = [
     'contexts' => [
       'route',
+      'user.roles',
     ],
     'tags' => [],
   ];
@@ -78,7 +60,8 @@ class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
      $configuration,
      $plugin_id,
      $plugin_definition,
-     $container->get('current_route_match')
+     $container->get('current_route_match'),
+     $container->get('current_user')
     );
   }
 
@@ -89,74 +72,90 @@ class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    RouteMatchInterface $route
+    RouteMatchInterface $route,
+    AccountProxyInterface $current_user
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->route = $route;
+    $this->currentUser = $current_user;
   }
 
   /**
    * Build the render array.
    */
   public function build(): array {
-    $route_name = $this->route->getRouteName();
-
-    switch ($route_name) {
-      case 'entity.node.revision':
-        $this->revision();
-        break;
-
-      case 'entity.node.canonical':
-        $this->canonical();
-        break;
-
-      case 'entity.node.preview':
-        $this->preview();
-        break;
-    }
-
-    $this->cache['tags'] = [
-      'node:' . $this->id,
-      'preview:' . $this->id,
-      'revision:' . $this->vid,
-    ];
-
     return [
       [
         '#theme' => 'toolbar',
-        '#id' => $this->id,
-        '#uuid' => $this->uuid,
-        '#bundle' => $this->bundle,
+        '#route' => $this->getRoute(),
         '#cache' => $this->cache,
       ],
     ];
   }
 
   /**
-   * Prepare params where the node entity is canonical.
+   * Gets the node type and ids associated with the current route.
    */
-  private function canonical(): void {
-    $this->id = $this->route->getRawParameter('node');
+  private function getRoute(): ?array {
+    $route_name = $this->route->getRouteName();
+
+    if ($route_name == 'entity.node.canonical') {
+      return $this->getNodeCanonicalRoute();
+    }
+
+    if ($route_name == 'entity.node.revision') {
+      return $this->getNodeRevisionRoute();
+    }
+
+    if ($route_name == 'entity.node.preview') {
+      return $this->getNodePreviewRoute();
+    }
+
+    return NULL;
   }
 
   /**
-   * Prepare params where the node entity is a revision.
+   * Get node canonical route.
    */
-  private function revision(): void {
-    $this->id = $this->route->getRawParameter('node');
-    $this->vid = $this->route->getRawParameter('node_revision');
-    $this->messenger()->addStatus('Viewing in Page Revision mode.');
+  private function getNodeCanonicalRoute(): array {
+    $node = $this->route->getParameter('node');
+    $this->appendEntityCacheTags($node);
+    $permission = 'create ' . $node->bundle() . ' content';
+    if ($this->currentUser->hasPermission($permission)) {
+      $bundle = $node->bundle();
+    }
+    return [
+      'type' => 'node',
+      'id' => $node->id(),
+      'bundle' => $bundle ?? NULL,
+    ];
   }
 
   /**
-   * Prepare params where the node entity is a preview.
+   * Get node revision route.
    */
-  private function preview(): void {
+  private function getNodeRevisionRoute(): array {
+    $this->messenger()->addStatus('Viewing in revision mode.');
+    $this->disableCache();
+    return [
+      'type' => 'revision',
+      'id' => $this->route->getRawParameter('node'),
+      'revision' => $this->route->getRawParameter('node_revision'),
+    ];
+  }
+
+  /**
+   * Get node preview route.
+   */
+  private function getNodePreviewRoute(): array {
+    $this->messenger()->addStatus('Viewing in preview mode.');
     $node = $this->route->getParameter('node_preview');
-    $this->id = $node->id();
-    $this->uuid = $node->uuid();
-    $this->bundle = $node->bundle();
-    $this->messenger()->addStatus("Viewing in Page Preview mode.");
+    $this->disableCache();
+    return [
+      'type' => 'preview',
+      'id' => $node->id(),
+      'uuid' => $node->uuid(),
+    ];
   }
 
 }

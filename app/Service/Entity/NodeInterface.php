@@ -12,6 +12,11 @@ use Drupal\node\NodeInterface as BaseNodeInterface;
 interface NodeInterface extends BaseNodeInterface {
 
   /**
+   * Get the optional entity layouts.
+   */
+  public function getLayouts(): ?array;
+
+  /**
    * Is the entity is being previewed.
    */
   public function isPreview(): bool;

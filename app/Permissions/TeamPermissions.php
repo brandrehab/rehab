@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\Permissions;
+namespace App\Permissions;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
@@ -26,7 +26,7 @@ class TeamPermissions {
   }
 
   /**
-   * Defines the add team memeber permission.
+   * Defines the add team member permission.
    */
   private function add(): array {
     return [

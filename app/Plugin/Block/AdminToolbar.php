@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Plugin\Block;
 
+use App\Base\BlockBase;
+use App\Service\Navigation\Link\LinkCollectionInterface;
 use App\Storage\NavigationStorageInterface;
-use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -20,6 +21,28 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * )
  */
 class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * Minimum depth of heirarchical links.
+   *
+   * @var int
+   */
+  const NAV_MIN_DEPTH = 1;
+
+  /**
+   * Maximum depth of heirarchical links.
+   *
+   * @var int
+   */
+  const NAV_MAX_DEPTH = 2;
+
+  /**
+   * Id of the admin superuser.
+   *
+   * @var int
+   */
+  const SUPERUSER_ID = 1;
+
   /**
    * Current user.
    *
@@ -32,7 +55,7 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
    *
    * @var array
    */
-  private array $cache = [
+  protected array $cache = [
     'contexts' => [
       'user.roles',
     ],
@@ -83,19 +106,10 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
    * Build the render array.
    */
   public function build(): array {
-    if ($this->currentUser->id() == 1) {
-      $toolbar = $this->navigationStorage->getByName('admin')->build(1, 2);
-      $this->cache['tags'][] = 'config:system.menu.admin-toolbar';
-    }
-    else {
-      $toolbar = $this->navigationStorage->getByName('client')->build(1, 2);
-      $this->cache['tags'][] = 'config:system.menu.client-admin-toolbar';
-    }
-
     return [
       [
         '#theme' => 'admin_toolbar',
-        '#menu' => $toolbar,
+        '#menu' => $this->getNavigation(),
         '#cache' => $this->cache,
         '#attached' => [
           'library' => [
@@ -105,6 +119,36 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
         ],
       ],
     ];
+  }
+
+  /**
+   * Gets the appropriate navigation based upon current user type.
+   */
+  private function getNavigation(): LinkCollectionInterface {
+    if ($this->currentUser->id() == self::SUPERUSER_ID) {
+      return $this->getAdminToolbar();
+    }
+    return $this->getClientToolbar();
+  }
+
+  /**
+   * Gets the admin toolbar.
+   */
+  private function getAdminToolbar(): LinkCollectionInterface {
+    $navigation = $this->navigationStorage->getByName('admin');
+    $menu = $navigation->getMenu();
+    $this->appendEntityCacheTags($menu);
+    return $navigation->build(self::NAV_MIN_DEPTH, self::NAV_MAX_DEPTH);
+  }
+
+  /**
+   * Gets the client toolbar.
+   */
+  private function getClientToolbar(): LinkCollectionInterface {
+    $navigation = $this->navigationStorage->getByName('client');
+    $menu = $navigation->getMenu();
+    $this->appendEntityCacheTags($menu);
+    return $navigation->build(self::NAV_MIN_DEPTH, self::NAV_MAX_DEPTH);
   }
 
 }

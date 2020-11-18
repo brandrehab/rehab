@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.company.field_registered_name
+  module:
+    - app
+id: company.company.field_registered_name
+field_name: field_registered_name
+entity_type: company
+bundle: company
+label: 'Registered Name'
+description: 'Optionally provide the registered name of the company.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

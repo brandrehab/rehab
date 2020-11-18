@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Plugin\Block;
 
+use App\Base\BlockBase;
 use App\Service\Block\HeadServiceInterface;
-use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -24,7 +24,7 @@ class Head extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @var array
    */
-  private array $cache = [
+  protected array $cache = [
     'contexts' => [
       'route',
     ],

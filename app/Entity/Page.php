@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Service\Entity\Node;
-use App\Service\Entity\AssignsTitleFromSeoFieldTrait;
-use App\Service\Entity\UpdatesChildMenuLinksTrait;
-use App\Service\Entity\ControlsMenuLinkStatusTrait;
+use App\Traits\Entity\AssignsTitleFromSeoFieldTrait;
+use App\Traits\Entity\UpdatesChildMenuLinksTrait;
+use App\Traits\Entity\ControlsMenuLinkStatusTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 
 /**

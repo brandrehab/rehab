@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace App\Plugin\Block;
 
+use App\Base\BlockBase;
 use App\Storage\NavigationStorageInterface;
-use Drupal\Core\Block\BlockBase;
+use App\Service\Navigation\Link\LinkCollectionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -21,17 +22,29 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class Navigation extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
+   * Minimum depth of heirarchical links.
+   *
+   * @var int
+   */
+  const NAV_MIN_DEPTH = 1;
+
+  /**
+   * Maximum depth of heirarchical links.
+   *
+   * @var int
+   */
+  const NAV_MAX_DEPTH = 2;
+
+  /**
    * Cache settings.
    *
    * @var array
    */
-  private array $cache = [
+  protected array $cache = [
     'contexts' => [
       'route',
     ],
-    'tags' => [
-      'config:system.menu.main',
-    ],
+    'tags' => [],
   ];
 
   /**
@@ -77,9 +90,19 @@ class Navigation extends BlockBase implements ContainerFactoryPluginInterface {
   public function build(): array {
     return [
       '#theme' => 'navigation',
-      '#menu' => $this->navigationStorage->getByName('main')->build(1, 2),
+      '#menu' => $this->buildNavigation(),
       '#cache' => $this->cache,
     ];
+  }
+
+  /**
+   * Build the main navigation.
+   */
+  private function buildNavigation(): LinkCollectionInterface {
+    $navigation = $this->navigationStorage->getByName('main');
+    $menu = $navigation->getMenu();
+    $this->appendEntityCacheTags($menu);
+    return $navigation->build(self::NAV_MIN_DEPTH, self::NAV_MAX_DEPTH);
   }
 
 }

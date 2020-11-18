@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Service\Entity;
 
+use App\Traits\Entity\AccessesImageStyleStorageTrait;
+
 use Drupal\node\Entity\Node as NodeBase;
 
 /**
@@ -12,6 +14,13 @@ use Drupal\node\Entity\Node as NodeBase;
 class Node extends NodeBase implements NodeInterface {
 
   use AccessesImageStyleStorageTrait;
+
+  /**
+   * Get the optional entity layouts.
+   */
+  public function getLayouts(): ?array {
+    return NULL;
+  }
 
   /**
    * Is the entity is being previewed.

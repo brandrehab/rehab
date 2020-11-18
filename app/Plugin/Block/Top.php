@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Plugin\Block;
 
+use App\Service\Entity\NodeInterface;
 use Drupal\Core\Block\BlockBase;
 
 /**
@@ -32,8 +33,7 @@ class Top extends BlockBase {
    * Build the render array.
    */
   public function build(): array {
-    $config = $this->getConfiguration();
-    $node = $config['node'];
+    $node = $this->getNode();
 
     $this->cache['tags'] = [
       'node:' . $node->id(),
@@ -46,6 +46,14 @@ class Top extends BlockBase {
       '#heading' => $node->getHeading(),
       '#cache' => $this->cache,
     ];
+  }
+
+  /**
+   * Get the current node.
+   */
+  private function getNode(): NodeInterface {
+    $config = $this->getConfiguration();
+    return $config['node'];
   }
 
 }

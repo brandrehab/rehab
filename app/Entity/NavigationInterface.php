@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Service\Navigation\Link\LinkCollectionInterface;
+use Drupal\system\Entity\Menu;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityChangedInterface;
 
@@ -20,6 +21,11 @@ interface NavigationInterface extends ContentEntityInterface, EntityChangedInter
    * Gets the name of the navigation.
    */
   public function getName(): string;
+
+  /**
+   * Gets the menu associated with this navigation.
+   */
+  public function getMenu(): Menu;
 
   /**
    * Gets a built navigation.

@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Plugin\Block;
 
+use App\Base\BlockBase;
+use App\Entity\CompanyInterface;
 use App\Storage\NavigationStorageInterface;
-use Drupal\Core\Block\BlockBase;
+use App\Storage\CompanyStorageInterface;
+use App\Service\Navigation\Link\LinkCollectionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -21,17 +24,36 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class Foot extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
+   * Company entity id.
+   *
+   * @var int
+   */
+  const COMPANY_ENTITY_ID = 1;
+
+  /**
+   * Minimum depth of heirarchical links.
+   *
+   * @var int
+   */
+  const NAV_MIN_DEPTH = 1;
+
+  /**
+   * Maximum depth of heirarchical links.
+   *
+   * @var int
+   */
+  const NAV_MAX_DEPTH = 2;
+
+  /**
    * Cache settings.
    *
    * @var array
    */
-  private array $cache = [
+  protected array $cache = [
     'contexts' => [
       'route',
     ],
-    'tags' => [
-      'config:system.menu.footer',
-    ],
+    'tags' => [],
   ];
 
   /**
@@ -40,6 +62,13 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
    * @var \App\Storage\NavigationStorageInterface
    */
   private NavigationStorageInterface $navigationStorage;
+
+  /**
+   * Company storage.
+   *
+   * @var \App\Storage\CompanyStorageInterface
+   */
+  private CompanyStorageInterface $companyStorage;
 
   /**
    * Dependecy injection.
@@ -69,6 +98,7 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->navigationStorage = $entity_type_manager->getStorage('navigation');
+    $this->companyStorage = $entity_type_manager->getStorage('company');
   }
 
   /**
@@ -77,10 +107,39 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
   public function build(): array {
     return [
       '#theme' => 'foot',
-      '#reload' => getenv('DEVELOPMENT_SETTINGS') ? TRUE : FALSE,
-      '#menu' => $this->navigationStorage->getByName('footer')->build(1, 2),
+      '#reload' => $this->reloadEnabled(),
+      '#menu' => $this->buildNavigation(),
+      '#company' => $this->getCompany(),
       '#cache' => $this->cache,
     ];
+  }
+
+  /**
+   * Build the footer navigation.
+   */
+  private function buildNavigation(): LinkCollectionInterface {
+    $navigation = $this->navigationStorage->getByName('footer');
+    $menu = $navigation->getMenu();
+    $this->appendEntityCacheTags($menu);
+    return $navigation->build(self::NAV_MIN_DEPTH, self::NAV_MAX_DEPTH);
+  }
+
+  /**
+   * Get the company details.
+   */
+  private function getCompany(): ?CompanyInterface {
+    if (!$company = $this->companyStorage->load(self::COMPANY_ENTITY_ID)) {
+      return NULL;
+    };
+    $this->appendEntityCacheTags($company);
+    return $company;
+  }
+
+  /**
+   * Should page reloading be enabled.
+   */
+  private function reloadEnabled(): bool {
+    return getenv('DEVELOPMENT_SETTINGS') ? TRUE : FALSE;
   }
 
 }

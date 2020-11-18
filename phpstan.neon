@@ -16,7 +16,9 @@ parameters:
 			user: Drupal\user\UserStorage
 			navigation: App\Storage\NavigationStorage
 			team_member: App\Storage\TeamMemberStorage
+			company: App\Storage\CompanyStorage
 	ignoreErrors:
+		- '#but returns Drupal\\Core\\Entity\\EntityInterface#'
 		- '#Call to an undefined method Drupal\\Core\\Entity\\EntityInterface#'
 		- '#Call to an undefined method Drupal\\Core\\Entity\\EntityStorageInterface#'
 		- '#Cannot instantiate interface Drupal\\Core\\Field\\FieldItemListInterface#'

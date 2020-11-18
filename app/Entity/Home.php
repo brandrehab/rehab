@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Service\Entity\Node;
-use App\Service\Entity\AssignsTitleFromSeoFieldTrait;
+use App\Traits\Entity\AssignsTitleFromSeoFieldTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 
 /**

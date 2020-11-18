@@ -8,6 +8,7 @@
 
 use Drupal\node\Entity\Node;
 use App\Entity\Navigation;
+use App\Entity\Company;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\taxonomy\Entity\Term;
@@ -474,6 +475,15 @@ function rehab_install() {
   ]);
   $adminToolbarContentNavigations->save();
 
+  $adminToolbarContentCompanies = MenuLinkContent::create([
+    'title' => 'Companies',
+    'link' => ['uri' => 'route:entity.company.collection'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 4,
+    'parent' => $adminToolbarContent->getPluginId(),
+  ]);
+  $adminToolbarContentCompanies->save();
+
   $adminToolbarAdministration = MenuLinkContent::create([
     'title' => 'Administration',
     'link' => ['uri' => 'route:<nolink>'],
@@ -599,6 +609,15 @@ function rehab_install() {
     'parent' => $clientToolbarContent->getPluginId(),
   ]);
   $clientToolbarContentTeamMembers->save();
+
+  $clientToolbarContentCompanies = MenuLinkContent::create([
+    'title' => 'Companies',
+    'link' => ['uri' => 'route:entity.company.collection'],
+    'menu_name' => 'client-admin-toolbar',
+    'weight' => 3,
+    'parent' => $clientToolbarContent->getPluginId(),
+  ]);
+  $clientToolbarContentCompanies->save();
 
   $clientToolbarConfig = MenuLinkContent::create([
     'title' => 'Configuration',
@@ -766,35 +785,44 @@ function rehab_install() {
   // Navigations
 
   $navigationMain = Navigation::create([
-      'name' => 'Main',
-      'menu' => 'main',
+    'name' => 'Main',
+    'menu' => 'main',
   ]);
   $navigationMain->save();
 
   $navigationFooter = Navigation::create([
-      'name' => 'Footer',
-      'menu' => 'footer',
+    'name' => 'Footer',
+    'menu' => 'footer',
   ]);
   $navigationFooter->save();
 
   $navigationHidden = Navigation::create([
-      'name' => 'Hidden',
-      'menu' => 'hidden',
+    'name' => 'Hidden',
+    'menu' => 'hidden',
   ]);
   $navigationHidden->save();
 
   $navigationAdmin = Navigation::create([
-      'name' => 'Admin',
-      'menu' => 'admin-toolbar',
+    'name' => 'Admin',
+    'menu' => 'admin-toolbar',
   ]);
   $navigationAdmin->save();
 
   $navigationClient = Navigation::create([
-      'name' => 'Client',
-      'menu' => 'client-admin-toolbar',
+    'name' => 'Client',
+    'menu' => 'client-admin-toolbar',
   ]);
   $navigationClient->save();
 
+  // Companies
+
+  $companyDefault = Company::create([
+    'name' => 'Company',
+    'field_registered_name' => 'Company Holdings Ltd',
+    'field_registration_number' => '0123456789',
+    'field_country_of_registration' => 'England',
+  ]);
+  $companyDefault->save();
 
   // Generate pathauto references after the menu links (as required by patterns).
   $pathGenerator = \Drupal::service('pathauto.generator');
