@@ -1,5 +1,24 @@
+body.admin {
+  #navigation-wrapper {
+    top: 40px;
+    background-color: rgba($white, .8);
+    > .container-fluid {
+      box-shadow: 0 16px 16px -16px rgba(darken($primary, 20%), .2);
+    }
+  }
+}
+
 #navigation {
-  background-color: $white;
+  background-color: rgba($white, .9);
+  border-bottom: 10px rgba($primary, .8) solid;
+  .navbar-brand {
+    img {
+      height: 50px;
+      @include media-breakpoint-up(md) {
+        height: 70px;
+      }
+    }
+  }
   .navbar-toggler {
     font-size: 2rem;
     .fa-bars {
@@ -12,7 +31,8 @@
     >.nav-item {
       &.active {
         .nav-link {
-          color: darken($primary, 10%);
+          font-weight: bold;
+          color: $secondary;
         }
       }
       &:last-child {
@@ -32,8 +52,7 @@
 }
 
 #secondary-navigation {
-  background-color: $primary;
-  border-top: 2px darken($primary, 15%) solid;
+  background-color: lighten($primary, 5%);
   .nav-link {
     color: $white;
     padding: .5rem 1rem;
@@ -41,7 +60,11 @@
       padding-right: 0;
     }
     &.active {
-      background-color: darken($primary, 10%);
+      color: $secondary;
+      small {
+        font-weight: bold;
+      }
+      background-color: rgba(darken($primary, 10%), .8);
       &:last-child {
         padding-right: 1rem;
       }

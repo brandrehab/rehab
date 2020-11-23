@@ -44,13 +44,6 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
   const SUPERUSER_ID = 1;
 
   /**
-   * Current user.
-   *
-   * @var \Drupal\Core\Session\AccountProxyInterface
-   */
-  private AccountProxyInterface $currentUser;
-
-  /**
    * Cache settings.
    *
    * @var array
@@ -61,6 +54,13 @@ class AdminToolbar extends BlockBase implements ContainerFactoryPluginInterface 
     ],
     'tags' => [],
   ];
+
+  /**
+   * Current user.
+   *
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
+  private AccountProxyInterface $currentUser;
 
   /**
    * Navigation storage.

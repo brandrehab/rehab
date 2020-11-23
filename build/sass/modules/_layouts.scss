@@ -1,0 +1,39 @@
+.layouts-team {
+  .team-member {
+    .mug-holder {
+      overflow: hidden;
+    }
+    .mug {
+      opacity: .95;
+      transition: transform .5s;
+    }
+    .profile {
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background-color: $primary;
+      opacity: 0;
+      transition: opacity .5s;
+    }
+    .bar {
+      top: 0;
+      transition: top .5s;
+      left: calc(50% - .25rem);
+      z-index: 2;
+    }
+    &:hover {
+      .mug {
+        transform: scale(1.5);
+        transition: transform 1s;
+      }
+      .profile {
+        opacity: 1;
+        transition: opacity 1.5s;
+      }
+      .bar {
+        top: 100%;
+        transition: top 1s;
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 /* bootstrap */
-$primary: #007bff;
+$primary: #887C78;
+$secondary: #e6A11d;
 $white: #fff;
 $black: #000;
 $gray-100: darken($white, 10%);
@@ -11,7 +12,7 @@ $gray-600: darken($white, 60%);
 $gray-700: darken($white, 70%);
 $gray-800: darken($white, 80%);
 $gray-900: darken($white, 90%);
-$rehab: #ff009a;
+$rehab: #887C78;
 
 $grays: (
   "100": $gray-100,
@@ -25,7 +26,7 @@ $grays: (
   "900": $gray-900
 );
 
-$body-color: darken($primary, 30%);
+$body-color: darken($primary, 20%);
 
 $theme-colors: (
   "gray100": $gray-100,
@@ -62,7 +63,7 @@ $font-weight-normal: 400;
 $font-weight-bold: 500;
 $font-weight-bolder: 700;
 
-$headings-color: darken($primary, 30%);
+$headings-color: darken($primary, 10%);
 $headings-font-weight: $font-weight-normal;
 
 $headings-margin-bottom: map-get($spacers, 5);
@@ -84,7 +85,7 @@ $grid-breakpoints: (
   xs: 0,
   sm: 330px,
   md: 500px,
-  mdp: 600px,
+  mdp: 750px,
   lg: 1000px,
   xl: 1400px
 );
@@ -97,7 +98,7 @@ $container-max-widths: (
   xl: 1240px
 );
 
-$body-max-width: 3200px;
+$body-max-width: 2048px;
 
 /*
 $sizes: (

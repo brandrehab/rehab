@@ -27,7 +27,12 @@ html {
   max-width: $body-max-width;
   margin: auto;
   body {
-    background-color: darken($primary, 15%);
+    background-color: $white;
+  }
+  .fixed-top {
+    .container-fluid {
+      max-width: $body-max-width;
+    }
   }
 }
 

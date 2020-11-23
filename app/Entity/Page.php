@@ -23,7 +23,7 @@ class Page extends Node implements PageInterface {
    * Get the optional entity layouts.
    */
   public function getLayouts(): ?array {
-    $groups = $this->field_layouts;
+    $groups = $this->get('field_layouts');
 
     if ($groups == NULL) {
       return NULL;
@@ -34,9 +34,18 @@ class Page extends Node implements PageInterface {
     foreach ($groups as $group) {
       switch ($group->entity->getType()) {
         case 'text_content':
-          if ($text = $group->entity->field_text->first()) {
+          if ($text = $group->entity->get('field_text')->first()) {
             $layouts[] = ['text' => $text->value];
           }
+          break;
+
+        case 'team_content':
+          $layouts[] = [
+            'team' => [
+              'department' => $group->entity->get('field_department')->first(),
+            ],
+          ];
+          break;
       }
     }
 

@@ -6,6 +6,7 @@ namespace App\Base;
 
 use Drupal\Core\Block\BlockBase as Block;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Cache\Cache;
 
 /**
@@ -30,6 +31,23 @@ abstract class BlockBase extends Block {
     $this->cache['tags'] = Cache::mergeTags(
       $this->cache['tags'],
       $entity->getCacheTags()
+    );
+  }
+
+  /**
+   * Appends the list cache tags of an entity type to the cache render array.
+   */
+  protected function appendEntityTypeListCacheTags(
+    EntityTypeInterface $entity_type,
+    ?string $bundle = NULL
+  ): void {
+    $list_tags = $entity_type->getListCacheTags();
+    if ($bundle && !empty($list_tags[0])) {
+      $list_tags[0] .= ':' . $bundle;
+    }
+    $this->cache['tags'] = Cache::mergeTags(
+      $this->cache['tags'],
+      $list_tags,
     );
   }
 

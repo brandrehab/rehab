@@ -23,7 +23,7 @@ class Overview extends Node implements OverviewInterface {
    * Get the optional entity layouts.
    */
   public function getLayouts(): ?array {
-    $groups = $this->field_layouts;
+    $groups = $this->get('field_layouts');
 
     if ($groups == NULL) {
       return NULL;
@@ -34,9 +34,10 @@ class Overview extends Node implements OverviewInterface {
     foreach ($groups as $group) {
       switch ($group->entity->getType()) {
         case 'text_content':
-          if ($text = $group->entity->field_text->first()) {
+          if ($text = $group->entity->get('field_text')->first()) {
             $layouts[] = ['text' => $text->value];
           }
+          break;
       }
     }
 

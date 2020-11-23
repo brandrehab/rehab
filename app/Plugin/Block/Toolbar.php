@@ -15,10 +15,23 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @block(
  *  id = "app.toolbar",
- *  admin_label = @Translation("Frontend Toolbar Block")
+ *  admin_label = @Translation("Frontend Toolbar Block"),
  * )
  */
 class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
+
+  /**
+   * Cache settings.
+   *
+   * @var array
+   */
+  protected array $cache = [
+    'contexts' => [
+      'route',
+      'user.roles',
+    ],
+    'tags' => [],
+  ];
 
   /**
    * Route.
@@ -33,19 +46,6 @@ class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
    * @var \Drupal\Core\Session\AccountProxyInterface
    */
   private AccountProxyInterface $currentUser;
-
-  /**
-   * Cache settings.
-   *
-   * @var array
-   */
-  protected array $cache = [
-    'contexts' => [
-      'route',
-      'user.roles',
-    ],
-    'tags' => [],
-  ];
 
   /**
    * Dependency Injection.
@@ -100,15 +100,15 @@ class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
     $route_name = $this->route->getRouteName();
 
     if ($route_name == 'entity.node.canonical') {
-      return $this->getNodeCanonicalRoute();
+      return $this->getNodeCanonicalRouteIds();
     }
 
     if ($route_name == 'entity.node.revision') {
-      return $this->getNodeRevisionRoute();
+      return $this->getNodeRevisionRouteIds();
     }
 
     if ($route_name == 'entity.node.preview') {
-      return $this->getNodePreviewRoute();
+      return $this->getNodePreviewRouteIds();
     }
 
     return NULL;
@@ -117,9 +117,8 @@ class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
   /**
    * Get node canonical route.
    */
-  private function getNodeCanonicalRoute(): array {
+  private function getNodeCanonicalRouteIds(): array {
     $node = $this->route->getParameter('node');
-    $this->appendEntityCacheTags($node);
     $permission = 'create ' . $node->bundle() . ' content';
     if ($this->currentUser->hasPermission($permission)) {
       $bundle = $node->bundle();
@@ -134,9 +133,7 @@ class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
   /**
    * Get node revision route.
    */
-  private function getNodeRevisionRoute(): array {
-    $this->messenger()->addStatus('Viewing in revision mode.');
-    $this->disableCache();
+  private function getNodeRevisionRouteIds(): array {
     return [
       'type' => 'revision',
       'id' => $this->route->getRawParameter('node'),
@@ -147,10 +144,8 @@ class Toolbar extends BlockBase implements ContainerFactoryPluginInterface {
   /**
    * Get node preview route.
    */
-  private function getNodePreviewRoute(): array {
-    $this->messenger()->addStatus('Viewing in preview mode.');
+  private function getNodePreviewRouteIds(): array {
     $node = $this->route->getParameter('node_preview');
-    $this->disableCache();
     return [
       'type' => 'preview',
       'id' => $node->id(),

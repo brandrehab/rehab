@@ -14,6 +14,7 @@ use Drupal\Core\Render\RendererInterface;
 trait RendersLayoutsTrait {
 
   use BuildsTextLayoutTrait;
+  use BuildsTeamLayoutTrait;
 
   /**
    * Specify the available builder traits.
@@ -21,7 +22,8 @@ trait RendersLayoutsTrait {
    * @var array
    */
   private array $layoutBuilders = [
-    'text' => 'getLayoutText',
+    'text' => 'getTextLayout',
+    'team' => 'getTeamLayout',
   ];
 
   /**

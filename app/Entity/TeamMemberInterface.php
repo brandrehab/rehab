@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Drupal\Core\Entity\ContentEntityInterface;
@@ -36,9 +38,29 @@ interface TeamMemberInterface extends ContentEntityInterface, EntityChangedInter
   public function getEmail(): ?string;
 
   /**
+   * Tests whether the team member has aan email address.
+   */
+  public function hasEmail(): bool;
+
+  /**
    * Gets the optional telephone number of the team member.
    */
   public function getTelephone(): ?string;
+
+  /**
+   * Tests whether the team member has a telephone number.
+   */
+  public function hasTelephone(): bool;
+
+  /**
+   * Gets the optional telephone number of the team member as a link.
+   */
+  public function getTelephoneLink(): ?array;
+
+  /**
+   * Tests whether the team member has a telephone number with an extension.
+   */
+  public function hasTelephoneExtension(): bool;
 
   /**
    * Gets the position held by the team member.
@@ -49,6 +71,36 @@ interface TeamMemberInterface extends ContentEntityInterface, EntityChangedInter
    * Gets the department to which the team member belongs.
    */
   public function getDepartment(): string;
+
+  /**
+   * Gets the optional facebook page of the team member.
+   */
+  public function getFacebook(): ?string;
+
+  /**
+   * Tests whether the team member has a facebook page.
+   */
+  public function hasFacebook(): bool;
+
+  /**
+   * Gets the optional twitter page of the team member.
+   */
+  public function getTwitter(): ?string;
+
+  /**
+   * Tests whether the team member has a twitter page.
+   */
+  public function hasTwitter(): bool;
+
+  /**
+   * Gets the optional linkedin page of the team member.
+   */
+  public function getLinkedIn(): ?string;
+
+  /**
+   * Tests whether the team member has a linkedin page.
+   */
+  public function hasLinkedIn(): bool;
 
   /**
    * Sets the team member creation timestamp.

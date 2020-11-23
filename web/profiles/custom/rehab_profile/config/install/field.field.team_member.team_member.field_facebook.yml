@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.team_member.field_facebook
+  module:
+    - app
+    - link
+id: team_member.team_member.field_facebook
+field_name: field_facebook
+entity_type: team_member
+bundle: team_member
+label: Facebook
+description: 'Optionally provide the url of the team member Facebook page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

@@ -6,7 +6,7 @@ dependencies:
 id: client_page_title
 theme: client
 region: content
-weight: -6
+weight: -3
 provider: null
 plugin: page_title_block
 settings:

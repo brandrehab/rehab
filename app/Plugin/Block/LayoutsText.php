@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Plugin\Block;
 
-use Drupal\Core\Block\BlockBase;
+use App\Base\BlockBase;
 
 /**
  * The layouts text block.

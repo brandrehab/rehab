@@ -3,8 +3,12 @@ status: true
 dependencies:
   config:
     - field.field.team_member.team_member.field_department
+    - field.field.team_member.team_member.field_facebook
+    - field.field.team_member.team_member.field_linkedin
+    - field.field.team_member.team_member.field_twitter
   module:
     - app
+    - link
 id: team_member.team_member.default
 targetEntityType: team_member
 bundle: team_member
@@ -23,6 +27,30 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_facebook:
+    weight: 7
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_linkedin:
+    weight: 6
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_twitter:
+    weight: 8
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   firstname:
     type: string_textfield

@@ -21,7 +21,7 @@ trait BuildsTextLayoutTrait {
   /**
    * Gets the text render array.
    */
-  protected function getLayoutText(?string $val): ?array {
+  protected function getTextLayout(?string $val): ?array {
     if (!$val) {
       return NULL;
     }

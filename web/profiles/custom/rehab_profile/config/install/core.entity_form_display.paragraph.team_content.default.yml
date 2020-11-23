@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.team_content.field_department
+    - paragraphs.paragraphs_type.team_content
+id: paragraph.team_content.default
+targetEntityType: paragraph
+bundle: team_content
+mode: default
+content:
+  field_department:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

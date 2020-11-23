@@ -15,24 +15,47 @@ use Drupal\Core\Entity\Sql\SqlContentEntityStorage;
 class TeamMemberStorage extends SqlContentEntityStorage implements TeamMemberStorageInterface {
 
   /**
-   * Get the directors by department taxonomy id.
+   * Get the team members or each department in turn.
+   */
+  public function getAllByDept(): ?array {
+    $departmentStorage = $this->entityTypeManager->getStorage('taxonomy_term');
+    $query = $departmentStorage->getQuery()
+      ->condition('vid', 'team_departments')
+      ->sort('weight');
+
+    if (!$dept_ids = $query->execute()) {
+      return NULL;
+    }
+
+    $departments = $departmentStorage->loadMultiple($dept_ids);
+
+    foreach ($departments as $department) {
+      $dept_name = $department->get('name')->value;
+      $dept_members = $this->getByDeptId((int) $department->id());
+      $members[$dept_name] = $dept_members;
+    }
+
+    return $members ?? NULL;
+  }
+
+  /**
+   * Get the team members by department taxonomy id.
    */
   public function getByDeptId(int $dept_id): ?array {
     $query = $this->getQuery()
       ->condition('field_department', $dept_id)
-      ->sort($this->entityType->getKey('department'))
       ->sort($this->entityType->getKey('lastname'))
       ->sort($this->entityType->getKey('firstname'));
 
-    if (!$director_ids = $query->execute()) {
+    if (!$member_ids = $query->execute()) {
       return NULL;
     }
 
-    return $this->loadMultiple($director_ids);
+    return $this->loadMultiple($member_ids);
   }
 
   /**
-   * Get the directors by department taxonomy name.
+   * Get the team members by department taxonomy name.
    */
   public function getByDeptName(string $dept_name): ?array {
     $query = $this->entityTypeManager->getStorage('taxonomy_term')->getQuery()

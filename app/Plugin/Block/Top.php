@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Plugin\Block;
 
+use App\Base\BlockBase;
 use App\Service\Entity\NodeInterface;
-use Drupal\Core\Block\BlockBase;
 
 /**
  * The top block.
@@ -22,7 +22,7 @@ class Top extends BlockBase {
    *
    * @var array
    */
-  private array $cache = [
+  protected array $cache = [
     'contexts' => [
       'route',
     ],
@@ -35,16 +35,15 @@ class Top extends BlockBase {
   public function build(): array {
     $node = $this->getNode();
 
-    $this->cache['tags'] = [
-      'node:' . $node->id(),
-      'preview:' . $node->id(),
-      'revision:' . $node->id(),
-    ];
-
     return [
-      '#theme' => 'top',
-      '#heading' => $node->getHeading(),
-      '#cache' => $this->cache,
+      [
+        '#theme' => 'top',
+        '#heading' => $node->getHeading(),
+        '#cache' => $this->cache,
+      ],
+      [
+        '#type' => 'status_messages',
+      ],
     ];
   }
 

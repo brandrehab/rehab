@@ -25,6 +25,18 @@ class Layouts extends BlockBase implements ContainerFactoryPluginInterface {
   use RendersLayoutsTrait;
 
   /**
+   * Cache settings.
+   *
+   * @var array
+   */
+  protected array $cache = [
+    'contexts' => [
+      'route',
+    ],
+    'tags' => [],
+  ];
+
+  /**
    * Renderer.
    *
    * @var \Drupal\Core\Render\RendererInterface
@@ -37,18 +49,6 @@ class Layouts extends BlockBase implements ContainerFactoryPluginInterface {
    * @var \Drupal\Core\Block\BlockManagerInterface
    */
   protected BlockManagerInterface $blockManager;
-
-  /**
-   * Cache settings.
-   *
-   * @var array
-   */
-  protected array $cache = [
-    'contexts' => [
-      'route',
-    ],
-    'tags' => [],
-  ];
 
   /**
    * Dependecy injection.
@@ -101,9 +101,7 @@ class Layouts extends BlockBase implements ContainerFactoryPluginInterface {
    */
   private function getNode(): NodeInterface {
     $config = $this->getConfiguration();
-    $node = $config['node'];
-    $this->appendEntityCacheTags($node);
-    return $node;
+    return $config['node'];
   }
 
 }

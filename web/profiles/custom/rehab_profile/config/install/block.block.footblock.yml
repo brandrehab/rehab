@@ -1,14 +1,12 @@
 langcode: en
 status: true
 dependencies:
-  module:
-    - foot
   theme:
     - client
 id: footblock
 theme: client
 region: footer
-weight: 0
+weight: -4
 provider: null
 plugin: app.foot
 settings:

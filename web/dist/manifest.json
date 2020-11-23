@@ -1,9 +1,10 @@
 {
-  "app.css": "/dist/app.45ade9992bb449910c8b.css",
-  "app.js": "/dist/app.45ade9992bb449910c8b.js",
+  "app.css": "/dist/app.006df91625d2a0853c73.css",
+  "app.js": "/dist/app.006df91625d2a0853c73.js",
   "fonts.css": "/dist/fonts.bd7633fd9361abef5825.css",
   "vendor.js": "/dist/vendor.5cd879db9793059f4798.js",
   "images/logo-mono.svg": "/dist/images/logo-mono.a2f320273a3781fbb7db00fd48307a26.svg",
   "images/logo.svg": "/dist/images/logo.d678f6fc3943e7466d76e9562e4f5506.svg",
-  "images/pencils.jpg": "/dist/images/pencils.199135ab0c6dbc2f8c0137fdb2baeb8a.jpg"
+  "images/pencils.jpg": "/dist/images/pencils.199135ab0c6dbc2f8c0137fdb2baeb8a.jpg",
+  "images/profile.svg": "/dist/images/profile.bf3b439df069259a0b66336eeb98dfea.svg"
 }

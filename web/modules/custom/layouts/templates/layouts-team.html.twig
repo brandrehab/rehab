@@ -1,0 +1,57 @@
+<section class="container layouts-team mt-5">
+  <div class="row">
+    {% for department, members in team if members %}
+        {% for member in members %}
+          <div class="team-member col-12 col-md-6 col-mdp-4 col-lg-3 bg-white mt-1 p-3">
+            <div class="bg-primary text-center text-white">
+              <div class="w-100 position-relative mug-holder">
+                <img src="{{manifest('images/profile.svg')}}" class="img-fluid w-100 mug">
+                <div class="w-100 h-100 position-absolute profile">
+                  <div class="row h-100 align-items-center no-gutters">
+                    <div class="col-12">
+                      {% if member.hasTelephone() %}
+                        <a class="btn btn-white w-75 mb-1 rounded-top" href="mailto:{{member.getEmail()}}">email</a><br>
+                      {% endif %}
+                      {% if member.hasTelephone() %}
+                        <a class="btn btn-white w-75 mt-1 rounded-bottom" href="tel:{{member.getTelephoneLink().number}}">
+                          {% if member.hasTelephoneExtension() %}
+                            ext {{member.getTelephoneLink().extension}}
+                          {% else %}
+                            phone
+                          {% endif %}
+                        </a>
+                      {% endif %}
+                      <div class="mt-5">
+                        {% if member.hasLinkedIn() %}
+                          <a href="{{member.getLinkedIn()}}" class="px-2 text-white">
+                            <i class="fab fa-linkedin fa-2x align-middle"></i>
+                          </a>
+                        {% endif %}
+                        {% if member.hasTwitter() %}
+                        <a href="{{member.getTwitter()}}" class="px-2 text-white">
+                          <i class="fab fa-twitter fa-2x align-middle"></i>
+                        </a>
+                        {% endif %}
+                        {% if member.hasFacebook() %}
+                          <a href="{{member.getFacebook()}}" class="px-2 text-white">
+                            <i class="fab fa-facebook fa-2x align-middle"></i>
+                          </a>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="px-1 bg-white h-100 position-absolute m-auto bar"></div>
+              </div>
+            </div>
+            <div class="position w-100 px-2 py-1 bg-secondary text-center mt-2">
+              <small>{{member.getPosition()|upper}}</small>
+            </div>
+            <div class="name bg-primary text-white w-100 p-2 text-center mt-2">
+              <strong>{{member.getFirstname()}}</strong> <small>{{member.getLastname()}}</small>
+            </div>
+          </div>
+        {% endfor %}
+    {% endfor %}
+  </div>
+</section>

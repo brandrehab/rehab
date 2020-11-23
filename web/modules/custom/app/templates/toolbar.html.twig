@@ -1,38 +1,38 @@
 <div class="fixed-top">
-  <section id="toolbar" class="bg-rehab">
+  <section id="toolbar" class="container-fluid bg-rehab">
     <div class="row">
       <div class="col-12">
         <ul class="nav mt-0 justify-content-end">
           <li class="nav-item">
-            <a class="nav-link text-white" href="/admin/content">Admin</a>
+            <a class="nav-link text-white px-2" href="/admin/content"><small>Admin</small></a>
           </li>
           {% if route %}
             {% if route.type == 'node' %}
               {% if route.bundle %}
               <li class="nav-item">
-                <a class="nav-link text-white" href="/node/add/{{route.bundle}}">New</a>
+                <a class="nav-link text-white px-2" href="/node/add/{{route.bundle}}"><small>New</small></a>
               </li>
               {% endif %}
             {% endif %}
             <li class="nav-item">
-              <a class="nav-link text-white" href="/node/{{route.id}}/edit">Edit</a>
+              <a class="nav-link text-white px-2" href="/node/{{route.id}}/edit"><small>Edit</small></a>
             </li>
             {% if route.type == 'preview' %}
               <li class="nav-item">
-                <a class="nav-link text-white" href="/node/{{route.id}}/edit?uuid={{route.uuid}}">Edit Preview</a>
+                <a class="nav-link text-white px-2" href="/node/{{route.id}}/edit?uuid={{route.uuid}}"><small>Edit Preview</small></a>
               </li>
             {% endif %}
             {% if route.type == 'revision' %}
               <li class="nav-item">
-                <a class="nav-link text-white" href="/node/{{route.id}}/revisions">View Revisions</a>
+                <a class="nav-link text-white px-2" href="/node/{{route.id}}/revisions"><small>View Revisions<small></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="/node/{{route.id}}/revisions/{{route.revision}}/revert">Revert</a>
+                <a class="nav-link text-white px-2" href="/node/{{route.id}}/revisions/{{route.revision}}/revert"><small>Revert</small></a>
               </li>
             {% endif %}
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link text-white" href="/user/logout">Logout</a>
+            <a class="nav-link text-white px-2" href="/user/logout"><small>Logout</small></a>
           </li>
         </ul>
       </div>

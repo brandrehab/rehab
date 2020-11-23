@@ -2,14 +2,13 @@ langcode: en
 status: true
 dependencies:
   module:
-    - app
     - user
   theme:
     - client
 id: frontendtoolbarblock
 theme: client
 region: header
-weight: 0
+weight: -4
 provider: null
 plugin: app.toolbar
 settings:

@@ -22,7 +22,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Extends base node storage to assign entities base on node type.
  */
-class NodeStorage extends Base {
+class NodeStorage extends Base implements NodeStorageInterface {
 
   /**
    * Node entity types (bundles) and associated classes.

@@ -24,5 +24,11 @@ function layouts_theme(): array {
         'cache' => NULL,
       ],
     ],
+    'layouts_team' => [
+      'variables' => [
+        'team' => NULL,
+        'cache' => NULL,
+      ],
+    ],
   ];
 }

@@ -8,7 +8,7 @@ dependencies:
 id: client_help
 theme: client
 region: content
-weight: -4
+weight: -1
 provider: null
 plugin: help_block
 settings:

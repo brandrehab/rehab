@@ -12,12 +12,17 @@ use Drupal\Core\Entity\ContentEntityStorageInterface;
 interface TeamMemberStorageInterface extends ContentEntityStorageInterface {
 
   /**
-   * Get the directors by department taxonomy id.
+   * Get the team members or each department in turn.
+   */
+  public function getAllByDept(): ?array;
+
+  /**
+   * Get the team members by department taxonomy id.
    */
   public function getByDeptId(int $dept_id): ?array;
 
   /**
-   * Get the directors by department taxonomy name.
+   * Get the team members by department taxonomy name.
    */
   public function getByDeptName(string $dept_name): ?array;
 

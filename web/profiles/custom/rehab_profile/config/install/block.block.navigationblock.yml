@@ -2,14 +2,13 @@ langcode: en
 status: true
 dependencies:
   module:
-    - navigation
     - system
   theme:
     - client
 id: navigationblock
 theme: client
 region: header
-weight: 0
+weight: -3
 provider: null
 plugin: app.navigation
 settings:

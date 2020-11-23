@@ -1,62 +1,64 @@
 <div id="navigation-wrapper" class="fixed-top">
-  <section id="navigation">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-
-          <nav class="navbar navbar-expand-lg px-0">
-            <a class="d-inline-block navbar-brand" href="/">
-              <img src="{{ manifest('images/logo.svg') }}">
-            </a>
-
-            <button class="navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span role="button" ><i class="fa fa-bars text-primary" aria-hidden="true"></i></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarContent">
-              <ul class="navbar-nav ml-auto">
-                {% for item in menu %}
-                  <li class="nav-item{% if item.active %} active{% endif %}">
-                    {% if not item.children %}
-                      <a class="nav-link {% if loop.first %} pt-3 pt-lg-2{% endif %}" href="{{ item.url }}">{{ item.title }}{% if item.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
-                    {% else %}
-                      <a class="nav-link d-none d-lg-block" href="{{ item.url }}">{{ item.title }}{% if item.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
-                      <a class="nav-link d-block d-lg-none" data-toggle="collapse" href="#secondary-dropdown-navigation-{{loop.index}}" role="button" aria-expanded="false" aria-controls="secondary-dropdown-navigation-{{loop.index}}">{{ item.title }}{% if item.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
-                    {% endif %}
-                  </li>
-                  {% if item.children %}
-                    <div class="d-block d-lg-none">
-                      <div id="secondary-dropdown-navigation-{{loop.index}}" class="collapse secondary-dropdown-navigation pl-4">
-                        <a class="nav-link" href="{{ item.url }}">{{ item.title }}{% if item.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
-                        {% for child in item.children %}
-                          <a class="nav-link{% if child.active %} active{% endif %}" href="{{ child.url }}">{{ child.title }}{% if child.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
-                        {% endfor %}
-                      </div>
-                    </div>
-                {% endif %}
-                {% endfor %}
-              </ul>
-            </div>
-          </nav>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {% for item in menu if item.active and item.children %}
-    <section id="secondary-navigation" class="d-none d-lg-block mt-2">
+  <div class="container-fluid">
+    <section id="navigation">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <nav class="nav justify-content-end">
-              {% for child in item.children %}
-                <a class="nav-link{% if child.active %} active{% endif %}" href="{{ child.url }}"><small>{{ child.title }}{% if child.active %} <span class="sr-only">(active trail)</span>{% endif %}</small></a>
-              {% endfor %}
+
+            <nav class="navbar navbar-expand-mdp px-0">
+              <a class="d-inline-block navbar-brand" href="/">
+                <img src="{{ manifest('images/logo.svg') }}">
+              </a>
+
+              <button class="navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span role="button" ><i class="fa fa-bars text-primary" aria-hidden="true"></i></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ml-auto">
+                  {% for item in menu %}
+                    <li class="nav-item{% if item.active %} active{% endif %}">
+                      {% if not item.children %}
+                        <a class="nav-link {% if loop.first %} pt-3 pt-mdp-2{% endif %}" href="{{ item.url }}">{{ item.title }}{% if item.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
+                      {% else %}
+                        <a class="nav-link d-none d-mdp-block" href="{{ item.url }}">{{ item.title }}{% if item.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
+                        <a class="nav-link d-block d-mdp-none" data-toggle="collapse" href="#secondary-dropdown-navigation-{{loop.index}}" role="button" aria-expanded="false" aria-controls="secondary-dropdown-navigation-{{loop.index}}">{{ item.title }}{% if item.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
+                      {% endif %}
+                    </li>
+                    {% if item.children %}
+                      <div class="d-block d-mdp-none">
+                        <div id="secondary-dropdown-navigation-{{loop.index}}" class="collapse secondary-dropdown-navigation pl-4">
+                          <a class="nav-link" href="{{ item.url }}">{{ item.title }}{% if item.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
+                          {% for child in item.children %}
+                            <a class="nav-link{% if child.active %} active{% endif %}" href="{{ child.url }}">{{ child.title }}{% if child.active %} <span class="sr-only">(active trail)</span>{% endif %}</a>
+                          {% endfor %}
+                        </div>
+                      </div>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
             </nav>
+
           </div>
         </div>
       </div>
     </section>
-  {% endfor %}
+
+    {% for item in menu if item.active and item.children %}
+      <section id="secondary-navigation" class="d-none d-mdp-block mt-2">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <nav class="nav justify-content-end">
+                {% for child in item.children %}
+                  <a class="nav-link{% if child.active %} active{% endif %}" href="{{ child.url }}"><small>{{ child.title }}{% if child.active %} <span class="sr-only">(active trail)</span>{% endif %}</small></a>
+                {% endfor %}
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% endfor %}
+  </div>
 </div>

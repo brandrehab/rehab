@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: team_content
+label: 'Team Content'
+icon_uuid: null
+icon_default: null
+description: 'Displays team members, with the option to filter by a specific department.'
+behavior_plugins: {  }

@@ -106,11 +106,13 @@ class Foot extends BlockBase implements ContainerFactoryPluginInterface {
    */
   public function build(): array {
     return [
-      '#theme' => 'foot',
-      '#reload' => $this->reloadEnabled(),
-      '#menu' => $this->buildNavigation(),
-      '#company' => $this->getCompany(),
-      '#cache' => $this->cache,
+      [
+        '#theme' => 'foot',
+        '#reload' => $this->reloadEnabled(),
+        '#menu' => $this->buildNavigation(),
+        '#company' => $this->getCompany(),
+        '#cache' => $this->cache,
+      ],
     ];
   }
 

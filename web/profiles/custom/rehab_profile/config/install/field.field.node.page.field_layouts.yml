@@ -4,6 +4,7 @@ dependencies:
   config:
     - field.storage.node.field_layouts
     - node.type.page
+    - paragraphs.paragraphs_type.team_content
     - paragraphs.paragraphs_type.text_content
   module:
     - entity_reference_revisions
@@ -22,6 +23,7 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
+      team_content: team_content
       text_content: text_content
     target_bundles_drag_drop:
       banners:
@@ -30,6 +32,9 @@ settings:
       seo_and_social_media:
         weight: 5
         enabled: false
+      team_content:
+        enabled: true
+        weight: 5
       text_content:
         enabled: true
         weight: 6

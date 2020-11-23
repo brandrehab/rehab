@@ -3,6 +3,9 @@ status: true
 dependencies:
   config:
     - field.field.team_member.team_member.field_department
+    - field.field.team_member.team_member.field_facebook
+    - field.field.team_member.team_member.field_linkedin
+    - field.field.team_member.team_member.field_twitter
   module:
     - app
 id: team_member.team_member.default
@@ -13,6 +16,9 @@ content: {  }
 hidden:
   email: true
   field_department: true
+  field_facebook: true
+  field_linkedin: true
+  field_twitter: true
   firstname: true
   lastname: true
   position: true
