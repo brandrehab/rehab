@@ -10,6 +10,6 @@ regions:
   header: 'Header'
   content: 'Content'
   footer: 'Footer'
-
+  none: 'None'
 ckeditor_stylesheets:
-  - assets/css/app.css
+  - assets/css/cke.css
