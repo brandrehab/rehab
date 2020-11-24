@@ -9,6 +9,7 @@
 use Drupal\node\Entity\Node;
 use App\Entity\Navigation;
 use App\Entity\Company;
+use App\Entity\TeamMember;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\taxonomy\Entity\Term;
@@ -376,6 +377,9 @@ function rehab_install() {
         Paragraph::create([
           'type' => 'text_content',
           'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
+        ]),
+        Paragraph::create([
+          'type' => 'team_content',
         ]),
       ],
   ]);
@@ -823,6 +827,35 @@ function rehab_install() {
     'field_country_of_registration' => 'England',
   ]);
   $companyDefault->save();
+
+  // Team Members
+
+  $teamMemberBilly = TeamMember::create([
+    'firstname' => 'Billy',
+    'lastname' => 'Bigshot',
+    'position' => 'Technical Director',
+    'email' => 'billy@bigshot.com',
+    'telephone' => '+44 (0)444 44 44 Ext 345',
+    'field_department' => $directorsTeamDepartmentsTerm->id(),
+    'field_linkedin' => 'https://linkedin.com',
+    'field_facebook' => 'https://facebook.com',
+    'field_twitter' => 'https://twitter.com',
+  ]);
+  $teamMemberBilly->save();
+
+  $teamMemberNobby = TeamMember::create([
+    'firstname' => 'Nobby',
+    'lastname' => 'Nobody',
+    'position' => 'Sales Manager',
+    'email' => 'nobby@nobody.com',
+    'telephone' => '555 55 55',
+    'field_department' => $salesTeamDepartmentsTerm->id(),
+    'field_linkedin' => 'https://linkedin.com',
+    'field_twitter' => 'https://twitter.com',
+  ]);
+  $teamMemberNobby->save();
+
+
 
   // Generate pathauto references after the menu links (as required by patterns).
   $pathGenerator = \Drupal::service('pathauto.generator');
