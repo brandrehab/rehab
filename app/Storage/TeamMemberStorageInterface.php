@@ -7,7 +7,7 @@ namespace App\Storage;
 use Drupal\Core\Entity\ContentEntityStorageInterface;
 
 /**
- * Defines an interface for team entity storage classes.
+ * Defines an interface for the team entity storage class.
  */
 interface TeamMemberStorageInterface extends ContentEntityStorageInterface {
 

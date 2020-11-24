@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.overview.field_seo_and_social_media
     - node.type.overview
   module:
-    - app
     - paragraphs
     - path
 id: node.overview.default

@@ -17,6 +17,7 @@ parameters:
 			navigation: App\Storage\NavigationStorage
 			team_member: App\Storage\TeamMemberStorage
 			company: App\Storage\CompanyStorage
+			timeline_event: App\Storage\TimelineEventStorage
 	ignoreErrors:
 		- '#but returns Drupal\\Core\\Entity\\EntityInterface#'
 		- '#Call to an undefined method Drupal\\Core\\Entity\\EntityInterface#'

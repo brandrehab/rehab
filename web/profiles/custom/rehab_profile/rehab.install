@@ -10,6 +10,7 @@ use Drupal\node\Entity\Node;
 use App\Entity\Navigation;
 use App\Entity\Company;
 use App\Entity\TeamMember;
+use App\Entity\TimelineEvent;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\taxonomy\Entity\Term;
@@ -488,6 +489,15 @@ function rehab_install() {
   ]);
   $adminToolbarContentCompanies->save();
 
+  $adminToolbarContentTimelineEvents = MenuLinkContent::create([
+    'title' => 'Timeline Events',
+    'link' => ['uri' => 'route:entity.timeline_event.collection'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 5,
+    'parent' => $adminToolbarContent->getPluginId(),
+  ]);
+  $adminToolbarContentTimelineEvents->save();
+
   $adminToolbarAdministration = MenuLinkContent::create([
     'title' => 'Administration',
     'link' => ['uri' => 'route:<nolink>'],
@@ -622,6 +632,15 @@ function rehab_install() {
     'parent' => $clientToolbarContent->getPluginId(),
   ]);
   $clientToolbarContentCompanies->save();
+
+  $clientToolbarContentTimelineEvents = MenuLinkContent::create([
+    'title' => 'Timeline Events',
+    'link' => ['uri' => 'route:entity.timeline_event.collection'],
+    'menu_name' => 'admin-toolbar',
+    'weight' => 4,
+    'parent' => $clientToolbarContent->getPluginId(),
+  ]);
+  $clientToolbarContentTimelineEvents->save();
 
   $clientToolbarConfig = MenuLinkContent::create([
     'title' => 'Configuration',
@@ -855,7 +874,35 @@ function rehab_install() {
   ]);
   $teamMemberNobby->save();
 
+  // Timeline Events
 
+  $timelineEventA = TimelineEvent::create([
+    'heading' => 'Lastest Timeline Event',
+    'date' => '2020-11-01',
+    'details' => "<p>Lorem ipsum dolor met.</p>\r\n",
+  ]);
+  $timelineEventA->save();
+
+  $timelineEventB = TimelineEvent::create([
+    'heading' => 'Earlier In Year Event',
+    'date' => '2020-05-01',
+    'details' => "<p>Lorem ipsum dolor met.</p>\r\n",
+  ]);
+  $timelineEventB->save();
+
+  $timelineEventC = TimelineEvent::create([
+    'heading' => 'Previous Year Event',
+    'date' => '2019-05-01',
+    'details' => "<p>Lorem ipsum dolor met.</p>\r\n",
+  ]);
+  $timelineEventC->save();
+
+  $timelineEventD = TimelineEvent::create([
+    'heading' => 'Previous Year Later In Month Event',
+    'date' => '2019-05-10',
+    'details' => "<p>Lorem ipsum dolor met.</p>\r\n",
+  ]);
+  $timelineEventD->save();
 
   // Generate pathauto references after the menu links (as required by patterns).
   $pathGenerator = \Drupal::service('pathauto.generator');

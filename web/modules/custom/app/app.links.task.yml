@@ -14,3 +14,8 @@ entity.company.settings:
   title: Settings
   route_name: entity.company.settings
   base_route: entity.company.settings
+
+entity.timeline_event.settings:
+  title: Settings
+  route_name: entity.timeline_event.settings
+  base_route: entity.timeline_event.settings

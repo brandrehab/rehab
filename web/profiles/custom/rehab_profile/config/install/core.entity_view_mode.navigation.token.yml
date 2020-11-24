@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - app
+id: navigation.token
+label: Token
+targetEntityType: navigation
+cache: true

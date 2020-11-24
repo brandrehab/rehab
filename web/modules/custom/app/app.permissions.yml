@@ -2,3 +2,4 @@ permission_callbacks:
   - \App\Permissions\TeamPermissions::collection
   - \App\Permissions\NavigationPermissions::collection
   - \App\Permissions\CompanyPermissions::collection
+  - \App\Permissions\TimelinePermissions::collection

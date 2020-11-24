@@ -51,6 +51,13 @@ class Company extends ContentEntityBase implements CompanyInterface {
   use EntityChangedTrait;
 
   /**
+   * Gets the company creation timestamp.
+   */
+  public function getCreatedTime(): string {
+    return $this->get('created')->value;
+  }
+
+  /**
    * Get the company name.
    */
   public function getName(): string {
@@ -76,45 +83,6 @@ class Company extends ContentEntityBase implements CompanyInterface {
    */
   public function getCountryOfRegistration(): ?string {
     return $this->get('field_country_of_registration')->value;
-  }
-
-  /**
-   * Gets the company creation timestamp.
-   */
-  public function getCreatedTime(): string {
-    return $this->get('created')->value;
-  }
-
-  /**
-   * Set the company name.
-   */
-  public function setName(string $name): CompanyInterface {
-    $this->set('name', $name);
-    return $this;
-  }
-
-  /**
-   * Set the registered company name.
-   */
-  public function setRegisteredName(string $registered_name): CompanyInterface {
-    $this->set('field_registered_name', $registered_name);
-    return $this;
-  }
-
-  /**
-   * Set the company registration number.
-   */
-  public function setRegistrationNumber(string $number): CompanyInterface {
-    $this->set('field_registration_number', $number);
-    return $this;
-  }
-
-  /**
-   * Set the country of registration.
-   */
-  public function setCountryOfRegistration(string $country): CompanyInterface {
-    $this->set('field_country_of_registration', $country);
-    return $this;
   }
 
   /**

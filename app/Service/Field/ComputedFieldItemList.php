@@ -38,14 +38,14 @@ class ComputedFieldItemList extends FieldItemList {
   /**
    * {@inheritdoc}
    */
-  protected function computeValue() {
+  protected function computeValue(): void {
     $this->ensurePopulated();
   }
 
   /**
    * Computes the calculated values for this item list.
    */
-  protected function ensurePopulated() {
+  protected function ensurePopulated(): void {
     if (!isset($this->list[0])) {
       $this->list[0] = $this->createItem(0);
     }

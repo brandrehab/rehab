@@ -5,7 +5,7 @@ dependencies:
     - field.storage.node.field_children
     - node.type.overview
   module:
-    - app
+    - null
 id: node.overview.field_children
 field_name: field_children
 entity_type: node

@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   module:
-    - app
+    - null
     - node
 id: node.field_children
 field_name: field_children
 entity_type: node
 type: children_field
 settings: {  }
-module: app
+module: null
 locked: false
 cardinality: 1
 translatable: true

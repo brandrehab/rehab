@@ -13,6 +13,11 @@ use Drupal\Core\Entity\EntityChangedInterface;
 interface CompanyInterface extends ContentEntityInterface, EntityChangedInterface {
 
   /**
+   * Gets the company creation timestamp.
+   */
+  public function getCreatedTime(): string;
+
+  /**
    * Get the company name.
    */
   public function getName(): string;
@@ -33,38 +38,13 @@ interface CompanyInterface extends ContentEntityInterface, EntityChangedInterfac
   public function getCountryOfRegistration(): ?string;
 
   /**
-   * Gets the company creation timestamp.
+   * Checks whether all the registration information exists.
    */
-  public function getCreatedTime(): string;
-
-  /**
-   * Set the company name.
-   */
-  public function setName(string $name): CompanyInterface;
-
-  /**
-   * Set the registered company name.
-   */
-  public function setRegisteredName(string $name): CompanyInterface;
-
-  /**
-   * Set the company registration number.
-   */
-  public function setRegistrationNumber(string $number): CompanyInterface;
-
-  /**
-   * Set the country of registration.
-   */
-  public function setCountryOfRegistration(string $country): CompanyInterface;
+  public function isRegistered(): bool;
 
   /**
    * Sets the company creation timestamp.
    */
   public function setCreatedTime(string $timestamp): CompanyInterface;
-
-  /**
-   * Checks whether all the registration information exists.
-   */
-  public function isRegistered(): bool;
 
 }

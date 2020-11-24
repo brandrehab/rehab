@@ -3,3 +3,4 @@ route_callbacks:
   - \App\Routes\TeamMemberRoutes::collection
   - \App\Routes\NavigationRoutes::collection
   - \App\Routes\CompanyRoutes::collection
+  - \App\Routes\TimelineEventRoutes::collection

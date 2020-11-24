@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - app
+id: timeline_event.timeline_event.default
+targetEntityType: timeline_event
+bundle: timeline_event
+mode: default
+content: {  }
+hidden:
+  date: true
+  details: true
+  heading: true

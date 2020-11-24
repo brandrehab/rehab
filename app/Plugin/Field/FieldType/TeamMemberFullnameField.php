@@ -85,7 +85,7 @@ class TeamMemberFullnameField extends FieldItemBase {
   /**
    * Calculates the value of the field and sets it.
    */
-  protected function ensureCalculated() {
+  protected function ensureCalculated(): void {
     if (!$this->isCalculated) {
       $entity = $this->getEntity();
       if (!$entity->isNew()) {

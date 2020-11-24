@@ -7,7 +7,7 @@ namespace App\Storage;
 use Drupal\Core\Entity\ContentEntityStorageInterface;
 
 /**
- * Defines an interface for company entity storage classes.
+ * Defines an interface for the company entity storage class.
  */
 interface CompanyStorageInterface extends ContentEntityStorageInterface {
 

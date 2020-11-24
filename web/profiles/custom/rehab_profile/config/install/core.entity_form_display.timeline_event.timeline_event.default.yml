@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - app
+    - datetime
+    - text
+id: timeline_event.timeline_event.default
+targetEntityType: timeline_event
+bundle: timeline_event
+mode: default
+content:
+  date:
+    type: datetime_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  details:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

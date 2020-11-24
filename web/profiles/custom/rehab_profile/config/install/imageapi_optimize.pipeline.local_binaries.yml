@@ -11,7 +11,7 @@ processors:
     id: jpegoptim
     weight: 1
     data:
-      manual_executable_path: /usr/bin/jpegoptim
+      manual_executable_path: /usr/local/bin/jpegoptim
       progressive: 1
       quality: 95
       size: null
@@ -20,7 +20,7 @@ processors:
     id: optipng
     weight: 2
     data:
-      manual_executable_path: /usr/bin/optipng
+      manual_executable_path: /usr/local/bin/optipng
       level: 2
       interlace: true
   24067ba4-c6af-4d69-91fd-2803f0a11b2d:
@@ -28,7 +28,7 @@ processors:
     id: pngquant
     weight: 3
     data:
-      manual_executable_path: /usr/bin/pngquant
+      manual_executable_path: /usr/local/bin/pngquant
       speed: 3
       quality:
         min: 65

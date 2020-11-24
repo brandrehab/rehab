@@ -9,7 +9,7 @@ use App\Service\Navigation\NavigationBuilderInterface;
 use Drupal\Core\Entity\ContentEntityStorageInterface;
 
 /**
- * Defines an interface for navigation storage classes.
+ * Defines an interface for the navigation storage class.
  */
 interface NavigationStorageInterface extends ContentEntityStorageInterface {
 

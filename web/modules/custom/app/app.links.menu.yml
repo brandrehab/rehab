@@ -17,3 +17,9 @@ entity.company.settings:
   description: Configure the company entity type
   route_name:  entity.company.settings
   parent: system.admin_structure
+
+entity.timeline_event.settings:
+  title: Timeline Events
+  description: Configure the timeline event entity type
+  route_name:  entity.timeline_event.settings
+  parent: system.admin_structure

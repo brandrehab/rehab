@@ -17,3 +17,9 @@ company.add_form:
   title: 'Add a company'
   appears_on:
     - entity.company.collection
+
+timeline_event.add_form:
+  route_name: entity.timeline_event.add_form
+  title: 'Add a timeline event'
+  appears_on:
+    - entity.timeline_event.collection
