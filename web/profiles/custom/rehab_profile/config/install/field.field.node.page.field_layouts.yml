@@ -6,6 +6,7 @@ dependencies:
     - node.type.page
     - paragraphs.paragraphs_type.team_content
     - paragraphs.paragraphs_type.text_content
+    - paragraphs.paragraphs_type.timeline_content
   module:
     - entity_reference_revisions
 id: node.page.field_layouts
@@ -25,6 +26,7 @@ settings:
     target_bundles:
       team_content: team_content
       text_content: text_content
+      timeline_content: timeline_content
     target_bundles_drag_drop:
       banners:
         weight: 4
@@ -38,4 +40,7 @@ settings:
       text_content:
         enabled: true
         weight: 6
+      timeline_content:
+        enabled: true
+        weight: 10
 field_type: entity_reference_revisions

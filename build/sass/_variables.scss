@@ -12,7 +12,7 @@ $gray-600: darken($white, 60%);
 $gray-700: darken($white, 70%);
 $gray-800: darken($white, 80%);
 $gray-900: darken($white, 90%);
-$rehab: #887C78;
+$agency: #887C78;
 
 $grays: (
   "100": $gray-100,
@@ -39,7 +39,7 @@ $theme-colors: (
   "gray800": $gray-800,
   "gray900": $gray-900,
   "white": $white,
-  "rehab": $rehab,
+  "agency": $agency,
   "danger": $primary,
   "body": $body-color
 );

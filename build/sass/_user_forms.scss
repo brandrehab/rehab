@@ -65,11 +65,11 @@
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus,
     &:-webkit-autofill:active {
-      border-color: $rehab;
+      border-color: $agency;
       outline: 0;
       box-shadow:
         0 0 0 30px $white inset,
-        0 0 0 0.2rem rgba($rehab, 0.25) !important;
+        0 0 0 0.2rem rgba($agency, 0.25) !important;
     }
   }
 }

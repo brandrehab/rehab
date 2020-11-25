@@ -1,3 +1,4 @@
+const Process = require('process');
 const Path = require('path')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -163,3 +164,7 @@ module.exports = {
     ]
   }
 }
+
+Process.on('SIGINT', () => {
+  Process.exit(0);
+})

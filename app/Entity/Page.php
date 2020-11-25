@@ -46,6 +46,15 @@ class Page extends Node implements PageInterface {
             ],
           ];
           break;
+
+        case 'timeline_content':
+          $layouts[] = [
+            'timeline' => [
+              'group' => $group->entity->get('field_group')->first()->value,
+              'order' => $group->entity->get('field_sort_order')->first()->value,
+            ],
+          ];
+          break;
       }
     }
 

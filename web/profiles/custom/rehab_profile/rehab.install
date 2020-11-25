@@ -406,6 +406,11 @@ function rehab_install() {
           'type' => 'text_content',
           'field_text' => "<p>Lorem ipsum dolor met.</p>\r\n",
         ]),
+        Paragraph::create([
+          'type' => 'timeline_content',
+          'field_group' => 'Y',
+          'field_sort_order' => 'ASC',
+        ]),
       ],
   ]);
   $nodeHistory->save();

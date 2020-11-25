@@ -1,10 +1,10 @@
 {
-  "app.css": "/dist/app.006df91625d2a0853c73.css",
-  "app.js": "/dist/app.006df91625d2a0853c73.js",
-  "fonts.css": "/dist/fonts.bd7633fd9361abef5825.css",
-  "vendor.js": "/dist/vendor.5cd879db9793059f4798.js",
-  "images/logo-mono.svg": "/dist/images/logo-mono.a2f320273a3781fbb7db00fd48307a26.svg",
-  "images/logo.svg": "/dist/images/logo.d678f6fc3943e7466d76e9562e4f5506.svg",
+  "app.css": "/dist/app.48195ada9790dc306f45.css",
+  "app.js": "/dist/app.48195ada9790dc306f45.js",
+  "fonts.css": "/dist/fonts.258c1969d6c36b623269.css",
+  "vendor.js": "/dist/vendor.b60228022feaaecee40e.js",
+  "images/logo-mono.svg": "/dist/images/logo-mono.28573d435c4909296ae18184b247e29a.svg",
+  "images/logo.svg": "/dist/images/logo.9833f454a5adf428a459ee46f0769afd.svg",
   "images/pencils.jpg": "/dist/images/pencils.199135ab0c6dbc2f8c0137fdb2baeb8a.jpg",
   "images/profile.svg": "/dist/images/profile.bf3b439df069259a0b66336eeb98dfea.svg"
 }

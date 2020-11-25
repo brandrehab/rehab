@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.timeline_content.field_group
+    - field.field.paragraph.timeline_content.field_sort_order
+    - paragraphs.paragraphs_type.timeline_content
+id: paragraph.timeline_content.default
+targetEntityType: paragraph
+bundle: timeline_content
+mode: default
+content: {  }
+hidden:
+  field_group: true
+  field_sort_order: true

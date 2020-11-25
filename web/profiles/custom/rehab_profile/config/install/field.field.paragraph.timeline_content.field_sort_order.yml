@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sort_order
+    - paragraphs.paragraphs_type.timeline_content
+  module:
+    - options
+id: paragraph.timeline_content.field_sort_order
+field_name: field_sort_order
+entity_type: paragraph
+bundle: timeline_content
+label: 'Sort Order'
+description: 'Determine the date order in which timeline events are displayed.'
+required: true
+translatable: false
+default_value:
+  -
+    value: ASC
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -7,4 +7,14 @@
   border-top: 2px darken($primary, 15%) solid;
   border-bottom: 2px darken($primary, 20%) solid;
   background-color: darken($primary, 10%);
+
+  .agency-link {
+    color: lighten($primary, 20%);
+    .secondary {
+      font-weight: bold;
+    }
+    &:hover {
+      color: lighten($primary, 30%);
+    }
+  }
 }

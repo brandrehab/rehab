@@ -2,24 +2,24 @@
 
 entity.team_member.settings:
   title: Team Members
-  description: Configure the team member entity type
+  description: Configure the team member entity type.
   route_name:  entity.team_member.settings
   parent: system.admin_structure
 
 entity.navigation.settings:
   title: Navigations
-  description: Configure the navigation entity type
+  description: Configure the navigation entity type.
   route_name:  entity.navigation.settings
   parent: system.admin_structure
 
 entity.company.settings:
   title: Companies
-  description: Configure the company entity type
+  description: Configure the company entity type.
   route_name:  entity.company.settings
   parent: system.admin_structure
 
 entity.timeline_event.settings:
   title: Timeline Events
-  description: Configure the timeline event entity type
+  description: Configure the timeline event entity type.
   route_name:  entity.timeline_event.settings
   parent: system.admin_structure

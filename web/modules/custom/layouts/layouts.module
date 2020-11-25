@@ -30,5 +30,12 @@ function layouts_theme(): array {
         'cache' => NULL,
       ],
     ],
+    'layouts_timeline' => [
+      'variables' => [
+        'events' => NULL,
+        'grouping' => NULL,
+        'cache' => NULL,
+      ],
+    ],
   ];
 }

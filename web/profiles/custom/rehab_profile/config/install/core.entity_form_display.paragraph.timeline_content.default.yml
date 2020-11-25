@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.timeline_content.field_group
+    - field.field.paragraph.timeline_content.field_sort_order
+    - paragraphs.paragraphs_type.timeline_content
+id: paragraph.timeline_content.default
+targetEntityType: paragraph
+bundle: timeline_content
+mode: default
+content:
+  field_group:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_sort_order:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

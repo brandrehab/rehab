@@ -15,6 +15,7 @@ trait RendersLayoutsTrait {
 
   use BuildsTextLayoutTrait;
   use BuildsTeamLayoutTrait;
+  use BuildsTimelineLayoutTrait;
 
   /**
    * Specify the available builder traits.
@@ -24,6 +25,7 @@ trait RendersLayoutsTrait {
   private array $layoutBuilders = [
     'text' => 'getTextLayout',
     'team' => 'getTeamLayout',
+    'timeline' => 'getTimelineLayout',
   ];
 
   /**

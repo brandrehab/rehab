@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_group
+    - paragraphs.paragraphs_type.timeline_content
+  module:
+    - options
+id: paragraph.timeline_content.field_group
+field_name: field_group
+entity_type: paragraph
+bundle: timeline_content
+label: 'Group By'
+description: 'Determine how timeline events should be grouped.'
+required: true
+translatable: false
+default_value:
+  -
+    value: month
+default_value_callback: ''
+settings: {  }
+field_type: list_string

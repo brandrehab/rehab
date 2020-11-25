@@ -17,9 +17,9 @@ class TimelineEventStorage extends SqlContentEntityStorage implements TimelineEv
   /**
    * Get the timeline events ordered by date.
    */
-  public function getAll(): ?array {
+  public function getAll(?string $order = 'ASC'): ?array {
     $query = $this->getQuery()
-      ->sort($this->entityType->getKey('date'));
+      ->sort($this->entityType->getKey('date'), $order);
 
     if (!$timeline_ids = $query->execute()) {
       return NULL;

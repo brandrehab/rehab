@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: timeline_content
+label: 'Timeline Content'
+icon_uuid: null
+icon_default: null
+description: 'Displays timeline events, with the option to group by month or year and sort order.'
+behavior_plugins: {  }

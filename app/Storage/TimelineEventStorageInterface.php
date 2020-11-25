@@ -14,6 +14,6 @@ interface TimelineEventStorageInterface extends ContentEntityStorageInterface {
   /**
    * Get the timeline events ordered by date.
    */
-  public function getAll(): ?array;
+  public function getAll(?string $order = 'ASC'): ?array;
 
 }
