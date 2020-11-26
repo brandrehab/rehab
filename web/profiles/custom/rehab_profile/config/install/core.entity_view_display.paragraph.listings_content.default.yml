@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.listings_content.field_grid
+    - paragraphs.paragraphs_type.listings_content
+id: paragraph.listings_content.default
+targetEntityType: paragraph
+bundle: listings_content
+mode: default
+content: {  }
+hidden:
+  field_grid: true

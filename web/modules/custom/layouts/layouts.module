@@ -37,5 +37,17 @@ function layouts_theme(): array {
         'cache' => NULL,
       ],
     ],
+    'layouts_listings_strict' => [
+      'variables' => [
+        'links' => NULL,
+        'cache' => NULL,
+      ],
+    ],
+    'layouts_listings_masonry' => [
+      'variables' => [
+        'links' => NULL,
+        'cache' => NULL,
+      ],
+    ],
   ];
 }

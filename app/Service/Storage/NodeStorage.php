@@ -7,22 +7,13 @@ namespace App\Service\Storage;
 use App\Service\Entity\Node;
 use Drupal\node\NodeStorage as Base;
 use Drupal\Core\Entity\Query\QueryInterface;
-use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Session\AccountProxyInterface;
-use Drupal\Core\Database\Connection;
-use Drupal\Core\Entity\EntityFieldManagerInterface;
-use Drupal\Core\Cache\CacheBackendInterface;
-use Drupal\Core\Language\LanguageManagerInterface;
-use Drupal\Core\Cache\MemoryCache\MemoryCacheInterface;
-use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 
 /**
  * Extends base node storage to assign entities base on node type.
  */
-class NodeStorage extends Base implements NodeStorageInterface {
+abstract class NodeStorage extends Base implements NodeStorageInterface {
 
   /**
    * Node entity types (bundles) and associated classes.
@@ -37,48 +28,6 @@ class NodeStorage extends Base implements NodeStorageInterface {
    * @var \Drupal\Core\Session\AccountProxyInterface
    */
   protected AccountProxyInterface $currentUser;
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function createInstance(
-    ContainerInterface $container,
-    EntityTypeInterface $entity_type
-  ): self {
-    return new self(
-      $entity_type,
-      $container->get('database'),
-      $container->get('entity_field.manager'),
-      $container->get('cache.entity'),
-      $container->get('language_manager'),
-      $container->get('entity.memory_cache'),
-      $container->get('entity_type.bundle.info'),
-      $container->get('entity_type.manager'),
-      $container->get('current_user')
-    );
-  }
-
-  /**
-   * Constructs a SqlContentEntityStorage object.
-   */
-  public function __construct(
-    EntityTypeInterface $entity_type,
-    Connection $database,
-    EntityFieldManagerInterface $entity_field_manager,
-    CacheBackendInterface $cache,
-    LanguageManagerInterface $language_manager,
-    MemoryCacheInterface $memory_cache,
-    EntityTypeBundleInfoInterface $entity_type_bundle_info,
-    EntityTypeManagerInterface $entity_type_manager,
-    AccountProxyInterface $current_user
-  ) {
-    $this->currentUser = $current_user;
-    parent::__construct($entity_type, $database, $entity_field_manager, $cache, $language_manager, $memory_cache, $entity_type_bundle_info, $entity_type_manager);
-
-    if (!self::$nodeEntityTypes) {
-      $this->setNodeEntityTypes();
-    }
-  }
 
   /**
    * Matches Entity types to node type specific classes.

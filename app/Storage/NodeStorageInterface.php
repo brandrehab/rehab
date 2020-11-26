@@ -17,4 +17,19 @@ interface NodeStorageInterface extends BaseStorageInterface {
    */
   public function getPageByTitle(string $title): ?PageInterface;
 
+  /**
+   * Get links.
+   */
+  public function getLinks(string $bundle): ?array;
+
+  /**
+   * Get article links.
+   */
+  public function getArticleLinks(): ?array;
+
+  /**
+   * Get service links.
+   */
+  public function getServiceLinks(): ?array;
+
 }

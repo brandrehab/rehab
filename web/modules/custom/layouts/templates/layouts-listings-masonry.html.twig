@@ -1,0 +1,27 @@
+<section class="container-fluid layouts-listings masonry border-top border-white">
+  <div class="container py-2">
+    <div class="card-columns pb-5">
+      {% for link in links %}
+        <a href="{{link.getUrl()}}">
+          <div class="card border-primary mt-5 mb-0">
+            <div class="card-body">
+              <h5 class="mt-0 mb-2">{{link.getHeading()}}</h5>
+              <small>
+                {{link.getSeo().meta_description}}
+              </small>
+            </div>
+            <div class="card-footer bg-secondary border-top border-primary text-right text-white">
+              {% if link.bundle == 'service' %}
+                <i class="fas fa-chevron-circle-right fa-lg"></i>
+              {% endif %}
+              {% if link.bundle == 'article' %}
+                <small>{{link.getCreatedDate('M Y')}}</small>
+                <i class="far fa-calendar-alt fa-lg pl-1"></i>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -38,10 +38,25 @@ class Overview extends Node implements OverviewInterface {
             $layouts[] = ['text' => $text->value];
           }
           break;
+
+        case 'listings_content':
+          $layouts[] = [
+            'listings' => [
+              'grid' => $group->entity->get('field_grid')->first()->value,
+            ],
+          ];
+          break;
       }
     }
 
     return $layouts;
+  }
+
+  /**
+   * Get the child content type for which this is an overview.
+   */
+  public function getChildType(): string {
+    return $this->get('field_children')->first()->value;
   }
 
   /**

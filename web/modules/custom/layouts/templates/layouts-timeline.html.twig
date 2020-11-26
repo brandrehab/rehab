@@ -1,20 +1,18 @@
 {% set previous = '' %}
-<section class="container-fluid layouts-timeline mt-5">
-  <div class="container p-5">
+<section class="container-fluid layouts-timeline border-top border-white">
+  <div class="container py-2 mt-5">
     {% for event in events %}
       {% set date = event.getDate(grouping) %}
       {% if date != previous %}
         {% if not loop.first %}</div>{% endif %}
         <div class="row">
-          <div class="col-12 px-3 {% if not loop.first %}py-2 mt-4 {% else %}pb-2{% endif %}">
-            <h4 class="mt-0 text-secondary">
-              <span class="d-inline-block px-3 border-left border-right border-secondary" style="border-left-width: 2px !important; border-right-width: 2px !important">{{date}}</span>
-            </h4>
+          <div class="col-12 px-3">
+            <h4 class="mt-0 text-center">{{date}}</h4>
           </div>
         </div>
-        <div class="row row-cols-1 row-cols-mdp-2 row-cols-lg-3">
+        <div class="row justify-content-center row-cols-1 row-cols-mdp-2 row-cols-lg-3 pb-5">
       {% endif %}
-      <div class="col mt-3">
+      <div class="col mt-5">
         <div class="card h-100 border-primary">
           <div class="card-body">
             <h5 class="mt-0">{{event.getHeading()}}</h5>
@@ -22,8 +20,9 @@
               {{event.getDetails()|raw}}
             </small>
           </div>
-          <div class="card-footer bg-secondary border-top border-primary text-right">
-            <small class="text-white"><i class="far fa-calendar-alt pr-2"></i>{{event.getDate('jS F')}}</small>
+          <div class="card-footer bg-secondary border-top border-primary text-right text-white">
+            <small>{{event.getDate('jS F')}}</small>
+            <i class="far fa-calendar-alt fa-lg pl-1"></i>
           </div>
         </div>
       </div>

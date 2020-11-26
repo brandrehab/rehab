@@ -40,4 +40,27 @@
 
 .layouts-timeline {
   background-color: rgba($primary, .2);
+  h4 {
+    span {
+      border-left-width: 2px !important;
+      border-right-width: 2px !important;
+    }
+  }
+}
+
+.layouts-listings {
+  background-color: rgba($primary, .2);
+  &.masonry {
+    .card-columns {
+      @include media-breakpoint-up(xs) {
+        column-count: 1;
+      }
+      @include media-breakpoint-up(mdp) {
+        column-count: 2;
+      }
+      @include media-breakpoint-up(lg) {
+        column-count: 3;
+      }
+    }
+  }
 }

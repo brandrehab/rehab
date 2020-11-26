@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Traits\Block;
 
-use App\Service\Entity\NodeInterface;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Render\RendererInterface;
 
@@ -16,6 +15,7 @@ trait RendersLayoutsTrait {
   use BuildsTextLayoutTrait;
   use BuildsTeamLayoutTrait;
   use BuildsTimelineLayoutTrait;
+  use BuildsListingsLayoutTrait;
 
   /**
    * Specify the available builder traits.
@@ -26,6 +26,7 @@ trait RendersLayoutsTrait {
     'text' => 'getTextLayout',
     'team' => 'getTeamLayout',
     'timeline' => 'getTimelineLayout',
+    'listings' => 'getListingsLayout',
   ];
 
   /**
@@ -45,8 +46,8 @@ trait RendersLayoutsTrait {
   /**
    * Process the layouts.
    */
-  protected function processLayouts(NodeInterface $node): ?string {
-    if (!$layouts = $node->getLayouts()) {
+  protected function processLayouts(): ?string {
+    if (!$layouts = $this->currentNode->getLayouts()) {
       return NULL;
     }
     return $this->renderLayouts($layouts);

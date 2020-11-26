@@ -97,6 +97,14 @@ function app_form_node_form_alter(array &$form, FormStateInterface &$form_state)
       $menu_link_disabled = FALSE;
     }
 
+    $all_links = $form['menu']['link']['menu_parent']['#options'];
+    $enabled_links = array_filter($all_links, function ($value) {
+      if (strpos($value, '(disabled)') === FALSE) {
+        return TRUE;
+      }
+    });
+    $form['menu']['link']['menu_parent']['#options'] = $enabled_links;
+
     $form['menu']['enabled']['#default_value'] = TRUE;
     $form['menu']['link']['link_disabled'] = [
       '#type' => 'checkbox',

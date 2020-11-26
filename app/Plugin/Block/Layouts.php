@@ -51,6 +51,13 @@ class Layouts extends BlockBase implements ContainerFactoryPluginInterface {
   protected BlockManagerInterface $blockManager;
 
   /**
+   * Current node.
+   *
+   * @var \App\Service\Entity\NodeInterface
+   */
+  protected NodeInterface $currentNode;
+
+  /**
    * Dependecy injection.
    */
   public static function create(
@@ -87,11 +94,11 @@ class Layouts extends BlockBase implements ContainerFactoryPluginInterface {
    * Build the render array.
    */
   public function build(): array {
-    $node = $this->getNode();
+    $this->currentNode = $this->getCurrentNode();
 
     return [
       '#theme' => 'layouts',
-      '#render' => $this->processLayouts($node),
+      '#render' => $this->processLayouts(),
       '#cache' => $this->cache,
     ];
   }
@@ -99,7 +106,7 @@ class Layouts extends BlockBase implements ContainerFactoryPluginInterface {
   /**
    * Get the current node.
    */
-  private function getNode(): NodeInterface {
+  private function getCurrentNode(): NodeInterface {
     $config = $this->getConfiguration();
     return $config['node'];
   }

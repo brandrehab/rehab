@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: listings_content
+label: 'Listings Content'
+icon_uuid: null
+icon_default: null
+description: 'Provides links through to the child pages.'
+behavior_plugins: {  }

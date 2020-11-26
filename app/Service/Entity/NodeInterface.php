@@ -47,9 +47,19 @@ interface NodeInterface extends BaseNodeInterface {
   public function getCreated(): int;
 
   /**
-   * Get the entity created timestamp.
+   * Gets the entity created date.
+   */
+  public function getCreatedDate(?string $date_format = 'F Y'): string;
+
+  /**
+   * Get the entity updatedtimestamp.
    */
   public function getUpdated(): int;
+
+  /**
+   * Gets the entity updated date.
+   */
+  public function getUpdatedDate(?string $date_format = 'F Y'): string;
 
   /**
    * Get the entity seo data.

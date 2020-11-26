@@ -7,9 +7,9 @@ namespace App\Traits\Block;
 use Drupal\Core\Block\BlockManagerInterface;
 
 /**
- * Builds the timeline layout render array.
+ * Builds the listings layout render array.
  */
-trait BuildsTimelineLayoutTrait {
+trait BuildsListingsLayoutTrait {
 
   /**
    * Block manager.
@@ -19,15 +19,16 @@ trait BuildsTimelineLayoutTrait {
   protected BlockManagerInterface $blockManager;
 
   /**
-   * Gets the timline render array.
+   * Gets the listings render array.
    */
-  protected function getTimelineLayout(?array $val): ?array {
+  protected function getListingsLayout(?array $val): ?array {
     if (!$val) {
       return NULL;
     }
 
-    return $this->blockManager->createInstance('app.layouts.timeline', [
-      'timeline' => $val,
+    return $this->blockManager->createInstance('app.layouts.listings', [
+      'node' => $this->currentNode,
+      'listings' => $val,
     ])->build();
   }
 

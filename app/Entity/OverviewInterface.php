@@ -18,6 +18,11 @@ interface OverviewInterface extends NodeInterface {
   public function getLayouts(): ?array;
 
   /**
+   * Get the child content type for which this is an overview.
+   */
+  public function getChildType(): string;
+
+  /**
    * {@inheritdoc}
    */
   public function preSave(EntityStorageInterface $storage): void;

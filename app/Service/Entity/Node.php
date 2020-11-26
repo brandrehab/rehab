@@ -68,10 +68,24 @@ class Node extends NodeBase implements NodeInterface {
   }
 
   /**
-   * Get the entity created timestamp.
+   * Gets the entity created date.
+   */
+  public function getCreatedDate(?string $date_format = 'F Y'): string {
+    return date($date_format, $this->getCreated());
+  }
+
+  /**
+   * Get the entity updated timestamp.
    */
   public function getUpdated(): int {
     return (int) $this->get('changed')->value;
+  }
+
+  /**
+   * Gets the entity updated date.
+   */
+  public function getUpdatedDate(?string $date_format = 'F Y'): string {
+    return date($date_format, $this->getUpdated());
   }
 
   /**

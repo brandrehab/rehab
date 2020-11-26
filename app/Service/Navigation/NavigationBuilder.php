@@ -102,7 +102,6 @@ class NavigationBuilder implements NavigationBuilderInterface {
   public function getNids(LinkCollectionInterface $links): array {
     $nids = [];
     foreach ($links as $link) {
-      dump($link);
       if (!$link->nid) {
         continue;
       }
